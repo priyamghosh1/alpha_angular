@@ -1,0 +1,24 @@
+<div class="container" style="width: 2000px; height: 700px;background-size: cover;">
+  <div class="d-flex flex-column bd-highlight mb-3">
+    <div class="p-2 bd-highlight">
+      <img src="assets/map-meghalaya-map.jpg" class="img-fluid">
+    </div>
+    <div class="d-flex flex-row bd-highlight mb-3">
+      <div class="p-2 col-4 bd-highlight">
+        <img src="assets/map-meghalaya-legend.jpg" class="img-fluid">
+      </div>
+      <div class="p-2 bd-highlight">
+        <p-cascadeSelect [(ngModel)]="selectedCity1" [options]="allStates" optionLabel="assemblyName" optionGroupLabel="name"
+                         [optionGroupChildren]="['districts', 'assemblies']" [style]="{'minWidth': '14rem'}" (onChange)="onAssemblySelect($event.value)">
+
+        </p-cascadeSelect>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row" *ngIf="true"><pre>{{selectedCity1 | json}}</pre>
+<!--  <div class="col"><pre>assemblies = {{assembliesForDistrict1 | json}}</pre></div>-->
+</div>

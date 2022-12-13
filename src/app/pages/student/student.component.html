@@ -1,0 +1,171 @@
+<div class="d-flex flex-row bd-highlight mb-3">
+  <div class="p-2 bd-highlight col-7">
+    <div class="card">
+      <div class="card-header">
+        <h3 style="color: #1e293b;">Student Entry Form</h3>
+      </div>
+      <div class="card-body">
+
+        <!--    Form Entry-->
+        <div>
+          <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+            {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+          </button>
+          <mat-stepper [linear]="isLinear" #stepper style="background-color: #94a3b8;">
+            <mat-step [stepControl]="studentNameFormGroup" label="Name">
+              <form [formGroup]="studentNameFormGroup">
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Student Name</label>
+                  <input pInputText pKeyFilter="alpha" class="form-control" id="exampleInputEmail1" formControlName="studentName" aria-describedby="emailHelp" placeholder="Student Name">
+                  <small id="emailHelp" class="form-text text-muted">Name should be Unique</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Billing Name</label>
+                  <input pInputText class="form-control" id="exampleInputPassword1" formControlName="billingName" placeholder="Password">
+                  <small id="billingNameHelp" class="form-text text-muted">It is not Unique</small>
+                </div>
+                <div>
+                  <button mat-button matStepperNext>
+                    <i class="pi pi-chevron-right" style="font-size: 2rem"></i>
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="studentGuardianFormGroup" label="Guardian">
+              <form [formGroup]="studentGuardianFormGroup">
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Father Name</label>
+                  <input pInputText pKeyFilter="alpha" class="form-control" id="father-name" formControlName="fatherName" aria-describedby="emailHelp" placeholder="Student Name">
+                  <small  class="form-text text-muted">Name should be Unique</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Mother Name</label>
+                  <input pInputText class="form-control" id="mother-name" formControlName="motherName" placeholder="Mother's Name">
+                  <small  class="form-text text-muted">It is not Unique</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Guardian</label>
+                  <input pInputText class="form-control" id="guardian-name" formControlName="guardianName" placeholder="Guardian Name">
+                  <small  class="form-text text-muted">It is not Unique</small>
+                </div>
+                <div>
+                  <button mat-button matStepperPrevious>
+                    <i class="pi pi-chevron-left" style="font-size: 2rem"></i>
+                  </button>
+                  <button mat-button matStepperNext>
+                    <i class="pi pi-chevron-right" style="font-size: 2rem"></i>
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="secondStudentFormGroup" label="Fill out your address">
+              <form [formGroup]="secondStudentFormGroup">
+                <mat-form-field appearance="fill">
+                  <mat-label>Address</mat-label>
+                  <input matInput formControlName="dob" placeholder="Ex. 1 Main St, New York, NY"
+                         required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="thirdStudentFormGroup" label="Fill out your address">
+              <form [formGroup]="thirdStudentFormGroup">
+                <mat-form-field appearance="fill">
+                  <mat-label>Address</mat-label>
+                  <input matInput formControlName="address" placeholder="Ex. 1 Main St, New York, NY"
+                         required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Done</ng-template>
+              <p>You are now done.</p>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+              </div>
+            </mat-step>
+          </mat-stepper>
+        </div>
+
+        <p-confirmDialog #cd [style]="{width: '30vw'}" header="Confirmation" icon="pi pi-exclamation-triangle" [transitionOptions]="'0.8ms'">
+          <ng-template pTemplate="header">
+            <h3>Header Content</h3>
+          </ng-template>
+          <ng-template pTemplate="footer">
+            <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+            <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+          </ng-template>
+        </p-confirmDialog>
+
+        <button (click)="confirm()" pButton icon="pi pi-check" label="Confirm"></button>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <!--  Right-->
+  <div class="p-2 bd-highlight col-5">
+    <div class="card">
+      <div class="card-header">
+        <h3 style="color: #1e293b;">Student Details</h3>
+      </div>
+      <div class="card">
+        <p-dialog header="Title" position="top" [transitionOptions]="'600ms'" [(visible)]="displayDialog" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+          Content
+        </p-dialog>
+
+
+        <button type="button" (click)="showDialog()" icon="pi pi-info-circle" label="Show">Show Message</button>
+
+
+        <h5>Student List</h5>
+        <p-table #dt1 [value]="students" dataKey="studentId" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" responsiveLayout="scroll"
+                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,25,50]"
+                 styleClass="p-datatable-gridlines"
+                 [globalFilterFields]="['studentId','episodeId','studentName','motherName']">
+          <ng-template pTemplate="caption">
+            <div class="p-d-flex">
+              <span class="p-input-icon-left p-ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt1.filterGlobal(getEventValue($event), 'contains')" placeholder="Search keyword" />
+                </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>ID</th>
+              <th pSortableColumn="episodeId">Ep. ID <p-sortIcon field="episodeId"></p-sortIcon></th>
+              <th pSortableColumn="studentName">Name <p-sortIcon field="studentName"></p-sortIcon></th>
+              <th pSortableColumn="motherName">Mother <p-sortIcon field="motherName"></p-sortIcon></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-customer>
+            <tr>
+              <td>{{customer.studentId}}</td>
+              <td>{{customer.episodeId}}</td>
+              <td>{{customer.studentName}}</td>
+              <td>{{customer.motherName}}</td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>

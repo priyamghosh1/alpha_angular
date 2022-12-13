@@ -1,0 +1,98 @@
+<!--<p>assembly-admin-dashboard works!</p>-->
+<!--<pre>reportData = {{reportData | json}}</pre>-->
+
+<button class="button btn-primary" (click)="goToMainReport()">Back</button>
+<div class="card mt-5" *ngIf="displayFirstMasterReport">
+  <div class="card-header text-dark text-bold">
+    Polling Report
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Polling number</th>
+        <th scope="col">Total volunteer</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let x of reportData">
+      <tr>
+        <td scope="row"></td>
+        <td scope="row">{{x.pollingNumber}}</td>
+        <td scope="row"><a [routerLink]="[]"  (click)="getVolunteersByPollingId(x)">{{x.totalVolunteer}}</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card mt-5" *ngIf="displaySecondVolunteerReport">
+  <div class="card-header text-dark text-bold">
+    Volunteer Details
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Member code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Area</th>
+        <th scope="col">Area</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Polling number</th>
+        <th scope="col">Total workers</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let x of volunteerReportsData">
+      <tr>
+        <td scope="row"></td>
+        <td scope="row">{{x.memberCode}}</td>
+        <td scope="row">{{x.personName}}</td>
+        <td scope="row">{{x.areaDescription}}</td>
+        <td scope="row">{{x.age}}</td>
+        <td scope="row">{{x.gender}}</td>
+        <td scope="row">{{x.pollingNumber}}</td>
+        <td scope="row"><a [routerLink]="[]"  (click)="getWorkersByVolunteerId(x)">{{x.totalWorkers}}</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card mt-5" *ngIf="displayThirdWorkerReport">
+  <div class="card-header text-dark text-bold">
+    General Workers
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Member code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Area</th>
+        <th scope="col">Area</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Voter id</th>
+        <th scope="col">Polling number</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let x of workerReportsData">
+      <tr>
+        <td scope="row"></td>
+        <td scope="row">{{x.memberCode}}</td>
+        <td scope="row">{{x.personName}}</td>
+        <td scope="row">{{x.areaDescription}}</td>
+        <td scope="row">{{x.age}}</td>
+        <td scope="row">{{x.gender}}</td>
+        <td scope="row">{{x.voterId}}</td>
+        <td scope="row">{{x.pollingNumber}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

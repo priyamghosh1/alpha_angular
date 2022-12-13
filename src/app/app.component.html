@@ -1,0 +1,18 @@
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <app-sidenav *ngIf="authService.isNotAuthenticated()"></app-sidenav>
+      <app-sidenav-developer *ngIf="authService.isDeveloper()"></app-sidenav-developer>
+      <app-sidenav-mp *ngIf="authService.isOwner()"></app-sidenav-mp>
+      <app-sidenav-legislative *ngIf="authService.isLegislativeCandidate()"></app-sidenav-legislative>
+      <app-sidenav-polling-volunteer *ngIf="authService.isPollingStationVolunteer()"></app-sidenav-polling-volunteer>
+      <!-- <app-sidenav-owner *ngIf="authService.isOwner()"></app-sidenav-owner> -->
+
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-header (toggleSidebarForMe)="sideBarToggler($event)"></app-header>
+      <div *ngIf="isNavigating"  id="loading-screen" class="text-center">
+        <mat-spinner></mat-spinner>
+      </div>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

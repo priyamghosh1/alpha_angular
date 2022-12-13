@@ -1,0 +1,35 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="assets/meghalaya-map-logo.jpg" width="100px" height="50px" alt="Company Logo" class="eduvenv"/>
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">MP</h2>
+  <a mat-list-item routerLink="/mp" routerLinkActive="list-item-active">
+    <mat-icon>home</mat-icon> Home
+  </a>
+  <a mat-list-item routerLink="/assemblyAdminDashboard" routerLinkActive="list-item-active">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+
+  <a mat-list-item (click)="toggleMaster()">
+    <mat-icon>spa</mat-icon> Master
+    <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+  </a>
+  <div *ngIf="displayMaster">
+    <a mat-list-item [routerLink]="['/student']"  routerLinkActive="list-item-active">
+      <i class="bi bi-person-check-fill"></i> &nbsp; Student
+    </a>
+  </div>
+
+
+  <a mat-list-item>
+    <mat-icon>edit</mat-icon> Link 4
+  </a>
+  <a mat-list-item>
+    <mat-icon>edit</mat-icon> Link 5
+  </a>
+
+
+
+</mat-nav-list>
+

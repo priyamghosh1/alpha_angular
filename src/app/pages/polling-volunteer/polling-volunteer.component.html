@@ -1,0 +1,97 @@
+<h3>Create General Worker:</h3>
+
+
+
+<div class="container pt-5">
+
+
+
+  <form [formGroup]="personForm">
+    <div class="d-flex">
+      <div class="form-group">
+        <input class="form-control" formControlName="personName" placeholder="Name">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="age" placeholder="Age">
+      </div>
+      <div class="form-group pl-3">
+        <ng-select [items]="genderList"
+                   fxFlex="100"
+                   bindLabel="name"
+                   class="custom"
+                   bindValue="name"
+                   appendTo="body"
+                   formControlName="gender"
+                   placeholder="Gender"
+                   style="height: 200 !important;">
+        </ng-select>
+      </div>
+
+    </div>
+
+    <div class="d-flex pt-2">
+      <div class="form-group">
+        <input class="form-control" formControlName="mobile1"    placeholder="Mobile1">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="voterId" placeholder="Voter No.">
+      </div>
+    </div>
+  </form>
+
+  <div class="d-flex pt-2">
+    <form [formGroup]="userForm">
+      <div class="d-flex pt-2">
+
+        <div class="form-group pl-3">
+          <textarea class="form-control" rows="2" formControlName="remark"  placeholder="Remark"></textarea>
+        </div>
+        <div class="form-group pl-3">
+          <textarea class="form-control" rows="2" formControlName="areaDescription"  placeholder="Area"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="pt-4 pb-3"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
+
+
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Member code</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Email</th>
+          <th scope="col">mobile1</th>
+          <th scope="col">mobile2</th>
+          <th scope="col">voterId</th>
+          <th scope="col">pollingNumber</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let x of pollingGeneralMembers">
+        <tr>
+          <td scope="row">{{x.personId}}</td>
+          <td scope="row">{{x.memberCode}}</td>
+          <td scope="row">{{x.personName}}</td>
+          <td scope="row">{{x.age}}</td>
+          <td scope="row">{{x.gender}}</td>
+          <td scope="row">{{x.email}}</td>
+          <td scope="row">{{x.mobile1}}</td>
+          <td scope="row">{{x.mobile2}}</td>
+          <td scope="row">{{x.voterId}}</td>
+          <td scope="row">{{x.pollingNumber}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row" *ngIf="false">
+    <div class="col"><pre>personForm = {{personForm.value | json}}</pre></div>
+    <div class="col"><pre>userForm = {{userForm.value | json}}</pre></div>
+  </div>
+
+</div>
