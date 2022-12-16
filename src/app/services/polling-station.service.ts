@@ -11,6 +11,7 @@ export class PollingStationService {
   constructor(private http: HttpClient) { }
 
   getPollingStationByAssemblyId(assemblyId:number):any{
+    console.log(assemblyId);
     return this.http.get(this.BASE_API_URL + '/pollingStations/'+assemblyId);
   }
 }

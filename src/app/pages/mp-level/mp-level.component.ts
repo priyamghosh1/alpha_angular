@@ -76,7 +76,6 @@ export class MpLevelComponent implements OnInit {
       this.areas = response;
     });
     this.loggedInUser = this.authService.userBehaviorSubject.value;
-
     this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {status: boolean,
       message:string,data: any}) => {
       this.pollingStations = response.data;

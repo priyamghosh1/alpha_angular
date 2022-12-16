@@ -30,6 +30,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { SidenavMpModule } from './sidenavs/sidenav-mp/sidenav-mp.module';
 import {SidenavLegislativeModule} from "./sidenavs/sidenav-legislative/sidenav-legislative.module";
 import {SidenavPollingVolunteerModule} from "./sidenavs/sidenav-polling-volunteer/sidenav-polling-volunteer.module";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import {SidenavPollingVolunteerModule} from "./sidenavs/sidenav-polling-voluntee
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
   ],
   bootstrap: [AppComponent]
 })
