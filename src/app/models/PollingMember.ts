@@ -4,7 +4,11 @@ export class PollingMember{
   personId?: number;
   parentId?: number;
   memberCode?: string;
+  guardianName?: string;
   personName?: string;
+  occupation?: string;
+  police_station?: string;
+  religion?: string;
   parentName?: string;
   remark?: string;
   email?: string;
