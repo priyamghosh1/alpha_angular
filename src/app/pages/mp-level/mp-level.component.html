@@ -1,4 +1,3 @@
-
 <div class="container pt-5">
 
 
@@ -12,45 +11,95 @@
         <input class="form-control" formControlName="age" placeholder="Age">
       </div>
       <div class="form-group pl-3">
-        <ng-select [items]="genderList"
-                   fxFlex="100"
-                   bindLabel="name"
-                   class="custom"
-                   bindValue="name"
-                   appendTo="body"
-                   formControlName="gender"
-                   placeholder="Gender"
-                   style="height: 200 !important;">
-        </ng-select>
-      </div>
-
-    </div>
-
-    <div class="d-flex pt-2">
-      <div class="form-group">
-        <input class="form-control" formControlName="mobile1"    placeholder="Mobile1">
+        <input class="form-control" formControlName="email" placeholder="Email">
       </div>
       <div class="form-group pl-3">
-        <input class="form-control" formControlName="mobile2"    placeholder="Mobile2">
+        <input class="form-control" formControlName="guardianName" placeholder="Guardian Name">
+      </div>
+      <div class="form-group pl-3">
+        <ng-select [items]="genderList" fxFlex="100" bindLabel="name" class="custom" bindValue="name" appendTo="body"
+          formControlName="gender" placeholder="Gender" style="height: 200 !important;">
+        </ng-select>
+      </div>
+
+    </div>
+
+    <div class="d-flex pt-2">
+      <div class="form-group">
+        <input class="form-control" formControlName="policeStation" placeholder="Police station">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="cast" placeholder="Cast">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="partNo" placeholder="Part No">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="postOffice" placeholder="Post Office">
       </div>
     </div>
 
     <div class="d-flex pt-2">
       <div class="form-group">
-        <input class="form-control" formControlName="voterId"    placeholder="Voter No.">
+        <input class="form-control" formControlName="houseNo" placeholder="House No.">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="pinCode" placeholder="Pin Code">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="preferableCandidate" placeholder="Preferable Candidate">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="suggestion" placeholder="Suggestion">
+      </div>
+    </div>
+
+    <div class="d-flex pt-2">
+      <div class="form-group">
+        <input class="form-control" formControlName="mobile1" placeholder="Mobile1">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="mobile2" placeholder="Mobile2">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="religion" placeholder="Religion">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="occupation" placeholder="Occupation">
+      </div>
+    </div>
+
+    <div class="d-flex pt-2">
+      <div class="form-group">
+        <input class="form-control" formControlName="voterId" placeholder="Voter No.">
       </div>
       <div class="form-group pl-2">
-        <ng-select [items]="pollingStations"
-                   fxFlex="100"
-                   bindLabel="pollingNumber"
-                   class="custom"
-                   bindValue="pollingStationId"
-                   appendTo="body"
-                   formControlName="pollingStationId"
-                   placeholder="Polling number"
-                   style="height: 200 !important;">
+        <ng-select [items]="pollingStations" fxFlex="100" bindLabel="pollingNumber" class="custom"
+          bindValue="pollingStationId" appendTo="body" formControlName="pollingStationId" placeholder="Polling number"
+          style="height: 200 !important;">
         </ng-select>
       </div>
+
+      <div class="form-group pl-3">
+
+        <select class="form-select form-group pl-3" placeholder="Previous Voting History"
+          formControlName="prevVotingHistory" aria-label="Default select example">
+          <option value="yes">yes</option>
+          <option value="no">no</option>
+        </select>
+      </div>
+      <div class="form-group pl-3">
+        <select class="form-select form-group pl-3" placeholder="Satisfied By Present Gov"
+          formControlName="satisfiedByPresentGov" aria-label="Default select example">
+          <option value="yes">yes</option>
+          <option value="no">no</option>
+        </select>
+      </div>
+
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="district" placeholder="District">
+      </div>
+
     </div>
   </form>
 
@@ -59,7 +108,7 @@
       <div class="d-flex pt-2">
 
         <div class="form-group pl-3">
-          <textarea class="form-control" rows="2" formControlName="remark"  placeholder="Remark"></textarea>
+          <textarea class="form-control" rows="2" formControlName="remark" placeholder="Remark"></textarea>
         </div>
       </div>
     </form>
@@ -71,41 +120,49 @@
     <div class="card-body">
       <table class="table">
         <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Member code</th>
-          <th scope="col">Age</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Email</th>
-          <th scope="col">mobile1</th>
-          <th scope="col">mobile2</th>
-          <th scope="col">voterId</th>
-          <th scope="col">pollingNumber</th>
-        </tr>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Member code</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Email</th>
+            <th scope="col">mobile1</th>
+            <th scope="col">mobile2</th>
+            <th scope="col">voterId</th>
+            <th scope="col">pollingNumber</th>
+          </tr>
         </thead>
         <tbody *ngFor="let x of pollingMembers">
-        <tr>
-          <td scope="row">{{x.personId}}</td>
-          <td scope="row">{{x.personName}}</td>
-          <td scope="row">{{x.memberCode}}</td>
-          <td scope="row">{{x.age}}</td>
-          <td scope="row">{{x.gender}}</td>
-          <td scope="row">{{x.email}}</td>
-          <td scope="row">{{x.mobile1}}</td>
-          <td scope="row">{{x.mobile2}}</td>
-          <td scope="row">{{x.voterId}}</td>
-          <td scope="row">{{x.pollingNumber}}</td>
-        </tr>
+          <tr>
+            <td scope="row">{{x.personId}}</td>
+            <td scope="row">{{x.personName}}</td>
+            <td scope="row">{{x.memberCode}}</td>
+            <td scope="row">{{x.age}}</td>
+            <td scope="row">{{x.gender}}</td>
+            <td scope="row">{{x.email}}</td>
+            <td scope="row">{{x.mobile1}}</td>
+            <td scope="row">{{x.mobile2}}</td>
+            <td scope="row">{{x.voterId}}</td>
+            <td scope="row">{{x.pollingNumber}}</td>
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
   <div class="row" *ngIf="false">
-    <div class="col"><pre>personForm = {{personForm.value | json}}</pre></div>
-    <div class="col"><pre>userForm = {{userForm.value | json}}</pre></div>
-    <div class="col"><pre>pollingStations = {{pollingStations | json}}</pre></div>
-    <div class="col"><pre>pollingMembers = {{pollingMembers | json}}</pre></div>
+    <div class="col">
+      <pre>personForm = {{personForm.value | json}}</pre>
+    </div>
+    <div class="col">
+      <pre>userForm = {{userForm.value | json}}</pre>
+    </div>
+    <div class="col">
+      <pre>pollingStations = {{pollingStations | json}}</pre>
+    </div>
+    <div class="col">
+      <pre>pollingMembers = {{pollingMembers | json}}</pre>
+    </div>
   </div>
 
 </div>

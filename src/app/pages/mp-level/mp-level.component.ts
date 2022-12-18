@@ -5,12 +5,12 @@ import { AreaService } from 'src/app/services/area.service';
 import { UserRegistrationService } from 'src/app/services/user-registration.service';
 import { Area } from 'src/app/models/area.model';
 import Swal from 'sweetalert2';
-import {Md5} from "ts-md5";
-import {User} from "../../models/user.model";
-import {AuthService} from "../../services/auth.service";
-import {PollingStationService} from "../../services/polling-station.service";
+import { Md5 } from "ts-md5";
+import { User } from "../../models/user.model";
+import { AuthService } from "../../services/auth.service";
+import { PollingStationService } from "../../services/polling-station.service";
 import { AssemblyService } from 'src/app/services/assembly.service';
-import {PollingMember} from "../../models/PollingMember";
+import { PollingMember } from "../../models/PollingMember";
 
 
 @Component({
@@ -20,6 +20,9 @@ import {PollingMember} from "../../models/PollingMember";
 })
 export class MpLevelComponent implements OnInit {
 
+  confirmation = ['yes', 'no'];
+
+
   // items = this.cartService.getItems();
 
   personForm = new FormGroup({
@@ -27,7 +30,20 @@ export class MpLevelComponent implements OnInit {
     personTypeId: new FormControl(null, [Validators.required]),
     personName: new FormControl(null, [Validators.required]),
     email: new FormControl(null, [Validators.required]),
-    // areaId: new FormControl(null, [Validators.required]),
+    guardianName: new FormControl(null, [Validators.required]),
+    religion: new FormControl(null, [Validators.required]),
+    occupation: new FormControl(null, [Validators.required]),
+    policeStation: new FormControl(null, [Validators.required]),
+    cast: new FormControl(null, [Validators.required]),
+    partNo: new FormControl(null, [Validators.required]),
+    postOffice: new FormControl(null, [Validators.required]),
+    houseNo: new FormControl(null, [Validators.required]),
+    district: new FormControl(null, [Validators.required]),
+    pinCode: new FormControl(null, [Validators.required]),
+    preferableCandidate: new FormControl(null, [Validators.required]),
+    suggestion: new FormControl(null, [Validators.required]),
+    prevVotingHistory: new FormControl(null, [Validators.required]),
+    satisfiedByPresentGov: new FormControl(null, [Validators.required]),
     age: new FormControl(null),
     gender: new FormControl(null),
     mobile1: new FormControl(null),
@@ -35,7 +51,7 @@ export class MpLevelComponent implements OnInit {
     aadharId: new FormControl(null),
     voterId: new FormControl(null, [Validators.required]),
     pollingStationId: new FormControl(null),
-    remark: new FormControl(null),
+    // remark: new FormControl(null),
   });
 
   userForm = new FormGroup({
@@ -50,11 +66,11 @@ export class MpLevelComponent implements OnInit {
   });
 
 
-  areas: Area[] =[];
+  areas: Area[] = [];
   pollingMembers: PollingMember[] = [];
   loggedInUser: User | undefined;
   pollingStations: any;
-  genderList = [{"id": 1,"name": "male"},{"id":2,"name":"female"},{"id":3,"name":"others"}];
+  genderList = [{ "id": 1, "name": "male" }, { "id": 2, "name": "female" }, { "id": 3, "name": "others" }];
 
 
   constructor(
@@ -66,7 +82,7 @@ export class MpLevelComponent implements OnInit {
   ) {
     // private cartService: CartService,
 
-   }
+  }
 
 
 
@@ -76,20 +92,22 @@ export class MpLevelComponent implements OnInit {
       this.areas = response;
     });
     this.loggedInUser = this.authService.userBehaviorSubject.value;
-    this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {status: boolean,
-      message:string,data: any}) => {
+    this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {
+      status: boolean,
+      message: string, data: any
+    }) => {
       this.pollingStations = response.data;
     });
 
 
-    this.userRegistrationService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {status:string,message:string,data:PollingMember[]}) => {
-      this.pollingMembers =  response.data;
+    this.userRegistrationService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: { status: string, message: string, data: PollingMember[] }) => {
+      this.pollingMembers = response.data;
     });
     this.userRegistrationService.getAllPersonByAssemblyIdListener().subscribe((response: any) => {
       this.pollingMembers = response;
     });
   }
-  getAllArea(){
+  getAllArea() {
     this.areas = this.areaService.getArea();
     this.areaService.getGameTypeListener().subscribe((response: Area[]) => {
       this.areas = response;
@@ -106,7 +124,7 @@ export class MpLevelComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, create It!'
     }).then((result) => {
-      if (result.isConfirmed){
+      if (result.isConfirmed) {
         // tslint:disable-next-line:max-line-length
         // console.log(this.loggedInUser?.uniqueId);return;
         const personFormData = this.personForm.value;
@@ -119,6 +137,24 @@ export class MpLevelComponent implements OnInit {
           age: personFormData.age,
           gender: personFormData.gender,
           // email: this.loggedInUser?.uniqueId,
+
+
+          // religion: new FormControl(null, [Validators.required]),
+          religion: personFormData.religion,
+          occupation: personFormData.occupation,
+          policeStation: personFormData.policeStation,
+          cast: personFormData.cast,
+          partNo: personFormData.partNo,
+          postOffice: personFormData.postOffice,
+          houseNo: personFormData.houseNo,
+          district: personFormData.district,
+          pinCode: personFormData.pinCode,
+          preferableCandidate: personFormData.preferableCandidate,
+          satisfiedByPresentGov: personFormData.satisfiedByPresentGov,
+          suggestion: personFormData.suggestion,
+          previousVotingHistory: personFormData.prevVotingHistory,
+
+
           email: personFormData.email,
           password: passwordMd5,
           mobile1: personFormData.mobile1,
@@ -126,11 +162,14 @@ export class MpLevelComponent implements OnInit {
           voterId: personFormData.voterId,
           pollingStationId: personFormData.pollingStationId,
           parentId: this.loggedInUser?.uniqueId,
-          remark: userFormData.remark
+          remark: this.userForm.value.remark,
+
         };
+        console.log(masterData);
+        // return;
         this.userRegistrationService.saveNewUser(masterData).subscribe(response => {
           // console.log(response);
-          if (response.status){
+          if (response.status) {
             const responseData = response.data;
             this.personForm.reset();
             this.userForm.reset();
@@ -144,7 +183,7 @@ export class MpLevelComponent implements OnInit {
             });
             // updating terminal balance from here
 
-          }else{
+          } else {
             Swal.fire({
               position: 'top-end',
               icon: 'error',
