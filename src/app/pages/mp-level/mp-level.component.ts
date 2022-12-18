@@ -147,6 +147,7 @@ export class MpLevelComponent implements OnInit {
           partNo: personFormData.partNo,
           postOffice: personFormData.postOffice,
           houseNo: personFormData.houseNo,
+          guardianName: personFormData.guardianName,
           district: personFormData.district,
           pinCode: personFormData.pinCode,
           preferableCandidate: personFormData.preferableCandidate,
@@ -165,10 +166,10 @@ export class MpLevelComponent implements OnInit {
           remark: this.userForm.value.remark,
 
         };
-        console.log(masterData);
+        // console.log(masterData);
         // return;
         this.userRegistrationService.saveNewUser(masterData).subscribe(response => {
-          // console.log(response);
+          console.log(response);
           if (response.status) {
             const responseData = response.data;
             this.personForm.reset();
