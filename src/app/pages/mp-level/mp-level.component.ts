@@ -65,7 +65,7 @@ export class MpLevelComponent implements OnInit {
     password: new FormControl(null, [Validators.required]),
   });
 
-
+  showName = true;
   areas: Area[] = [];
   pollingMembers: PollingMember[] = [];
   loggedInUser: User | undefined;
@@ -112,6 +112,10 @@ export class MpLevelComponent implements OnInit {
     this.areaService.getGameTypeListener().subscribe((response: Area[]) => {
       this.areas = response;
     });
+  }
+
+  changeShowStatus(x: any, y: any){
+    this.showName = x === 'showName' ? y : this.showName;
   }
 
   onSubmit(): void {
