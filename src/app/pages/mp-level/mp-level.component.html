@@ -80,34 +80,86 @@
         </ng-select>
       </div>
 
-      <div class="form-group pl-3">
+      <!-- <div class="form-group pl-2">
+        <ng-select [items]="states" fxFlex="100" bindLabel="pollingNumber" class="custom"
+          bindValue="stateId" appendTo="body" formControlName="pollingStationId" placeholder="states"
+          style="height: 200 !important;">
+        </ng-select>
+      </div> -->
+
+      <!-- <div class="form-group pl-3">
 
         <select class="form-select form-group pl-3" placeholder="Previous Voting History"
           formControlName="prevVotingHistory" aria-label="Default select example">
           <option value="yes">yes</option>
           <option value="no">no</option>
         </select>
-      </div>
-      <div class="form-group pl-3">
-        <select class="form-select form-group pl-3" placeholder="Satisfied By Present Gov"
-          formControlName="satisfiedByPresentGov" aria-label="Default select example">
-          <option value="yes">yes</option>
-          <option value="no">no</option>
-        </select>
-      </div>
+      </div> -->
+      <!-- <div class="form-group pl-3">
+        <label>Option name
+          <select class="form-select form-group pl-3" placeholder="Satisfied By Present Gov"
+            formControlName="satisfiedByPresentGov" aria-label="Default select example">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+          </select>
+        </label>
+      </div> -->
 
       <div class="form-group pl-3">
         <input class="form-control" formControlName="district" placeholder="District">
       </div>
 
     </div>
+
+    <div class="d-flex pt-2">
+      <!-- <div class="form-group">
+        <input class="form-control" formControlName="voterId" placeholder="Voter No.">
+      </div>
+      <div class="form-group pl-2">
+        <ng-select [items]="pollingStations" fxFlex="100" bindLabel="pollingNumber" class="custom"
+          bindValue="pollingStationId" appendTo="body" formControlName="pollingStationId" placeholder="Polling number"
+          style="height: 200 !important;">
+        </ng-select>
+      </div> -->
+
+      <!-- <div class="form-group pl-2">
+        <ng-select [items]="states" fxFlex="100" bindLabel="pollingNumber" class="custom"
+          bindValue="stateId" appendTo="body" formControlName="pollingStationId" placeholder="states"
+          style="height: 200 !important;">
+        </ng-select>
+      </div> -->
+
+      <div class="form-group ">
+        <label>Previous Voting History
+          <select class="form-select form-group pl-3" 
+            formControlName="prevVotingHistory" aria-label="Default select example">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group pl-3">
+        <label>Satisfied By Present Gov
+          <select class="form-select form-group pl-3" 
+            formControlName="satisfiedByPresentGov" aria-label="Default select example">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+          </select>
+        </label>
+      </div>
+
+      <!-- <div class="form-group pl-3">
+        <input class="form-control" formControlName="district" placeholder="District">
+      </div> -->
+
+    </div>
   </form>
 
-  <div class="d-flex pt-2">
+  <div class="d-flex ">
     <form [formGroup]="userForm">
       <div class="d-flex pt-2">
 
-        <div class="form-group pl-3">
+        <div class="form-group ">
           <textarea class="form-control" rows="2" formControlName="remark" placeholder="Remark"></textarea>
         </div>
       </div>

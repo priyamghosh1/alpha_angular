@@ -15,12 +15,21 @@ export class AreaService {
 
   private BASE_API_URL = environment.BASE_API_URL;
   areas : Area[] = [];
+  states : any;
   areaSubject = new Subject<Area[]>();
+  stateSubject = new Subject<any>();
 
   constructor(private  http: HttpClient, private errorService: ErrorService) {
     this.http.get(this.BASE_API_URL   + '/getAllArea' ).subscribe((response: ServerResponse) => {
       this.areas = response.data;
       this.areaSubject.next([...this.areas]);
+    });
+
+
+    this.http.get(this.BASE_API_URL   + '/dev/states' ).subscribe((response: ServerResponse) => {
+      this.states = response.data;
+      this.stateSubject.next([...this.states]);
+      console.log(response);
     });
   }
 
@@ -28,7 +37,15 @@ export class AreaService {
     return [...this.areas];
   }
 
+  getstate(){
+    return [...this.states];
+  }
+
   getGameTypeListener(){
     return this.areaSubject.asObservable();
+  }
+
+  getStateListener(){
+    return this.stateSubject.asObservable();
   }
 }

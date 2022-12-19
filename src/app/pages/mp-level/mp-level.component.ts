@@ -11,6 +11,9 @@ import { AuthService } from "../../services/auth.service";
 import { PollingStationService } from "../../services/polling-station.service";
 import { AssemblyService } from 'src/app/services/assembly.service';
 import { PollingMember } from "../../models/PollingMember";
+import { HttpClient } from '@angular/common/http';
+
+
 
 
 @Component({
@@ -21,6 +24,7 @@ import { PollingMember } from "../../models/PollingMember";
 export class MpLevelComponent implements OnInit {
 
   confirmation = ['yes', 'no'];
+  states : any;
 
 
   // items = this.cartService.getItems();
@@ -78,7 +82,8 @@ export class MpLevelComponent implements OnInit {
     private authService: AuthService,
     private pollingStationService: PollingStationService,
     private formBuilder: FormBuilder,
-    private areaService: AreaService
+    private areaService: AreaService,
+    private  http: HttpClient, 
   ) {
     // private cartService: CartService,
 
@@ -106,6 +111,11 @@ export class MpLevelComponent implements OnInit {
     this.userRegistrationService.getAllPersonByAssemblyIdListener().subscribe((response: any) => {
       this.pollingMembers = response;
     });
+
+    // this.http.get(this.BASE_API_URL   + '/states' ).subscribe((response) => {
+    //   this.states = response;
+    //   console.log(this.states);
+    // });
   }
   getAllArea() {
     this.areas = this.areaService.getArea();
@@ -113,6 +123,14 @@ export class MpLevelComponent implements OnInit {
       this.areas = response;
     });
   }
+
+
+  // getAllState() {
+  //   this.states = this.areaService.getstate();
+  //   this.areaService.getStateListener().subscribe((response) => {
+  //     this.states = response;
+  //   });
+  // }
 
   onSubmit(): void {
     Swal.fire({
