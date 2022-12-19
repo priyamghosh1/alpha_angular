@@ -124,7 +124,6 @@ export class MpLevelComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
 
   // getAllState() {
   //   this.states = this.areaService.getstate();
@@ -132,11 +131,6 @@ export class MpLevelComponent implements OnInit {
   //     this.states = response;
   //   });
   // }
-=======
-  changeShowStatus(x: any, y: any){
-    this.showName = x === 'showName' ? y : this.showName;
-  }
->>>>>>> ad91133bd934b5c313051f2567a20383ff009f15
 
   onSubmit(): void {
     Swal.fire({
@@ -224,6 +218,10 @@ export class MpLevelComponent implements OnInit {
         });
       }
     });
+  }
+
+  changeShowStatus(x: any, y: any){
+    this.showName = x === 'showName' ? y : this.showName;
   }
 
 
