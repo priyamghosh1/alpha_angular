@@ -9,6 +9,7 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import {NgSelectModule} from "@ng-select/ng-select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {NgSelectModule} from "@ng-select/ng-select";
     MatInputModule,
     MatSelectModule ,
     MatCardModule,
-    NgSelectModule
+    NgSelectModule,
+    MatCheckboxModule
     // FormGroupModule,
   ]
 })

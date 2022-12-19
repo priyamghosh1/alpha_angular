@@ -167,6 +167,8 @@
   </div>
   <div class="pt-4 pb-3"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
 
+  <mat-checkbox [checked]="showName" (change)="changeShowStatus('showName', $event.checked)" class="example-margin">Name</mat-checkbox>
+
 
   <div class="card">
     <div class="card-body">
@@ -174,7 +176,7 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
+            <th *ngIf="showName == true" scope="col">Name</th>
             <th scope="col">Member code</th>
             <th scope="col">Guardian Name</th>
             <th scope="col">Age</th>
@@ -193,7 +195,7 @@
         <tbody *ngFor="let x of pollingMembers">
           <tr>
             <td scope="row">{{x.personId}}</td>
-            <td scope="row">{{x.personName}}</td>
+            <td *ngIf="showName == true" scope="row">{{x.personName}}</td>
             <td scope="row">{{x.memberCode}}</td>
             <td scope="row">{{x.guardianName}}</td>
             <td scope="row">{{x.age}}</td>
