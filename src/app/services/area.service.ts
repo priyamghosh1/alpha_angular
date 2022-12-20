@@ -15,7 +15,7 @@ export class AreaService {
 
   private BASE_API_URL = environment.BASE_API_URL;
   areas : Area[] = [];
-  states : any;
+  states : any[] = [];
   areaSubject = new Subject<Area[]>();
   stateSubject = new Subject<any>();
 
@@ -28,8 +28,8 @@ export class AreaService {
 
     this.http.get(this.BASE_API_URL   + '/dev/states' ).subscribe((response: ServerResponse) => {
       this.states = response.data;
+      // console.log(this.states);
       this.stateSubject.next([...this.states]);
-      console.log(response);
     });
   }
 

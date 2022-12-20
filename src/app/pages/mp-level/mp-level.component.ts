@@ -70,6 +70,18 @@ export class MpLevelComponent implements OnInit {
   });
 
   showName = true;
+  showMemberCode = true;
+  showGuardianName = true;
+  showAge = true;
+  showGender = true;
+  showPoliceStation = true;
+  showOcupation = true;
+  showReligion = true;
+  showEmail = true;
+  showMobileOne = true;
+  showMobileTwo = true;
+  showVoterId = true;
+  showPollingNumber = true;
   areas: Area[] = [];
   pollingMembers: PollingMember[] = [];
   loggedInUser: User | undefined;
@@ -85,6 +97,8 @@ export class MpLevelComponent implements OnInit {
     private areaService: AreaService,
     private  http: HttpClient, 
   ) {
+    
+    
     // private cartService: CartService,
 
   }
@@ -96,6 +110,12 @@ export class MpLevelComponent implements OnInit {
     this.areaService.getGameTypeListener().subscribe((response: Area[]) => {
       this.areas = response;
     });
+
+    this.areaService.getStateListener().subscribe((response) => {
+      this.states = response;
+    });
+    this.states = this.areaService.getstate();
+
     this.loggedInUser = this.authService.userBehaviorSubject.value;
     this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {
       status: boolean,
@@ -116,6 +136,10 @@ export class MpLevelComponent implements OnInit {
     //   this.states = response;
     //   console.log(this.states);
     // });
+
+  
+    
+
   }
   getAllArea() {
     this.areas = this.areaService.getArea();
@@ -129,6 +153,7 @@ export class MpLevelComponent implements OnInit {
   //   this.states = this.areaService.getstate();
   //   this.areaService.getStateListener().subscribe((response) => {
   //     this.states = response;
+  //     console.log(this.states);
   //   });
   // }
 
@@ -222,6 +247,18 @@ export class MpLevelComponent implements OnInit {
 
   changeShowStatus(x: any, y: any){
     this.showName = x === 'showName' ? y : this.showName;
+    this.showAge = x === 'showAge' ? y : this.showAge;
+    this.showEmail = x === 'showEmail' ? y : this.showEmail;
+    this.showMemberCode = x === 'showMemberCode' ? y : this.showMemberCode;
+    this.showGuardianName = x === 'showGuardianName' ? y : this.showGuardianName;
+    this.showGender = x === 'showGender' ? y : this.showGender;
+    this.showPoliceStation = x === 'showPoliceStation' ? y : this.showPoliceStation;
+    this.showOcupation = x === 'showOcupation' ? y : this.showOcupation;
+    this.showReligion = x === 'showReligion' ? y : this.showReligion;
+    this.showMobileOne = x === 'showMobileOne' ? y : this.showMobileOne;
+    this.showMobileTwo = x === 'showMobileTwo' ? y : this.showMobileTwo;
+    this.showVoterId = x === 'showVoterId' ? y : this.showVoterId;
+    this.showPollingNumber = x === 'showPollingNumber' ? y : this.showPollingNumber;
   }
 
 

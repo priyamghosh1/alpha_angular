@@ -2,7 +2,8 @@
 
 
   <h3><u>Create Polling Agent:</u> </h3>
-  <form [formGroup]="personForm">
+  <form [formGroup]="personForm"
+    style="border: 2px solid white; border-radius: 5px; background-color: rgba(127, 255, 212, 0.333);" class="p-3">
     <div class="d-flex">
       <div class="form-group">
         <input class="form-control" formControlName="personName" placeholder="Name">
@@ -80,12 +81,11 @@
         </ng-select>
       </div>
 
-      <!-- <div class="form-group pl-2">
-        <ng-select [items]="states" fxFlex="100" bindLabel="pollingNumber" class="custom"
-          bindValue="stateId" appendTo="body" formControlName="pollingStationId" placeholder="states"
+      <div class="form-group pl-2">
+        <ng-select [items]="states" fxFlex="100" bindLabel="name" class="custom" bindValue="id" placeholder="states"
           style="height: 200 !important;">
         </ng-select>
-      </div> -->
+      </div>
 
       <!-- <div class="form-group pl-3">
 
@@ -131,8 +131,8 @@
 
       <div class="form-group ">
         <label>Previous Voting History
-          <select class="form-select form-group pl-3" 
-            formControlName="prevVotingHistory" aria-label="Default select example">
+          <select class="form-select form-group pl-3" formControlName="prevVotingHistory"
+            aria-label="Default select example">
             <option value="yes">yes</option>
             <option value="no">no</option>
           </select>
@@ -140,8 +140,8 @@
       </div>
       <div class="form-group pl-3">
         <label>Satisfied By Present Gov
-          <select class="form-select form-group pl-3" 
-            formControlName="satisfiedByPresentGov" aria-label="Default select example">
+          <select class="form-select form-group pl-3" formControlName="satisfiedByPresentGov"
+            aria-label="Default select example">
             <option value="yes">yes</option>
             <option value="no">no</option>
           </select>
@@ -156,18 +156,64 @@
   </form>
 
   <div class="d-flex ">
-    <form [formGroup]="userForm">
-      <div class="d-flex pt-2">
+    <div class="col-4">
+      <form [formGroup]="userForm">
+        <div class="d-flex ">
 
-        <div class="form-group ">
-          <textarea class="form-control" rows="2" formControlName="remark" placeholder="Remark"></textarea>
+          <div class="form-group ">
+            <textarea class="form-control" rows="2" formControlName="remark" placeholder="Remark"></textarea>
+          </div>
         </div>
-      </div>
-    </form>
-  </div>
-  <div class="pt-4 pb-3"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
+      </form>
+    </div>
+    <div class="col-6"></div>
+    <div class="col-2">
+      <div class="pt-4 pb-3"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
+    </div>
 
-  <mat-checkbox [checked]="showName" (change)="changeShowStatus('showName', $event.checked)" class="example-margin">Name</mat-checkbox>
+
+
+  </div>
+
+  <div style="border: 2px solid white; border-radius: 5px; background-color: rgba(127, 255, 212, 0.333);"
+    class="p-3 mb-2">
+    <div class="d-flex">
+      <mat-checkbox [checked]="showName" (change)="changeShowStatus('showName', $event.checked)"
+        class="p-1 example-margin">Name</mat-checkbox>
+      <mat-checkbox [checked]="showMemberCode" (change)="changeShowStatus('showMemberCode', $event.checked)"
+        class="p-1 example-margin">Member code</mat-checkbox>
+      <mat-checkbox [checked]="showGuardianName" (change)="changeShowStatus('showGuardianName', $event.checked)"
+        class="p-1 example-margin">Guardian Name</mat-checkbox>
+      <mat-checkbox [checked]="showAge" (change)="changeShowStatus('showAge', $event.checked)"
+        class="p-1 example-margin">Age</mat-checkbox>
+      <mat-checkbox [checked]="showGender" (change)="changeShowStatus('showGender', $event.checked)"
+        class="p-1 example-margin">Gender</mat-checkbox>
+      <mat-checkbox [checked]="showPoliceStation" (change)="changeShowStatus('showPoliceStation', $event.checked)"
+        class="p-1 example-margin">Police Station</mat-checkbox>
+      <mat-checkbox [checked]="showOcupation" (change)="changeShowStatus('showOcupation', $event.checked)"
+        class="p-1 example-margin">Occupation</mat-checkbox>
+      <mat-checkbox [checked]="showReligion" (change)="changeShowStatus('showReligion', $event.checked)"
+        class="p-1 example-margin">Religion</mat-checkbox>
+      <mat-checkbox [checked]="showEmail" (change)="changeShowStatus('showEmail', $event.checked)"
+        class="p-1 example-margin">Email</mat-checkbox>
+      <mat-checkbox [checked]="showMobileOne" (change)="changeShowStatus('showMobileOne', $event.checked)"
+        class="p-1 example-margin">mobile1</mat-checkbox>
+      <mat-checkbox [checked]="showMobileTwo" (change)="changeShowStatus('showMobileTwo', $event.checked)"
+        class="p-1 example-margin">mobile2</mat-checkbox>
+    </div>
+    <div class="d-flex">
+
+
+      <mat-checkbox [checked]="showVoterId" (change)="changeShowStatus('showVoterId', $event.checked)"
+        class="p-1 example-margin">voterId</mat-checkbox>
+      <mat-checkbox [checked]="showPollingNumber" (change)="changeShowStatus('showPollingNumber', $event.checked)"
+        class="p-1 example-margin">pollingNumber</mat-checkbox>
+    </div>
+
+
+  </div>
+
+
 
 
   <div class="card">
@@ -177,37 +223,36 @@
           <tr>
             <th scope="col">#</th>
             <th *ngIf="showName == true" scope="col">Name</th>
-            <th scope="col">Member code</th>
-            <th scope="col">Guardian Name</th>
-            <th scope="col">Age</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Police Station</th>
-            <th scope="col">Occupation</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Religion</th>
-            <th scope="col">Email</th>
-            <th scope="col">mobile1</th>
-            <th scope="col">mobile2</th>
-            <th scope="col">voterId</th>
-            <th scope="col">pollingNumber</th>
+            <th *ngIf="showMemberCode == true" scope="col">Member code</th>
+            <th *ngIf="showGuardianName == true" scope="col">Guardian Name</th>
+            <th *ngIf="showAge == true" scope="col">Age</th>
+            <th *ngIf="showGender == true" scope="col">Gender</th>
+            <th *ngIf="showPoliceStation == true" scope="col">Police Station</th>
+            <th *ngIf="showOcupation == true" scope="col">Occupation</th>
+            <th *ngIf="showReligion == true" scope="col">Religion</th>
+            <th *ngIf="showEmail == true" scope="col">Email</th>
+            <th *ngIf="showMobileOne == true" scope="col">mobile1</th>
+            <th *ngIf="showMobileTwo == true" scope="col">mobile2</th>
+            <th *ngIf="showVoterId == true" scope="col">voterId</th>
+            <th *ngIf="showPollingNumber == true" scope="col">pollingNumber</th>
           </tr>
         </thead>
         <tbody *ngFor="let x of pollingMembers">
           <tr>
             <td scope="row">{{x.personId}}</td>
             <td *ngIf="showName == true" scope="row">{{x.personName}}</td>
-            <td scope="row">{{x.memberCode}}</td>
-            <td scope="row">{{x.guardianName}}</td>
-            <td scope="row">{{x.age}}</td>
-            <td scope="row">{{x.gender}}</td>
-            <td scope="row">{{x.police_station}}</td>
-            <td scope="row">{{x.occupation}}</td>
-            <td scope="row">{{x.religion}}</td>
-            <td scope="row">{{x.email}}</td>
-            <td scope="row">{{x.mobile1}}</td>
-            <td scope="row">{{x.mobile2}}</td>
-            <td scope="row">{{x.voterId}}</td>
-            <td scope="row">{{x.pollingNumber}}</td>
+            <td *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td>
+            <td *ngIf="showGuardianName == true" scope="row">{{x.guardianName}}</td>
+            <td *ngIf="showAge == true" scope="row">{{x.age}}</td>
+            <td *ngIf="showGender == true" scope="row">{{x.gender}}</td>
+            <td *ngIf="showPoliceStation == true" scope="row">{{x.police_station}}</td>
+            <td *ngIf="showOcupation == true" scope="row">{{x.occupation}}</td>
+            <td *ngIf="showReligion == true" scope="row">{{x.religion}}</td>
+            <td *ngIf="showEmail == true" scope="row">{{x.email}}</td>
+            <td *ngIf="showMobileOne == true" scope="row">{{x.mobile1}}</td>
+            <td *ngIf="showMobileTwo == true" scope="row">{{x.mobile2}}</td>
+            <td *ngIf="showVoterId == true" scope="row">{{x.voterId}}</td>
+            <td *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
           </tr>
         </tbody>
       </table>
