@@ -24,7 +24,7 @@ import { HttpClient } from '@angular/common/http';
 export class MpLevelComponent implements OnInit {
 
   confirmation = ['yes', 'no'];
-  states : any;
+  states: any;
 
 
   // items = this.cartService.getItems();
@@ -81,6 +81,12 @@ export class MpLevelComponent implements OnInit {
   showMobileOne = true;
   showMobileTwo = true;
   showVoterId = true;
+  showAadharId = true;
+  showCast = true;
+  showPostOffice = true;
+  showHouseNo = true;
+  showRoadNo = true;
+  showPinCode = true;
   showPollingNumber = true;
   areas: Area[] = [];
   pollingMembers: PollingMember[] = [];
@@ -95,10 +101,10 @@ export class MpLevelComponent implements OnInit {
     private pollingStationService: PollingStationService,
     private formBuilder: FormBuilder,
     private areaService: AreaService,
-    private  http: HttpClient, 
+    private http: HttpClient,
   ) {
-    
-    
+
+
     // private cartService: CartService,
 
   }
@@ -137,8 +143,8 @@ export class MpLevelComponent implements OnInit {
     //   console.log(this.states);
     // });
 
-  
-    
+
+
 
   }
   getAllArea() {
@@ -198,7 +204,7 @@ export class MpLevelComponent implements OnInit {
           suggestion: personFormData.suggestion,
           previousVotingHistory: personFormData.prevVotingHistory,
 
-
+          
           email: personFormData.email,
           password: passwordMd5,
           mobile1: personFormData.mobile1,
@@ -245,7 +251,7 @@ export class MpLevelComponent implements OnInit {
     });
   }
 
-  changeShowStatus(x: any, y: any){
+  changeShowStatus(x: any, y: any) {
     this.showName = x === 'showName' ? y : this.showName;
     this.showAge = x === 'showAge' ? y : this.showAge;
     this.showEmail = x === 'showEmail' ? y : this.showEmail;
@@ -258,7 +264,15 @@ export class MpLevelComponent implements OnInit {
     this.showMobileOne = x === 'showMobileOne' ? y : this.showMobileOne;
     this.showMobileTwo = x === 'showMobileTwo' ? y : this.showMobileTwo;
     this.showVoterId = x === 'showVoterId' ? y : this.showVoterId;
+    this.showAadharId = x === 'showAadharId' ? y : this.showAadharId;
+    this.showCast = x === 'showCast' ? y : this.showCast;
+    this.showPostOffice = x === 'showPostOffice' ? y : this.showPostOffice;
+    this.showHouseNo = x === 'showHouseNo' ? y : this.showHouseNo;
+    this.showRoadNo = x === 'showRoadNo' ? y : this.showRoadNo;
+    this.showPinCode = x === 'showPinCode' ? y : this.showPinCode;
     this.showPollingNumber = x === 'showPollingNumber' ? y : this.showPollingNumber;
+
+    
   }
 
 

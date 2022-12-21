@@ -47,11 +47,17 @@
       <div class="form-group pl-3">
         <input class="form-control" formControlName="pinCode" placeholder="Pin Code">
       </div>
-      <div class="form-group pl-3">
+      <!-- <div class="form-group pl-3">
         <input class="form-control" formControlName="preferableCandidate" placeholder="Preferable Candidate">
+      </div> -->
+      <!-- <div class="form-group pl-3">
+        <input class="form-control" formControlName="suggestion" placeholder="Suggestion">
+      </div> -->
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="district" placeholder="District">
       </div>
       <div class="form-group pl-3">
-        <input class="form-control" formControlName="suggestion" placeholder="Suggestion">
+        <input class="form-control" formControlName="voterId" placeholder="Voter No.">
       </div>
     </div>
 
@@ -71,9 +77,13 @@
     </div>
 
     <div class="d-flex pt-2">
-      <div class="form-group">
+      <!-- <div class="form-group">
         <input class="form-control" formControlName="voterId" placeholder="Voter No.">
+      </div> -->
+      <div class="form-group">
+        <input class="form-control" formControlName="aadharId" placeholder="Aadhar No.">
       </div>
+
       <div class="form-group pl-2">
         <ng-select [items]="pollingStations" fxFlex="100" bindLabel="pollingNumber" class="custom"
           bindValue="pollingStationId" appendTo="body" formControlName="pollingStationId" placeholder="Polling number"
@@ -85,6 +95,13 @@
         <ng-select [items]="states" fxFlex="100" bindLabel="name" class="custom" bindValue="id" placeholder="states"
           style="height: 200 !important;">
         </ng-select>
+      </div>
+
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="preferableCandidate" placeholder="Preferable Candidate">
+      </div>
+      <div class="form-group pl-3">
+        <input class="form-control" formControlName="suggestion" placeholder="Suggestion">
       </div>
 
       <!-- <div class="form-group pl-3">
@@ -105,9 +122,9 @@
         </label>
       </div> -->
 
-      <div class="form-group pl-3">
+      <!-- <div class="form-group pl-3">
         <input class="form-control" formControlName="district" placeholder="District">
-      </div>
+      </div> -->
 
     </div>
 
@@ -208,6 +225,16 @@
         class="p-1 example-margin">voterId</mat-checkbox>
       <mat-checkbox [checked]="showPollingNumber" (change)="changeShowStatus('showPollingNumber', $event.checked)"
         class="p-1 example-margin">pollingNumber</mat-checkbox>
+      <mat-checkbox [checked]="showPinCode" (change)="changeShowStatus('showPinCode', $event.checked)"
+        class="p-1 example-margin">Pin Code</mat-checkbox>
+      <mat-checkbox [checked]="showRoadNo" (change)="changeShowStatus('showRoadNo', $event.checked)"
+        class="p-1 example-margin">Road No.</mat-checkbox>
+      <mat-checkbox [checked]="showHouseNo" (change)="changeShowStatus('showHouseNo', $event.checked)"
+        class="p-1 example-margin">House No.</mat-checkbox>
+      <mat-checkbox [checked]="showPostOffice" (change)="changeShowStatus('showPostOffice', $event.checked)"
+        class="p-1 example-margin">Post Office</mat-checkbox>
+        <mat-checkbox [checked]="showCast" (change)="changeShowStatus('showCast', $event.checked)"
+        class="p-1 example-margin">Cast</mat-checkbox>        
     </div>
 
 
@@ -234,6 +261,12 @@
             <th *ngIf="showMobileOne == true" scope="col">mobile1</th>
             <th *ngIf="showMobileTwo == true" scope="col">mobile2</th>
             <th *ngIf="showVoterId == true" scope="col">voterId</th>
+            <th *ngIf="showAadharId == true" scope="col">Adhaar Id</th>
+            <th *ngIf="showCast == true" scope="col">Cast</th>
+            <th *ngIf="showPostOffice == true" scope="col">Post Office</th>
+            <th *ngIf="showHouseNo == true" scope="col">House No.</th>
+            <th *ngIf="showRoadNo == true" scope="col">Road Name</th>
+            <th *ngIf="showPinCode == true" scope="col">Pin code</th>
             <th *ngIf="showPollingNumber == true" scope="col">pollingNumber</th>
           </tr>
         </thead>
