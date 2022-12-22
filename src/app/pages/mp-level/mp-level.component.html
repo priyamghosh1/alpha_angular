@@ -234,7 +234,7 @@
       <mat-checkbox [checked]="showPostOffice" (change)="changeShowStatus('showPostOffice', $event.checked)"
         class="p-1 example-margin">Post Office</mat-checkbox>
         <mat-checkbox [checked]="showCast" (change)="changeShowStatus('showCast', $event.checked)"
-        class="p-1 example-margin">Cast</mat-checkbox>        
+        class="p-1 example-margin">Cast</mat-checkbox>
     </div>
 
 
@@ -285,6 +285,12 @@
             <td *ngIf="showMobileOne == true" scope="row">{{x.mobile1}}</td>
             <td *ngIf="showMobileTwo == true" scope="row">{{x.mobile2}}</td>
             <td *ngIf="showVoterId == true" scope="row">{{x.voterId}}</td>
+            <td *ngIf="showVoterId == true" scope="row">{{x.aadharId}}</td>
+            <td *ngIf="showVoterId == true" scope="row">{{x.cast}}</td>
+            <td *ngIf="showVoterId == true" scope="row">{{x.postOffice}}</td>
+            <td *ngIf="showVoterId == true" scope="row">{{x.houseNo}}</td>
+            <td *ngIf="showVoterId == true" scope="row">{{x.roadName}}</td>
+            <td *ngIf="showVoterId == true" scope="row">{{x.pinCode}}</td>
             <td *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
           </tr>
         </tbody>

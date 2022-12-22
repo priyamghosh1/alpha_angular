@@ -20,4 +20,19 @@ export class PollingMember{
   voterId?: string;
   assemblyName?: string;
   pollingNumber?: number;
+
+  preferableCandidate?: number;
+  suggestion?: number;
+  satisfiedByPresentGov?: number;
+  previousVotingHistory?: number;
+  policeStation?: number;
+  postOffice?: number;
+  pinCode?: number;
+  houseNo?: number;
+  partNo?: number;
+  cast?: number;
+  aadharId?: number;
+  roadName?: number;
+
+
 }
