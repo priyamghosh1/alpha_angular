@@ -1,199 +1,186 @@
-<div class="container pt-5">
+<div class="container pt-1">
 
 
   <h3><u>Create Polling Agent:</u> </h3>
-  <form [formGroup]="personForm"
-    style="border: 2px solid white; border-radius: 5px; background-color: rgba(127, 255, 212, 0.333);" class="p-3">
-    <div class="d-flex">
-      <div class="form-group">
-        <input class="form-control" formControlName="personName" placeholder="Name">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="age" placeholder="Age">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="email" placeholder="Email">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="guardianName" placeholder="Guardian Name">
-      </div>
-      <div class="form-group pl-3">
-        <ng-select [items]="genderList" fxFlex="100" bindLabel="name" class="custom" bindValue="name" appendTo="body"
-          formControlName="gender" placeholder="Gender" style="height: 200 !important;">
-        </ng-select>
-      </div>
-
-    </div>
-
-    <div class="d-flex pt-2">
-      <div class="form-group">
-        <input class="form-control" formControlName="policeStation" placeholder="Police station">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="cast" placeholder="Cast">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="partNo" placeholder="Part No">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="postOffice" placeholder="Post Office">
-      </div>
-    </div>
-
-    <div class="d-flex pt-2">
-      <div class="form-group">
-        <input class="form-control" formControlName="houseNo" placeholder="House No.">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="pinCode" placeholder="Pin Code">
-      </div>
-      <!-- <div class="form-group pl-3">
-        <input class="form-control" formControlName="preferableCandidate" placeholder="Preferable Candidate">
-      </div> -->
-      <!-- <div class="form-group pl-3">
-        <input class="form-control" formControlName="suggestion" placeholder="Suggestion">
-      </div> -->
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="district" placeholder="District">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="voterId" placeholder="Voter No.">
-      </div>
-    </div>
-
-    <div class="d-flex pt-2">
-      <div class="form-group">
-        <input class="form-control" formControlName="mobile1" placeholder="Mobile1">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="mobile2" placeholder="Mobile2">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="religion" placeholder="Religion">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="occupation" placeholder="Occupation">
-      </div>
-    </div>
-
-    <div class="d-flex pt-2">
-      <!-- <div class="form-group">
-        <input class="form-control" formControlName="voterId" placeholder="Voter No.">
-      </div> -->
-      <div class="form-group">
-        <input class="form-control" formControlName="aadharId" placeholder="Aadhar No.">
-      </div>
-
-      <div class="form-group pl-2">
-        <ng-select [items]="pollingStations" fxFlex="100" bindLabel="pollingNumber" class="custom"
-          bindValue="pollingStationId" appendTo="body" formControlName="pollingStationId" placeholder="Polling number"
-          style="height: 200 !important;">
-        </ng-select>
-      </div>
-
-      <div class="form-group pl-2">
-        <ng-select [items]="states" fxFlex="100" bindLabel="name" class="custom" bindValue="id" placeholder="states"
-          style="height: 200 !important;">
-        </ng-select>
-      </div>
-
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="preferableCandidate" placeholder="Preferable Candidate">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="suggestion" placeholder="Suggestion">
-      </div>
-
-      <!-- <div class="form-group pl-3">
-
-        <select class="form-select form-group pl-3" placeholder="Previous Voting History"
-          formControlName="prevVotingHistory" aria-label="Default select example">
-          <option value="yes">yes</option>
-          <option value="no">no</option>
-        </select>
-      </div> -->
-      <!-- <div class="form-group pl-3">
-        <label>Option name
-          <select class="form-select form-group pl-3" placeholder="Satisfied By Present Gov"
-            formControlName="satisfiedByPresentGov" aria-label="Default select example">
-            <option value="yes">yes</option>
-            <option value="no">no</option>
-          </select>
-        </label>
-      </div> -->
-
-      <!-- <div class="form-group pl-3">
-        <input class="form-control" formControlName="district" placeholder="District">
-      </div> -->
-
-    </div>
-
-    <div class="d-flex pt-2">
-      <!-- <div class="form-group">
-        <input class="form-control" formControlName="voterId" placeholder="Voter No.">
-      </div>
-      <div class="form-group pl-2">
-        <ng-select [items]="pollingStations" fxFlex="100" bindLabel="pollingNumber" class="custom"
-          bindValue="pollingStationId" appendTo="body" formControlName="pollingStationId" placeholder="Polling number"
-          style="height: 200 !important;">
-        </ng-select>
-      </div> -->
-
-      <!-- <div class="form-group pl-2">
-        <ng-select [items]="states" fxFlex="100" bindLabel="pollingNumber" class="custom"
-          bindValue="stateId" appendTo="body" formControlName="pollingStationId" placeholder="states"
-          style="height: 200 !important;">
-        </ng-select>
-      </div> -->
-
-      <div class="form-group ">
-        <label>Previous Voting History
-          <select class="form-select form-group pl-3" formControlName="prevVotingHistory"
-            aria-label="Default select example">
-            <option value="yes">yes</option>
-            <option value="no">no</option>
-          </select>
-        </label>
-      </div>
-      <div class="form-group pl-3">
-        <label>Satisfied By Present Gov
-          <select class="form-select form-group pl-3" formControlName="satisfiedByPresentGov"
-            aria-label="Default select example">
-            <option value="yes">yes</option>
-            <option value="no">no</option>
-          </select>
-        </label>
-      </div>
-
-      <!-- <div class="form-group pl-3">
-        <input class="form-control" formControlName="district" placeholder="District">
-      </div> -->
-
-    </div>
-  </form>
-
-  <div class="d-flex ">
-    <div class="col-4">
-      <form [formGroup]="userForm">
-        <div class="d-flex ">
-
-          <div class="form-group ">
-            <textarea class="form-control" rows="2" formControlName="remark" placeholder="Remark"></textarea>
-          </div>
+  <div style="border: 2px solid white; border-radius: 5px; background-color: rgba(127, 255, 212, 0.333);" class="p-3">
+    <form [formGroup]="personForm">
+      <div class="d-flex">
+        <div class="form-group">
+          <input class="form-control" formControlName="personName" placeholder="Name">
         </div>
-      </form>
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="age" placeholder="Age">
+        </div>
+        <!-- <div class="form-group pl-3">
+          <input class="form-control" formControlName="email" placeholder="Email">
+        </div> -->
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="guardianName" placeholder="Guardian Name">
+        </div>
+        <div class="form-group pl-3">
+          <ng-select [items]="genderList" fxFlex="100" bindLabel="name" class="custom" bindValue="name" appendTo="body"
+            formControlName="gender" placeholder="Gender" style="height: 200 !important;">
+          </ng-select>
+        </div>
+        <div class="form-group pl-2">
+          <ng-select [items]="states" fxFlex="100" bindLabel="name" class="custom" bindValue="id" placeholder="states"
+            style="height: 200 !important; min-width: 200px !important;">
+          </ng-select>
+        </div>
+
+      </div>
+
+      <div class="d-flex pt-2">
+        <div class="form-group">
+          <input class="form-control" formControlName="policeStation" placeholder="Police station">
+        </div>
+        <!-- <div class="form-group pl-3">
+          <input class="form-control" formControlName="cast" placeholder="Cast">
+        </div> -->
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="partNo" placeholder="Part No">
+        </div>
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="postOffice" placeholder="Post Office">
+        </div>
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="houseNo" placeholder="House No.">
+        </div>
+      </div>
+
+      <div class="d-flex pt-2">
+
+        <div class="form-group">
+          <input class="form-control" formControlName="pinCode" placeholder="Pin Code">
+        </div>
+
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="district" placeholder="District">
+        </div>
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="voterId" placeholder="Voter No.">
+        </div>
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="religion" placeholder="Religion">
+        </div>
+      </div>
+
+      <div class="d-flex pt-2">
+        <div class="form-group">
+          <input class="form-control" formControlName="mobile1" placeholder="Mobile1">
+        </div>
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="mobile2" placeholder="Mobile2">
+        </div>
+
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="aadharId" placeholder="Aadhar No.">
+        </div>
+
+        
+
+
+      </div>
+
+      <div class="d-flex pt-2">
+
+        <div class="form-group">
+          <input class="form-control" formControlName="aadharId" placeholder="Aadhar No.">
+        </div>
+
+        
+
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="preferableCandidate" placeholder="Preferable Candidate">
+        </div>
+
+        <div class="form-group pl-3">
+          <ng-select [items]="pollingStations" fxFlex="100" bindLabel="pollingNumber" class="custom"
+            bindValue="pollingStationId" appendTo="body" formControlName="pollingStationId" placeholder="Polling number"
+            style="height: 200 !important;">
+          </ng-select>
+        </div>
+
+
+
+      </div>
+
+      <div class="d-flex pt-2">
+
+
+
+        <div class="form-group ">
+          <input class="form-control" formControlName="suggestion" placeholder="Suggestion">
+        </div>
+
+
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="occupation" placeholder="Occupation">
+        </div>
+
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="cast" placeholder="Cast">
+        </div>
+
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="email" placeholder="Email">
+        </div>
+
+
+
+      </div>
+
+      <div class="d-flex pt-2">
+
+
+        <div class="form-group ">
+          <label>Previous Voting History
+            <select class="form-select form-group pl-3" formControlName="prevVotingHistory"
+              aria-label="Default select example">
+              <option value="yes">yes</option>
+              <option value="no">no</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-group pl-3">
+          <label>Satisfied By Present Gov
+            <select class="form-select form-group pl-3" formControlName="satisfiedByPresentGov"
+              aria-label="Default select example">
+              <option value="yes">yes</option>
+              <option value="no">no</option>
+            </select>
+          </label>
+        </div>
+
+
+
+      </div>
+    </form>
+
+    <div class="d-flex ">
+      <div class="col-4">
+        <form [formGroup]="userForm">
+          <div class="d-flex ">
+
+            <div class="form-group ">
+              <textarea class="form-control" rows="2" formControlName="remark" placeholder="Remark"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-6"></div>
+      <div class="col-2">
+        <div class="pt-4 pb-3"><button type="submit" class="btn btn-warning" (click)="onSubmit()">Submit</button></div>
+      </div>
+
+
+
     </div>
-    <div class="col-6"></div>
-    <div class="col-2">
-      <div class="pt-4 pb-3"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
-    </div>
-
-
-
   </div>
 
+
   <div style="border: 2px solid white; border-radius: 5px; background-color: rgba(127, 255, 212, 0.333);"
-    class="p-3 mb-2">
+    class="p-3 mt-2 mb-2">
     <div class="d-flex">
       <mat-checkbox [checked]="showName" (change)="changeShowStatus('showName', $event.checked)"
         class="p-1 example-margin">Name</mat-checkbox>
@@ -233,8 +220,10 @@
         class="p-1 example-margin">House No.</mat-checkbox>
       <mat-checkbox [checked]="showPostOffice" (change)="changeShowStatus('showPostOffice', $event.checked)"
         class="p-1 example-margin">Post Office</mat-checkbox>
-        <mat-checkbox [checked]="showCast" (change)="changeShowStatus('showCast', $event.checked)"
+      <mat-checkbox [checked]="showCast" (change)="changeShowStatus('showCast', $event.checked)"
         class="p-1 example-margin">Cast</mat-checkbox>
+      <mat-checkbox [checked]="showAadharId" (change)="changeShowStatus('showAadharId', $event.checked)"
+        class="p-1 example-margin">Aadhar Id</mat-checkbox>
     </div>
 
 
