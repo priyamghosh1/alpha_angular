@@ -63,6 +63,14 @@ const routes: Routes = [
 
   { path: 'districtAdminPanel', loadChildren: () => import('./pages/district-admin-panel/district-admin-panel.module').then(m => m.DistrictAdminPanelModule) },
 
+  { path: 'assemblyConstituency', loadChildren: () => import('./assembly-constituency/assembly-constituency.module').then(m => m.AssemblyConstituencyModule) },
+
+  { path: 'boothVolunteer', loadChildren: () => import('./booth-volunteer/booth-volunteer.module').then(m => m.BoothVolunteerModule) },
+
+  { path: 'volunteer', loadChildren: () => import('./volunteer/volunteer.module').then(m => m.VolunteerModule) },
+
+  { path: 'legendVolunteer', loadChildren: () => import('./legend-volunteer/legend-volunteer.module').then(m => m.LegendVolunteerModule) },
+
 
 ];
 

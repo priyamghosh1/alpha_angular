@@ -60,12 +60,24 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/mp']).then(r => {});
         }
 
-        // if (this.authService.isLegendPanel()){
-        //   this.router.navigate(['/legendPanel']).then(r => {});
-        // }
+        if (this.authService.isLegendPanel()){
+          this.router.navigate(['/legendVolunteer']).then(r => {});
+        }
 
         if (this.authService.isDistrictAdminPanel()){
           this.router.navigate(['/districtAdminPanel']).then(r => {});
+        }
+
+        if (this.authService.isAssemblyConstituency()){
+          this.router.navigate(['/assemblyConstituency']).then(r => {});
+        }
+
+        if (this.authService.isBoothVolunteer()){
+          this.router.navigate(['/boothVolunteer']).then(r => {});
+        }
+
+        if (this.authService.isVolunteer()){
+          this.router.navigate(['/volunteer']).then(r => {});
         }
 
         if (this.authService.isPollingStationVolunteer()){
