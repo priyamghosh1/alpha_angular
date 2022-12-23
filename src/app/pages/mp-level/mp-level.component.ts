@@ -120,6 +120,7 @@ export class MpLevelComponent implements OnInit {
 
     this.areaService.getStateListener().subscribe((response) => {
       this.states = response;
+      console.log(this.states[0].districts);
     });
     this.states = this.areaService.getstate();
 

@@ -1,6 +1,7 @@
 <div class="container pt-1">
 
 
+
   <h3><u>Create Polling Agent:</u> </h3>
   <div style="border: 2px solid white; border-radius: 5px; background-color: rgba(127, 255, 212, 0.333);" class="p-3">
     <form [formGroup]="personForm">
@@ -29,7 +30,7 @@
         </div>
 
       </div>
-
+      <!-- {{states[0].districts | json}} -->
       <div class="d-flex pt-2">
         <div class="form-group">
           <input class="form-control" formControlName="policeStation" placeholder="Police station">
@@ -54,14 +55,22 @@
           <input class="form-control" formControlName="pinCode" placeholder="Pin Code">
         </div>
 
-        <div class="form-group pl-3">
+        <!-- <div class="form-group pl-3">
           <input class="form-control" formControlName="district" placeholder="District">
-        </div>
+        </div> -->
+
+
         <div class="form-group pl-3">
           <input class="form-control" formControlName="voterId" placeholder="Voter No.">
         </div>
         <div class="form-group pl-3">
           <input class="form-control" formControlName="religion" placeholder="Religion">
+        </div>
+
+        <div class="form-group pl-3" style="min-width: 235px;">
+          <ng-select [items]="states[0].districts" fxFlex="100" bindLabel="name" class="custom" bindValue="districtId"
+            appendTo="body" formControlName="district" placeholder="districts" style="height: 200 !important;">
+          </ng-select>
         </div>
       </div>
 
@@ -73,11 +82,11 @@
           <input class="form-control" formControlName="mobile2" placeholder="Mobile2">
         </div>
 
-        <div class="form-group pl-3">
+        <!-- <div class="form-group pl-3">
           <input class="form-control" formControlName="aadharId" placeholder="Aadhar No.">
-        </div>
+        </div> -->
 
-        
+
 
 
       </div>
@@ -88,7 +97,7 @@
           <input class="form-control" formControlName="aadharId" placeholder="Aadhar No.">
         </div>
 
-        
+
 
         <div class="form-group pl-3">
           <input class="form-control" formControlName="preferableCandidate" placeholder="Preferable Candidate">
@@ -234,7 +243,7 @@
 
   <div class="card">
     <div class="card-body">
-      <table class="table">
+      <table class="table" style="font-size: 12px;">
         <thead>
           <tr>
             <th scope="col">#</th>
