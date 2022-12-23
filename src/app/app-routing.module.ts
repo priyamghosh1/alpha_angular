@@ -61,6 +61,9 @@ const routes: Routes = [
 
   { path: 'sidenavPollingVolunteer', loadChildren: () => import('./sidenavs/sidenav-polling-volunteer/sidenav-polling-volunteer.module').then(m => m.SidenavPollingVolunteerModule) },
 
+  { path: 'districtAdminPanel', loadChildren: () => import('./pages/district-admin-panel/district-admin-panel.module').then(m => m.DistrictAdminPanelModule) },
+
+
 ];
 
 

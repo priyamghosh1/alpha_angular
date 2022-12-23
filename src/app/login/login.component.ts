@@ -47,15 +47,27 @@ export class LoginComponent implements OnInit {
     // const formPassword = form.value.password;
     this.authService.login(loginData).subscribe(response => {
       if (response.status === true){
+        // if (this.authService.isOwner()){
+        //   this.router.navigate(['/mp']).then(r => {});
+        // }
         if (this.authService.isOwner()){
-          this.router.navigate(['/mp']).then(r => {});
+          this.router.navigate(['/owner']).then(r => {});
         }
         if (this.authService.isDeveloper()){
           this.router.navigate(['/developer']).then(r => {});
         }
         if (this.authService.isLegislativeCandidate()){
-          this.router.navigate(['/legislative']).then(r => {});
+          this.router.navigate(['/mp']).then(r => {});
         }
+
+        // if (this.authService.isLegendPanel()){
+        //   this.router.navigate(['/legendPanel']).then(r => {});
+        // }
+
+        if (this.authService.isDistrictAdminPanel()){
+          this.router.navigate(['/districtAdminPanel']).then(r => {});
+        }
+
         if (this.authService.isPollingStationVolunteer()){
           this.router.navigate(['/pollingVolunteer']).then(r => {});
         }

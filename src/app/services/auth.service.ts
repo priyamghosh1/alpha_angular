@@ -68,8 +68,48 @@ export class AuthService {
     }
   }
 
+  isLegendPanel(){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isLegendPanel){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isDistrictAdminPanel(){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isDistrictAdminPanel){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isAssemblyConstituency(){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isAssemblyConstituency){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   isPollingStationVolunteer(){
     if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isPollingStationVolunteer){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isBoothVolunteer(){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isBoothVolunteer){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isVolunteer(){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isVolunteer){
       return true;
     }else{
       return false;
@@ -85,21 +125,21 @@ export class AuthService {
   }
 
 
-  isRefinish(): boolean{
-    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isRefinish){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-  isPettyCash(): boolean{
-    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isPettyCash){
-      return true;
-    }else{
-      return false;
-    }
-  }
+  // isRefinish(): boolean{
+  //   if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isRefinish){
+  //     return true;
+  //   }else{
+  //     return false;
+  //   }
+  // }
+  //
+  // isPettyCash(): boolean{
+  //   if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isPettyCash){
+  //     return true;
+  //   }else{
+  //     return false;
+  //   }
+  // }
 
   getUserName(): string{
     if (this.userBehaviorSubject.value){

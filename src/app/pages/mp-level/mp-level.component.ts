@@ -48,13 +48,14 @@ export class MpLevelComponent implements OnInit {
     suggestion: new FormControl(null, [Validators.required]),
     prevVotingHistory: new FormControl(null, [Validators.required]),
     satisfiedByPresentGov: new FormControl(null, [Validators.required]),
-    age: new FormControl(null),
-    gender: new FormControl(null),
-    mobile1: new FormControl(null),
+    age: new FormControl(null, [Validators.required]),
+    gender: new FormControl(null, [Validators.required]),
+    mobile1: new FormControl(null, [Validators.required]),
     mobile2: new FormControl(null),
-    aadharId: new FormControl(null),
+    aadharId: new FormControl(null, [Validators.required]),
+    roadName: new FormControl(null),
     voterId: new FormControl(null, [Validators.required]),
-    pollingStationId: new FormControl(null),
+    pollingStationId: new FormControl(null, [Validators.required]),
     // remark: new FormControl(null),
   });
 
@@ -204,7 +205,7 @@ export class MpLevelComponent implements OnInit {
           suggestion: personFormData.suggestion,
           previousVotingHistory: personFormData.prevVotingHistory,
 
-          
+
           email: personFormData.email,
           password: passwordMd5,
           mobile1: personFormData.mobile1,
@@ -272,7 +273,7 @@ export class MpLevelComponent implements OnInit {
     this.showPinCode = x === 'showPinCode' ? y : this.showPinCode;
     this.showPollingNumber = x === 'showPollingNumber' ? y : this.showPollingNumber;
 
-    
+
   }
 
 
