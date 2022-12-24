@@ -63,9 +63,9 @@
         <div class="form-group pl-3">
           <input class="form-control" formControlName="voterId" placeholder="Voter No.">
         </div>
-        <div class="form-group pl-3">
+        <!-- <div class="form-group pl-3">
           <input class="form-control" formControlName="religion" placeholder="Religion">
-        </div>
+        </div> -->
 
         <div class="form-group pl-3" style="min-width: 235px;">
           <ng-select [items]="states[0].districts" fxFlex="100" bindLabel="name" class="custom" bindValue="districtId"
@@ -80,6 +80,9 @@
         </div>
         <div class="form-group pl-3">
           <input class="form-control" formControlName="mobile2" placeholder="Mobile2">
+        </div>
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="roadName" placeholder="Road Name">
         </div>
 
         <!-- <div class="form-group pl-3">
@@ -127,9 +130,9 @@
           <input class="form-control" formControlName="occupation" placeholder="Occupation">
         </div>
 
-        <div class="form-group pl-3">
+        <!-- <div class="form-group pl-3">
           <input class="form-control" formControlName="cast" placeholder="Cast">
-        </div>
+        </div> -->
 
         <div class="form-group pl-3">
           <input class="form-control" formControlName="email" placeholder="Email">
@@ -157,6 +160,24 @@
               aria-label="Default select example">
               <option value="yes">yes</option>
               <option value="no">no</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-group pl-3">
+          <label>Cast
+            <select class="form-select form-group pl-3" formControlName="cast"
+              aria-label="Default select example">
+              <option *ngFor="let x of cast" value="x">{{x}}</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-group pl-3">
+          <label>Religion
+            <select class="form-select form-group pl-3" formControlName="religion"
+              aria-label="Default select example">
+              <option *ngFor="let x of religion" value="x">{{x}}</option>
             </select>
           </label>
         </div>

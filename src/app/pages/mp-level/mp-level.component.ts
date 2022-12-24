@@ -24,6 +24,32 @@ import { HttpClient } from '@angular/common/http';
 export class MpLevelComponent implements OnInit {
 
   confirmation = ['yes', 'no'];
+  cast = ['General', 'ST', 'SC', 'OBC'];
+  religion = ['Hinduism',
+              'Christianity',
+              'Judaism',
+              'Buddhism',
+              'Sikhism',
+              'Shinto',
+              'Catholicism',
+              'Bahai Faith',
+              'Zoroastrianism',
+              'Jainism',
+              'Confucianism',
+              'Lutheranism',
+              'Protestantism',
+              'Taoism',
+              'Rastafari',
+              'Eastern Orthodox Church',
+              'Sunni Islam',
+              'Chinese Folk Religion',
+              'Babism',
+              'Modern Paganism',
+              'Shia Islam',
+              'Wicca',
+              'Traditional African Religions'
+            ];
+  
   states: any;
 
 
@@ -105,8 +131,16 @@ export class MpLevelComponent implements OnInit {
     private http: HttpClient,
   ) {
 
+    this.areaService.getStateListener().subscribe((response) => {
+      this.states = response;
+    });
+    this.states = this.areaService.getstate();
 
     // private cartService: CartService,
+
+    if(this.states.length<2){
+      this.states.id=1;
+    }
 
   }
 
@@ -215,6 +249,7 @@ export class MpLevelComponent implements OnInit {
           pollingStationId: personFormData.pollingStationId,
           parentId: this.loggedInUser?.uniqueId,
           remark: this.userForm.value.remark,
+          roadName: personFormData.roadName,
 
         };
         // console.log(masterData);
