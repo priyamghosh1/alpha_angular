@@ -5,6 +5,29 @@
   <h3><u>Create Polling Agent:</u> </h3>
   <div style="border: 2px solid white; border-radius: 5px; background-color: rgba(127, 255, 212, 0.333);" class="p-3">
     <form [formGroup]="personForm">
+      <!-- <div class="d-flex">
+        <div class="form-group">
+          <input class="form-control" formControlName="personName" placeholder="Name">
+        </div>
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="age" placeholder="Age">
+        </div>
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="guardianName" placeholder="Guardian Name">
+        </div>
+        <div class="form-group pl-3">
+          <ng-select [items]="genderList" fxFlex="100" bindLabel="name" class="custom" bindValue="name" appendTo="body"
+            formControlName="gender" placeholder="Gender" style="height: 200 !important;">
+          </ng-select>
+        </div>
+        <div class="form-group pl-2">
+          <ng-select [items]="states" fxFlex="100" bindLabel="name" class="custom" bindValue="id" placeholder="states"
+            style="height: 200 !important; min-width: 20% !important;">
+          </ng-select>
+        </div>
+
+      </div> -->
+
       <div class="d-flex">
         <div class="form-group">
           <input class="form-control" formControlName="personName" placeholder="Name">
@@ -18,14 +41,34 @@
         <div class="form-group pl-3">
           <input class="form-control" formControlName="guardianName" placeholder="Guardian Name">
         </div>
-        <div class="form-group pl-3">
+        <!-- <div class="form-group pl-3">
           <ng-select [items]="genderList" fxFlex="100" bindLabel="name" class="custom" bindValue="name" appendTo="body"
             formControlName="gender" placeholder="Gender" style="height: 200 !important;">
           </ng-select>
         </div>
         <div class="form-group pl-2">
           <ng-select [items]="states" fxFlex="100" bindLabel="name" class="custom" bindValue="id" placeholder="states"
-            style="height: 200 !important; min-width: 200px !important;">
+            style="height: 200 !important; min-width: 20% !important;">
+          </ng-select>
+        </div> -->
+
+      </div>
+      <div class="d-flex pt-2">
+        
+        <div class="form-group" style="min-width: 21%;">
+          <ng-select [items]="genderList" fxFlex="100" bindLabel="name" class="custom" bindValue="name" appendTo="body"
+            formControlName="gender" placeholder="Gender" style="height: 200 !important;">
+          </ng-select>
+        </div>
+        <div class="form-group pl-2" style="min-width: 21%;">
+          <ng-select [items]="states" fxFlex="100" bindLabel="name" class="custom" bindValue="id" placeholder="states"
+            style="height: 200 !important; min-width: 20% !important;">
+          </ng-select>
+        </div>
+
+        <div class="form-group pl-3" style="min-width: 21%;">
+          <ng-select [items]="states[0].districts" fxFlex="100" bindLabel="name" class="custom" bindValue="districtId"
+            appendTo="body" formControlName="district" placeholder="districts" style="height: 200 !important;">
           </ng-select>
         </div>
 
@@ -38,9 +81,7 @@
         <!-- <div class="form-group pl-3">
           <input class="form-control" formControlName="cast" placeholder="Cast">
         </div> -->
-        <div class="form-group pl-3">
-          <input class="form-control" formControlName="partNo" placeholder="Part No">
-        </div>
+        
         <div class="form-group pl-3">
           <input class="form-control" formControlName="postOffice" placeholder="Post Office">
         </div>
@@ -63,15 +104,18 @@
         <div class="form-group pl-3">
           <input class="form-control" formControlName="voterId" placeholder="Voter No.">
         </div>
+        <div class="form-group pl-3">
+          <input class="form-control" formControlName="partNo" placeholder="Part No">
+        </div>
         <!-- <div class="form-group pl-3">
           <input class="form-control" formControlName="religion" placeholder="Religion">
         </div> -->
 
-        <div class="form-group pl-3" style="min-width: 235px;">
+        <!-- <div class="form-group pl-3" style="min-width: 20%;">
           <ng-select [items]="states[0].districts" fxFlex="100" bindLabel="name" class="custom" bindValue="districtId"
             appendTo="body" formControlName="district" placeholder="districts" style="height: 200 !important;">
           </ng-select>
-        </div>
+        </div> -->
       </div>
 
       <div class="d-flex pt-2">
@@ -166,8 +210,7 @@
 
         <div class="form-group pl-3">
           <label>Cast
-            <select class="form-select form-group pl-3" formControlName="cast"
-              aria-label="Default select example">
+            <select class="form-select form-group pl-3" formControlName="cast" aria-label="Default select example">
               <option *ngFor="let x of cast" value="x">{{x}}</option>
             </select>
           </label>
@@ -175,8 +218,7 @@
 
         <div class="form-group pl-3">
           <label>Religion
-            <select class="form-select form-group pl-3" formControlName="religion"
-              aria-label="Default select example">
+            <select class="form-select form-group pl-3" formControlName="religion" aria-label="Default select example">
               <option *ngFor="let x of religion" value="x">{{x}}</option>
             </select>
           </label>
@@ -198,8 +240,8 @@
           </div>
         </form>
       </div>
-      <div class="col-6"></div>
-      <div class="col-2">
+      <div class="col-3"></div>
+      <div class="col-1">
         <div class="pt-4 pb-3"><button type="submit" class="btn btn-warning" (click)="onSubmit()">Submit</button></div>
       </div>
 
@@ -209,8 +251,9 @@
   </div>
 
 
-  <div style="border: 2px solid white; border-radius: 5px; background-color: rgba(127, 255, 212, 0.333);"
-    class="p-3 mt-2 mb-2">
+  <div
+    style="border: 2px solid white; border-radius: 5px; background-color: rgba(127, 255, 212, 0.333); max-width: 100vw; overflow: scroll;"
+    class="p-3 mt-2 mb-2 scroll">
     <div class="d-flex">
       <mat-checkbox [checked]="showName" (change)="changeShowStatus('showName', $event.checked)"
         class="p-1 example-margin">Name</mat-checkbox>
@@ -263,8 +306,8 @@
 
 
   <div class="card">
-    <div class="card-body">
-      <table class="table" style="font-size: 12px;">
+    <div class="card-body scroll" style="max-width: 100vw; overflow: scroll;">
+      <table class="table" style="">
         <thead>
           <tr>
             <th scope="col">#</th>
