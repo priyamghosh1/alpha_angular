@@ -50,7 +50,7 @@
     <button (click)="toggleSlidebar()" mat-icon-button ><mat-icon>menu</mat-icon></button>
     <button *ngIf="authService.isAuthenticated()" mat-button class="rounded-circle" [matMenuTriggerFor]="test1">
                 <div class="rounded-circle" style="width: 56px; height: 55px; border: #e8c50e solid">
-                  <!-- <img  class="rounded-circle" style="width: 50px; height: 50px" [src]="imageSrc" (error)="imageSrc = defaultPicture"> -->
+                   <img  class="rounded-circle" style="width: 50px; height: 50px" [src]="imageSrc" (error)="imageSrc = defaultPicture">
                 </div>
     </button>
     <mat-menu #test1="matMenu">

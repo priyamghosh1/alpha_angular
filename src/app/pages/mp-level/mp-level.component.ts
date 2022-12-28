@@ -12,6 +12,7 @@ import { PollingStationService } from "../../services/polling-station.service";
 import { AssemblyService } from 'src/app/services/assembly.service';
 import { PollingMember } from "../../models/PollingMember";
 import { HttpClient } from '@angular/common/http';
+import {CommonService} from "../../services/common.service";
 
 
 
@@ -23,39 +24,39 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MpLevelComponent implements OnInit {
 
-  personFormImp = this._formBuilder.group({
-    id: [''],
-    personName: ['', Validators.required],
-    guardianName: ['', Validators.required],
-    age: ['', Validators.required],
-    gender: ['', Validators.required],
-    houseNo: ['', Validators.required],
-    roadName: ['', Validators.required],
-    voterId: ['', Validators.required],
-    mobile1: ['', Validators.required],
-    state: ['', Validators.required],
-    district: ['', Validators.required],
-    religion: ['', Validators.required],
-    occuption: ['', Validators.required],
-    aadharId: ['', Validators.required],
-  });
-  personFormSecond = this._formBuilder.group({
-    personTypeId: [''],
-    email: [''],
-    policeStation: [''],
-    cast: [''],
-    partNo: [''],
-    postOffice: [''],
-    pinCode: [''],
-    preferableCandidate: [''],
-    suggestion: [''],
-    prevVotingHistory: [''],
-    satisfiedByPresentGov: [''],
-    mobile2: [''],
-    pollingStationId: [''],
-  });
+  // personFormImp = this._formBuilder.group({
+  //   id: [null],
+  //   personName: [null, Validators.required],
+  //   guardianName: [null, Validators.required],
+  //   age: [null, Validators.required],
+  //   gender: [null, Validators.required],
+  //   houseNo: [null, Validators.required],
+  //   roadName: [null, Validators.required],
+  //   voterId: [null, Validators.required],
+  //   mobile1: [null, Validators.required],
+  //   state: [null, Validators.required],
+  //   district: [null, Validators.required],
+  //   religion: [null, Validators.required],
+  //   occuption: [null, Validators.required],
+  //   aadharId: [null, Validators.required],
+  // });
+  // personFormSecond = this._formBuilder.group({
+  //   personTypeId: [''],
+  //   email: [''],
+  //   policeStation: [''],
+  //   cast: [''],
+  //   partNo: [''],
+  //   postOffice: [''],
+  //   pinCode: [''],
+  //   preferableCandidate: [''],
+  //   suggestion: [''],
+  //   prevVotingHistory: [''],
+  //   satisfiedByPresentGov: [''],
+  //   mobile2: [''],
+  //   pollingStationId: [''],
+  // });
   isLinear = false;
-  
+
   confirmation = ['yes', 'no'];
   cast = ['General', 'ST', 'SC', 'OBC'];
   religion = ['Hinduism',
@@ -82,7 +83,7 @@ export class MpLevelComponent implements OnInit {
               'Wicca',
               'Traditional African Religions'
             ];
-  
+
   states: any;
 
 
@@ -128,7 +129,7 @@ export class MpLevelComponent implements OnInit {
     email: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required]),
   });
-  // 
+  //
 
   showName = true;
   showMemberCode = false;
@@ -153,8 +154,11 @@ export class MpLevelComponent implements OnInit {
   pollingMembers: PollingMember[] = [];
   loggedInUser: User | undefined;
   pollingStations: any;
+  imageSrc: string | ArrayBuffer | null ="";
+  defaultPicture: string = "";
   // genderList = [{ "id": 1, "name": "male" }, { "id": 2, "name": "female" }, { "id": 3, "name": "others" }];
   genderList = ["male", "female",  "others" ];
+  file: File;
 
 
   constructor(
@@ -164,13 +168,24 @@ export class MpLevelComponent implements OnInit {
     private formBuilder: FormBuilder,
     private areaService: AreaService,
     private http: HttpClient,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private commonService: CommonService
   ) {
+
+    // @ts-ignore
+    this.file = File;
 
     this.areaService.getStateListener().subscribe((response) => {
       this.states = response;
     });
     this.states = this.areaService.getstate();
+
+    this.defaultPicture = this.commonService.getPublic() + '/profile_pic/no_dp.png';
+    const user = localStorage.getItem('user');
+    if (user){
+      const localUserID = JSON.parse(<string>user).uniqueId;
+      this.imageSrc = this.commonService.getPublic() + '/profile_pic/' + localUserID + '.jpeg';
+    }
 
     // private cartService: CartService,
 
@@ -219,6 +234,12 @@ export class MpLevelComponent implements OnInit {
 
 
   }
+
+  onChange(event: Event){
+    // @ts-ignore
+    this.file = event.target.files[0];
+  }
+
   getAllArea() {
     this.areas = this.areaService.getArea();
     this.areaService.getGameTypeListener().subscribe((response: Area[]) => {
@@ -269,13 +290,14 @@ export class MpLevelComponent implements OnInit {
           postOffice: personFormData.postOffice,
           houseNo: personFormData.houseNo,
           guardianName: personFormData.guardianName,
+
+
           district: personFormData.district,
           pinCode: personFormData.pinCode,
           preferableCandidate: personFormData.preferableCandidate,
           satisfiedByPresentGov: personFormData.satisfiedByPresentGov,
           suggestion: personFormData.suggestion,
           previousVotingHistory: personFormData.prevVotingHistory,
-
 
           email: personFormData.email,
           password: passwordMd5,
@@ -288,6 +310,40 @@ export class MpLevelComponent implements OnInit {
           roadName: personFormData.roadName,
 
         };
+
+        // const formData = new FormData();
+        // // @ts-ignore
+        // formData.append("personTypeId", 3);
+        // formData.append("personName", personFormData.personName);
+        // formData.append("age", personFormData.age);
+        // formData.append("gender", personFormData.gender);
+        // formData.append("religion", personFormData.religion);
+        // formData.append("occupation", personFormData.occupation);
+        // formData.append("policeStation", personFormData.policeStation);
+        // formData.append("cast", personFormData.cast);
+        // formData.append("partNo", personFormData.partNo);
+        // formData.append("postOffice", personFormData.postOffice);
+        // formData.append("houseNo", personFormData.houseNo);
+        // formData.append("guardianName", personFormData.guardianName);
+        // formData.append("district", personFormData.district);
+        // formData.append("pinCode", personFormData.district);
+        // formData.append("preferableCandidate", personFormData.district);
+        // formData.append("satisfiedByPresentGov", personFormData.district);
+        // formData.append("suggestion", personFormData.district);
+        // formData.append("previousVotingHistory", personFormData.district);
+        // formData.append("email", personFormData.district);
+        // // @ts-ignore
+        // formData.append("password", passwordMd5);
+        // formData.append("mobile1", personFormData.mobile1);
+        // formData.append("mobile2", personFormData.mobile2);
+        // formData.append("voterId", personFormData.voterId);
+        // formData.append("pollingStationId", personFormData.pollingStationId);
+        // // @ts-ignore
+        // formData.append("parentId", this.loggedInUser?.uniqueId);
+        // formData.append("remark", this.userForm.value.remark);
+        // formData.append("roadName", personFormData.roadName);
+
+
         // console.log(masterData);
         // return;
         this.userRegistrationService.saveNewUser(masterData).subscribe(response => {
