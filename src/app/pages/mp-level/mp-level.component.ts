@@ -23,6 +23,39 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MpLevelComponent implements OnInit {
 
+  personFormImp = this._formBuilder.group({
+    id: [''],
+    personName: ['', Validators.required],
+    guardianName: ['', Validators.required],
+    age: ['', Validators.required],
+    gender: ['', Validators.required],
+    houseNo: ['', Validators.required],
+    roadName: ['', Validators.required],
+    voterId: ['', Validators.required],
+    mobile1: ['', Validators.required],
+    state: ['', Validators.required],
+    district: ['', Validators.required],
+    religion: ['', Validators.required],
+    occuption: ['', Validators.required],
+    aadharId: ['', Validators.required],
+  });
+  personFormSecond = this._formBuilder.group({
+    personTypeId: [''],
+    email: [''],
+    policeStation: [''],
+    cast: [''],
+    partNo: [''],
+    postOffice: [''],
+    pinCode: [''],
+    preferableCandidate: [''],
+    suggestion: [''],
+    prevVotingHistory: [''],
+    satisfiedByPresentGov: [''],
+    mobile2: [''],
+    pollingStationId: [''],
+  });
+  isLinear = false;
+  
   confirmation = ['yes', 'no'];
   cast = ['General', 'ST', 'SC', 'OBC'];
   religion = ['Hinduism',
@@ -95,31 +128,33 @@ export class MpLevelComponent implements OnInit {
     email: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required]),
   });
+  // 
 
   showName = true;
-  showMemberCode = true;
+  showMemberCode = false;
   showGuardianName = true;
   showAge = true;
   showGender = true;
-  showPoliceStation = true;
+  showPoliceStation = false;
   showOcupation = true;
   showReligion = true;
-  showEmail = true;
+  showEmail = false;
   showMobileOne = true;
-  showMobileTwo = true;
+  showMobileTwo = false;
   showVoterId = true;
   showAadharId = true;
-  showCast = true;
-  showPostOffice = true;
+  showCast = false;
+  showPostOffice = false;
   showHouseNo = true;
   showRoadNo = true;
-  showPinCode = true;
-  showPollingNumber = true;
+  showPinCode = false;
+  showPollingNumber = false;
   areas: Area[] = [];
   pollingMembers: PollingMember[] = [];
   loggedInUser: User | undefined;
   pollingStations: any;
-  genderList = [{ "id": 1, "name": "male" }, { "id": 2, "name": "female" }, { "id": 3, "name": "others" }];
+  // genderList = [{ "id": 1, "name": "male" }, { "id": 2, "name": "female" }, { "id": 3, "name": "others" }];
+  genderList = ["male", "female",  "others" ];
 
 
   constructor(
@@ -129,6 +164,7 @@ export class MpLevelComponent implements OnInit {
     private formBuilder: FormBuilder,
     private areaService: AreaService,
     private http: HttpClient,
+    private _formBuilder: FormBuilder
   ) {
 
     this.areaService.getStateListener().subscribe((response) => {
