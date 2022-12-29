@@ -12,6 +12,7 @@ import {NgSelectModule} from "@ng-select/ng-select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatMenuModule} from "@angular/material/menu";
+import { MatOptionModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -31,7 +32,9 @@ import {MatMenuModule} from "@angular/material/menu";
     NgSelectModule,
     MatCheckboxModule,
     MatStepperModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    MatOptionModule
     // FormGroupModule,
   ]
 })

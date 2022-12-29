@@ -31,9 +31,9 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                   <mat-label>Gender</mat-label>
-                  <select matNativeControl required formControlName="gender">
-                    <option value="x" *ngFor="let x of genderList">{{x}}</option>
-                  </select>
+                  <mat-select matNativeControl required formControlName="gender">
+                    <mat-option  *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
+                  </mat-select>
                 </mat-form-field>
               </div>
               <div>
@@ -57,21 +57,21 @@
               <div>
                 <mat-form-field appearance="fill">
                   <mat-label>State</mat-label>
-                  <select matNativeControl required formControlName="state">
-                    <option value="x.name" *ngFor="let x of states">{{x.name}}</option>
-                  </select>
+                  <mat-select matNativeControl required formControlName="state">
+                    <mat-option  [value]="x.name" *ngFor="let x of states">{{x.name}}</mat-option>
+                  </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                   <mat-label>District</mat-label>
-                  <select matNativeControl required formControlName="district">
-                    <option value="x" *ngFor="let x of states[0].districts">{{x.name}}</option>
-                  </select>
+                  <mat-select matNativeControl required formControlName="district">
+                    <mat-option  [value]="x.name" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
+                  </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                   <mat-label>Religion</mat-label>
-                  <select matNativeControl required formControlName="religion">
-                    <option value="x" *ngFor="let x of religion">{{x}}</option>
-                  </select>
+                  <mat-select matNativeControl required formControlName="religion">
+                    <mat-option [value]="x" *ngFor="let x of religion">{{x}}</mat-option>
+                  </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                   <mat-label>Occupation</mat-label>
@@ -148,28 +148,38 @@
           <div>
             <mat-form-field appearance="fill">
               <mat-label>Cast</mat-label>
-              <select matNativeControl required formControlName="cast">
-                <option value="x" *ngFor="let x of cast">{{x}}</option>
-              </select>
+              <mat-select matNativeControl required formControlName="cast">
+                <mat-option [value]="x" *ngFor="let x of cast">{{x}}</mat-option>
+              </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>Polling No.</mat-label>
-              <select matNativeControl required formControlName="pollingStationId">
-                <option value="x.pollingStationId" *ngFor="let x of pollingStations">{{x.pollingStationId}}</option>
-              </select>
+              <mat-select matNativeControl required formControlName="pollingStationId">
+                <mat-option [value]="x.pollingStationId" *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
+              </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>Previous Voting History</mat-label>
-              <select matNativeControl required formControlName="prevVotingHistory">
-                <option value="x" *ngFor="let x of confirmation">{{x}}</option>
-              </select>
+              <mat-select matNativeControl required formControlName="prevVotingHistory">
+                <mat-option [value]="x" *ngFor="let x of confirmation">{{x}}</mat-option>
+              </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>Satisfied By Present Gov.</mat-label>
-              <select matNativeControl required formControlName="satisfiedByPresentGov">
-                <option value="x" *ngFor="let x of confirmation">{{x}}</option>
-              </select>
+              <mat-select matNativeControl required formControlName="satisfiedByPresentGov">
+                <mat-option [value]="x" *ngFor="let x of confirmation">{{x}}</mat-option>
+              </mat-select>
             </mat-form-field>
+          </div>
+          <div class="col-4">
+            <form [formGroup]="userForm">
+              <div class="d-flex ">
+    
+                <div class="form-group ">
+                  <textarea class="form-control" rows="2" formControlName="remark" placeholder="Remark"></textarea>
+                </div>
+              </div>
+            </form>
           </div>
 
           <div>

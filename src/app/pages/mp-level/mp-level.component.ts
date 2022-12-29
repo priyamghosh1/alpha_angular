@@ -102,6 +102,7 @@ export class MpLevelComponent implements OnInit {
     partNo: new FormControl(null, [Validators.required]),
     postOffice: new FormControl(null, [Validators.required]),
     houseNo: new FormControl(null, [Validators.required]),
+    state: new FormControl(null, [Validators.required]),
     district: new FormControl(null, [Validators.required]),
     pinCode: new FormControl(null, [Validators.required]),
     preferableCandidate: new FormControl(null, [Validators.required]),
@@ -292,6 +293,7 @@ export class MpLevelComponent implements OnInit {
           guardianName: personFormData.guardianName,
 
 
+          state: personFormData.state,
           district: personFormData.district,
           pinCode: personFormData.pinCode,
           preferableCandidate: personFormData.preferableCandidate,
@@ -346,6 +348,7 @@ export class MpLevelComponent implements OnInit {
 
         // console.log(masterData);
         // return;
+        console.log(masterData);
         this.userRegistrationService.saveNewUser(masterData).subscribe(response => {
           console.log(response);
           if (response.status) {
