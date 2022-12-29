@@ -68,7 +68,7 @@ export class CommonService {
   }
   setDeviceXs(dx: boolean){
     this.isDeviceXs = dx;
-    console.log('deviceXs changed', this.isDeviceXs);
+    // console.log('deviceXs changed', this.isDeviceXs);
   }
   getDeviceXs(): boolean{
     return this.isDeviceXs;

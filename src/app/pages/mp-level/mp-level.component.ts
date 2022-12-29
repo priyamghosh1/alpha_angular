@@ -194,11 +194,17 @@ export class MpLevelComponent implements OnInit {
       this.states.id=1;
     }
 
+    // const userData: User = JSON.parse(<string>localStorage.getItem('user'));
+    // console.log(userData);
+
   }
 
 
 
   ngOnInit(): void {
+
+
+
     this.areas = this.areaService.getArea();
     this.areaService.getGameTypeListener().subscribe((response: Area[]) => {
       this.areas = response;
@@ -206,7 +212,6 @@ export class MpLevelComponent implements OnInit {
 
     this.areaService.getStateListener().subscribe((response) => {
       this.states = response;
-      console.log(this.states[0].districts);
     });
     this.states = this.areaService.getstate();
 
@@ -239,6 +244,13 @@ export class MpLevelComponent implements OnInit {
   onChange(event: Event){
     // @ts-ignore
     this.file = event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(this.file);
+    reader.onload = (_event) => {
+      // this.msg = "";
+      this.imageSrc = reader.result;
+    }
+    // this.imageSrc = reader.result;
   }
 
   getAllArea() {
@@ -258,6 +270,18 @@ export class MpLevelComponent implements OnInit {
   // }
 
   onSubmit(): void {
+
+    if(!this.file.size){
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Upload Photo',
+        showConfirmButton: false,
+        timer: 3000
+      });
+      return;
+    }
+
     Swal.fire({
       title: 'Confirmation',
       text: 'Do you sure to create user?',
@@ -274,87 +298,90 @@ export class MpLevelComponent implements OnInit {
         const userFormData = this.userForm.value;
         const md5 = new Md5();
         const passwordMd5 = md5.appendStr('1234').end();
-        const masterData = {
-          personTypeId: 3,
-          personName: personFormData.personName,
-          age: personFormData.age,
-          gender: personFormData.gender,
-          // email: this.loggedInUser?.uniqueId,
+        // const masterData = {
+        //   personTypeId: 3,
+        //   personName: personFormData.personName,
+        //   age: personFormData.age,
+        //   gender: personFormData.gender,
+        //   // email: this.loggedInUser?.uniqueId,
+        //
+        //
+        //   // religion: new FormControl(null, [Validators.required]),
+        //   religion: personFormData.religion,
+        //   occupation: personFormData.occupation,
+        //   policeStation: personFormData.policeStation,
+        //   cast: personFormData.cast,
+        //   partNo: personFormData.partNo,
+        //   postOffice: personFormData.postOffice,
+        //   houseNo: personFormData.houseNo,
+        //   guardianName: personFormData.guardianName,
+        //   aadharId: personFormData.aadharId,
+        //
+        //   state: personFormData.state,
+        //   district: personFormData.district,
+        //   pinCode: personFormData.pinCode,
+        //   preferableCandidate: personFormData.preferableCandidate,
+        //   satisfiedByPresentGov: personFormData.satisfiedByPresentGov,
+        //   suggestion: personFormData.suggestion,
+        //   previousVotingHistory: personFormData.prevVotingHistory,
+        //
+        //   email: personFormData.email,
+        //   password: passwordMd5,
+        //   mobile1: personFormData.mobile1,
+        //   mobile2: personFormData.mobile2,
+        //   voterId: personFormData.voterId,
+        //   pollingStationId: personFormData.pollingStationId,
+        //   parentId: this.loggedInUser?.uniqueId,
+        //   remark: this.userForm.value.remark,
+        //   roadName: personFormData.roadName,
+        //
+        // };
 
+        const formData = new FormData();
+        // @ts-ignore
+        formData.append("personTypeId", 3);
+        formData.append("personName", personFormData.personName);
+        formData.append("age", personFormData.age);
+        formData.append("gender", personFormData.gender);
+        formData.append("religion", personFormData.religion);
+        formData.append("occupation", personFormData.occupation);
+        formData.append("policeStation", personFormData.policeStation);
+        formData.append("cast", personFormData.cast);
+        formData.append("partNo", personFormData.partNo);
+        formData.append("postOffice", personFormData.postOffice);
+        formData.append("houseNo", personFormData.houseNo);
+        formData.append("guardianName", personFormData.guardianName);
+        formData.append("district", personFormData.district);
+        formData.append("pinCode", personFormData.pinCode);
+        formData.append("preferableCandidate", personFormData.preferableCandidate);
+        formData.append("satisfiedByPresentGov", personFormData.satisfiedByPresentGov);
+        formData.append("suggestion", personFormData.suggestion);
+        formData.append("previousVotingHistory", personFormData.prevVotingHistory);
+        formData.append("email", personFormData.email);
+        formData.append("aadharId", personFormData.aadharId);
+        // @ts-ignore
+        formData.append("password", passwordMd5);
+        formData.append("mobile1", personFormData.mobile1);
+        formData.append("mobile2", personFormData.mobile2);
+        formData.append("voterId", personFormData.voterId);
+        formData.append("pollingStationId", personFormData.pollingStationId);
+        // @ts-ignore
+        formData.append("parentId", this.loggedInUser?.uniqueId);
+        formData.append("remark", this.userForm.value.remark);
+        formData.append("roadName", personFormData.roadName);
 
-          // religion: new FormControl(null, [Validators.required]),
-          religion: personFormData.religion,
-          occupation: personFormData.occupation,
-          policeStation: personFormData.policeStation,
-          cast: personFormData.cast,
-          partNo: personFormData.partNo,
-          postOffice: personFormData.postOffice,
-          houseNo: personFormData.houseNo,
-          guardianName: personFormData.guardianName,
-
-
-          state: personFormData.state,
-          district: personFormData.district,
-          pinCode: personFormData.pinCode,
-          preferableCandidate: personFormData.preferableCandidate,
-          satisfiedByPresentGov: personFormData.satisfiedByPresentGov,
-          suggestion: personFormData.suggestion,
-          previousVotingHistory: personFormData.prevVotingHistory,
-
-          email: personFormData.email,
-          password: passwordMd5,
-          mobile1: personFormData.mobile1,
-          mobile2: personFormData.mobile2,
-          voterId: personFormData.voterId,
-          pollingStationId: personFormData.pollingStationId,
-          parentId: this.loggedInUser?.uniqueId,
-          remark: this.userForm.value.remark,
-          roadName: personFormData.roadName,
-
-        };
-
-        // const formData = new FormData();
-        // // @ts-ignore
-        // formData.append("personTypeId", 3);
-        // formData.append("personName", personFormData.personName);
-        // formData.append("age", personFormData.age);
-        // formData.append("gender", personFormData.gender);
-        // formData.append("religion", personFormData.religion);
-        // formData.append("occupation", personFormData.occupation);
-        // formData.append("policeStation", personFormData.policeStation);
-        // formData.append("cast", personFormData.cast);
-        // formData.append("partNo", personFormData.partNo);
-        // formData.append("postOffice", personFormData.postOffice);
-        // formData.append("houseNo", personFormData.houseNo);
-        // formData.append("guardianName", personFormData.guardianName);
-        // formData.append("district", personFormData.district);
-        // formData.append("pinCode", personFormData.district);
-        // formData.append("preferableCandidate", personFormData.district);
-        // formData.append("satisfiedByPresentGov", personFormData.district);
-        // formData.append("suggestion", personFormData.district);
-        // formData.append("previousVotingHistory", personFormData.district);
-        // formData.append("email", personFormData.district);
-        // // @ts-ignore
-        // formData.append("password", passwordMd5);
-        // formData.append("mobile1", personFormData.mobile1);
-        // formData.append("mobile2", personFormData.mobile2);
-        // formData.append("voterId", personFormData.voterId);
-        // formData.append("pollingStationId", personFormData.pollingStationId);
-        // // @ts-ignore
-        // formData.append("parentId", this.loggedInUser?.uniqueId);
-        // formData.append("remark", this.userForm.value.remark);
-        // formData.append("roadName", personFormData.roadName);
+        formData.append("file", this.file);
 
 
         // console.log(masterData);
         // return;
-        console.log(masterData);
-        this.userRegistrationService.saveNewUser(masterData).subscribe(response => {
-          console.log(response);
+        // console.log(masterData);
+        this.userRegistrationService.saveNewUser(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
             this.personForm.reset();
             this.userForm.reset();
+            this.imageSrc = null;
             // @ts-ignore
             Swal.fire({
               position: 'top-end',
