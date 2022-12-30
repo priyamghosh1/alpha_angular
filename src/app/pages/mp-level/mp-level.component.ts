@@ -23,6 +23,9 @@ import {CommonService} from "../../services/common.service";
   styleUrls: ['./mp-level.component.scss']
 })
 export class MpLevelComponent implements OnInit {
+  voter: any;
+  voters:any;
+  public highLightedRowIndex = -1;
 
   // personFormImp = this._formBuilder.group({
   //   id: [null],
@@ -369,16 +372,20 @@ export class MpLevelComponent implements OnInit {
         formData.append("parentId", this.loggedInUser?.uniqueId);
         formData.append("remark", this.userForm.value.remark);
         formData.append("roadName", personFormData.roadName);
+        formData.append("district", personFormData.district);                                                                                                                                              
+        formData.append("state", personFormData.state);
 
         formData.append("file", this.file);
 
 
-        // console.log(masterData);
+
+        console.log("test",formData);
         // return;
         // console.log(masterData);
         this.userRegistrationService.saveNewUser(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
+            this.voters=response.data;
             this.personForm.reset();
             this.userForm.reset();
             this.imageSrc = null;
@@ -407,6 +414,77 @@ export class MpLevelComponent implements OnInit {
           console.log('data saving error', error);
         });
       }
+    });
+  }
+
+  // personTypeId: 3,
+        //   personName: personFormData.personName,
+        //   age: personFormData.age,
+        //   gender: personFormData.gender,
+        //   // email: this.loggedInUser?.uniqueId,
+        //
+        //
+        //   // religion: new FormControl(null, [Validators.required]),
+        //   religion: personFormData.religion,
+        //   occupation: personFormData.occupation,
+        //   policeStation: personFormData.policeStation,
+        //   cast: personFormData.cast,
+        //   partNo: personFormData.partNo,
+        //   postOffice: personFormData.postOffice,
+        //   houseNo: personFormData.houseNo,
+        //   guardianName: personFormData.guardianName,
+        //   aadharId: personFormData.aadharId,
+        //
+        //   state: personFormData.state,
+        //   district: personFormData.district,
+        //   pinCode: personFormData.pinCode,
+        //   preferableCandidate: personFormData.preferableCandidate,
+        //   satisfiedByPresentGov: personFormData.satisfiedByPresentGov,
+        //   suggestion: personFormData.suggestion,
+        //   previousVotingHistory: personFormData.prevVotingHistory,
+        //
+        //   email: personFormData.email,
+        //   password: passwordMd5,
+        //   mobile1: personFormData.mobile1,
+        //   mobile2: personFormData.mobile2,
+        //   voterId: personFormData.voterId,
+        //   pollingStationId: personFormData.pollingStationId,
+        //   parentId: this.loggedInUser?.uniqueId,
+        //   remark: this.userForm.value.remark,
+        //   roadName: personFormData.roadName,
+
+  editVoters(voter: any){
+    // console.log(voter);
+    this.personForm.patchValue({
+      id: voter.id,
+      personName: voter.personName,
+      age: voter.age,
+      gender: voter.gender,
+      email: voter.email,
+      religion: voter.religion,
+      occupation: voter.occupation,
+      policeStation: voter.policeStation,
+      cast: voter.cast,
+      partNo: voter.partNo,
+      postOffice: voter.postOffice,
+      houseNo: voter.houseNo,
+      guardianName: voter.guardianName,
+      aadharId: voter.aadharId,
+      state: voter.state,
+      district: voter.district,
+      pinCode: voter.pinCode,
+      preferableCandidate: voter.preferableCandidate,
+      satisfiedByPresentGov: voter.satisfiedByPresentGov,
+      suggestion: voter.suggestion,
+      previousVotingHistory: voter.previousVotingHistory,
+      password: voter.password,
+      mobile1: voter.mobile1,
+      mobile2: voter.mobile2,
+      voterId: voter.voterId,
+      pollingStationId: voter.pollingStationId,
+      parentId: voter.parentId,
+      remark: voter.remark,
+      roadName: voter.roadName,
     });
   }
 

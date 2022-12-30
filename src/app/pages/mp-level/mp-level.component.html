@@ -32,7 +32,7 @@
                 <mat-form-field appearance="fill">
                   <mat-label>Gender</mat-label>
                   <mat-select matNativeControl required formControlName="gender">
-                    <mat-option  *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
+                    <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -58,13 +58,13 @@
                 <mat-form-field appearance="fill">
                   <mat-label>State</mat-label>
                   <mat-select matNativeControl required formControlName="state">
-                    <mat-option  [value]="x.name" *ngFor="let x of states">{{x.name}}</mat-option>
+                    <mat-option [value]="x.name" *ngFor="let x of states">{{x.name}}</mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                   <mat-label>District</mat-label>
                   <mat-select matNativeControl required formControlName="district">
-                    <mat-option  [value]="x.name" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
+                    <mat-option [value]="x.name" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
@@ -85,17 +85,18 @@
                 </mat-form-field>
               </div>
             </div>
-<!--            <div class="fluid" style="background-color: white; max-height: 12vh; max-width: 12vw; margin: 2%; " >-->
-            <div class="fluid" style="background-color: white; max-height: 100px; max-width: 100px; margin: 2%; text-align: center " >
-<!--              <img id="img" style="max-height: 100px;  max-width: 100px;" src="http://127.0.0.1/alpha_project/alpha_api/public/profile_pic/profile_pic_1.jpeg">-->
-<!--              <input class="form-control" accept="image/png, image/gif, image/jpeg, image/jpg" type="file" #fileUploader>-->
+            <!--            <div class="fluid" style="background-color: white; max-height: 12vh; max-width: 12vw; margin: 2%; " >-->
+            <div class="fluid"
+              style="background-color: white; max-height: 100px;  margin: 2%; text-align: center ">
+              <!--              <img id="img" style="max-height: 100px;  max-width: 100px;" src="http://127.0.0.1/alpha_project/alpha_api/public/profile_pic/profile_pic_1.jpeg">-->
+              <!--              <input class="form-control" accept="image/png, image/gif, image/jpeg, image/jpg" type="file" #fileUploader>-->
               <button [matMenuTriggerFor]="test1">
-                <div style="width: 100px; height: 100px; border: #e8c50e solid">
+                <div style=" border: #e8c50e solid">
                   <img style="width: 100px; height: 100px" [src]="imageSrc" (error)="imageSrc = defaultPicture">
                 </div>
               </button>
               <mat-menu #test1="matMenu">
-                <input type="file"  name="filename" (change)="onChange($event)">
+                <input type="file" name="filename" (change)="onChange($event)">
               </mat-menu>
             </div>
 
@@ -103,6 +104,8 @@
 
           <div>
             <button class="m-2 bg-warning btn" mat-button matStepperNext>Next</button>
+            <button type="submit" class="btn btn-info" (click)="onSubmit()">Submit</button>
+
           </div>
         </form>
       </mat-step>
@@ -155,7 +158,8 @@
             <mat-form-field appearance="fill">
               <mat-label>Polling No.</mat-label>
               <mat-select matNativeControl required formControlName="pollingStationId">
-                <mat-option [value]="x.pollingStationId" *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
+                <mat-option [value]="x.pollingStationId"
+                  *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
@@ -174,7 +178,7 @@
           <div class="col-4">
             <form [formGroup]="userForm">
               <div class="d-flex ">
-    
+
                 <div class="form-group ">
                   <textarea class="form-control" rows="2" formControlName="remark" placeholder="Remark"></textarea>
                 </div>
@@ -184,7 +188,7 @@
 
           <div>
             <button class="m-2 bg-warning btn" matStepperPrevious>Back</button>
-            <button type="submit" class="btn btn-warning" (click)="onSubmit()">Submit</button>
+            <button type="submit" class="btn btn-info" (click)="onSubmit()">Submit</button>
           </div>
         </form>
       </mat-step>
@@ -479,28 +483,28 @@
           </tr>
         </thead>
         <tbody *ngFor="let x of pollingMembers">
-          <tr>
-            <td scope="row">{{x.personId}}</td>
-            <td *ngIf="showName == true" scope="row">{{x.personName}}</td>
-            <td *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td>
-            <td *ngIf="showGuardianName == true" scope="row">{{x.guardianName}}</td>
-            <td *ngIf="showAge == true" scope="row">{{x.age}}</td>
-            <td *ngIf="showGender == true" scope="row">{{x.gender}}</td>
-            <td *ngIf="showPoliceStation == true" scope="row">{{x.police_station}}</td>
-            <td *ngIf="showOcupation == true" scope="row">{{x.occupation}}</td>
-            <td *ngIf="showReligion == true" scope="row">{{x.religion}}</td>
-            <td *ngIf="showEmail == true" scope="row">{{x.email}}</td>
-            <td *ngIf="showMobileOne == true" scope="row">{{x.mobile1}}</td>
-            <td *ngIf="showMobileTwo == true" scope="row">{{x.mobile2}}</td>
-            <td *ngIf="showVoterId == true" scope="row">{{x.voterId}}</td>
-            <td *ngIf="showAadharId == true" scope="row">{{x.aadharId}}</td>
-            <td *ngIf="showCast == true" scope="row">{{x.cast}}</td>
-            <td *ngIf="showPostOffice == true" scope="row">{{x.postOffice}}</td>
-            <td *ngIf="showHouseNo == true" scope="row">{{x.houseNo}}</td>
-            <td *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td>
-            <td *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td>
-            <td *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
-          </tr>
+            <tr (click)="editVoters(x)">
+              <td scope="row">{{x.personId}}</td>
+              <td *ngIf="showName == true" scope="row">{{x.personName}}</td>
+              <td *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td>
+              <td *ngIf="showGuardianName == true" scope="row">{{x.guardianName}}</td>
+              <td *ngIf="showAge == true" scope="row">{{x.age}}</td>
+              <td *ngIf="showGender == true" scope="row">{{x.gender}}</td>
+              <td *ngIf="showPoliceStation == true" scope="row">{{x.police_station}}</td>
+              <td *ngIf="showOcupation == true" scope="row">{{x.occupation}}</td>
+              <td *ngIf="showReligion == true" scope="row">{{x.religion}}</td>
+              <td *ngIf="showEmail == true" scope="row">{{x.email}}</td>
+              <td *ngIf="showMobileOne == true" scope="row">{{x.mobile1}}</td>
+              <td *ngIf="showMobileTwo == true" scope="row">{{x.mobile2}}</td>
+              <td *ngIf="showVoterId == true" scope="row">{{x.voterId}}</td>
+              <td *ngIf="showAadharId == true" scope="row">{{x.aadharId}}</td>
+              <td *ngIf="showCast == true" scope="row">{{x.cast}}</td>
+              <td *ngIf="showPostOffice == true" scope="row">{{x.postOffice}}</td>
+              <td *ngIf="showHouseNo == true" scope="row">{{x.houseNo}}</td>
+              <td *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td>
+              <td *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td>
+              <td *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
+            </tr>
         </tbody>
       </table>
     </div>
