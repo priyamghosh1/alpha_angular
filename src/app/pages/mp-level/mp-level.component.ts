@@ -242,8 +242,24 @@ export class MpLevelComponent implements OnInit {
   }
 
   onChange(event: Event){
+
+    // @ts-ignore
+    if((event.target.files[0].size/(1024*1000)) > 2){
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Photo must be less than 2 mb',
+        showConfirmButton: false,
+        timer: 3000
+      });
+      // @ts-ignore
+      this.file = File;
+      return;
+    }
     // @ts-ignore
     this.file = event.target.files[0];
+    // console.log(this.file);
+
     var reader = new FileReader();
     reader.readAsDataURL(this.file);
     reader.onload = (_event) => {
@@ -381,6 +397,8 @@ export class MpLevelComponent implements OnInit {
             const responseData = response.data;
             this.personForm.reset();
             this.userForm.reset();
+            // @ts-ignore
+            this.file = File;
             this.imageSrc = null;
             // @ts-ignore
             Swal.fire({
