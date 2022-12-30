@@ -162,6 +162,8 @@ export class MpLevelComponent implements OnInit {
   loggedInUser: User | undefined;
   pollingStations: any;
   imageSrc: string | ArrayBuffer | null ="";
+  imageSrcVoter: string | ArrayBuffer | null ="";
+  imageSrcTable: string | ArrayBuffer | null ="";
   defaultPicture: string = "";
   // genderList = [{ "id": 1, "name": "male" }, { "id": 2, "name": "female" }, { "id": 3, "name": "others" }];
   genderList = ["male", "female",  "others" ];
@@ -188,11 +190,13 @@ export class MpLevelComponent implements OnInit {
     this.states = this.areaService.getstate();
 
     this.defaultPicture = this.commonService.getPublic() + '/profile_pic/no_dp.png';
-    const user = localStorage.getItem('user');
-    if (user){
-      const localUserID = JSON.parse(<string>user).uniqueId;
-      this.imageSrc = this.commonService.getPublic() + '/profile_pic/' + localUserID + '.jpeg';
-    }
+    this.imageSrcVoter = this.commonService.getPublic() + '/voter_pic/';
+
+    // const user = localStorage.getItem('user');
+    // if (user){
+    //   const localUserID = JSON.parse(<string>user).uniqueId;
+    //   this.imageSrc = this.commonService.getPublic() + '/voter_pic/' + localUserID + '.jpg';
+    // }
 
     // private cartService: CartService,
 
@@ -391,7 +395,7 @@ export class MpLevelComponent implements OnInit {
         formData.append("parentId", this.loggedInUser?.uniqueId);
         formData.append("remark", this.userForm.value.remark);
         formData.append("roadName", personFormData.roadName);
-        formData.append("district", personFormData.district);                                                                                                                                              
+        formData.append("district", personFormData.district);
         formData.append("state", personFormData.state);
 
         formData.append("file", this.file);
@@ -492,7 +496,7 @@ export class MpLevelComponent implements OnInit {
       guardianName: voter.guardianName,
       aadharId: voter.aadharId,
       state: voter.state,
-      district: voter.district,
+      district: voter.districtId,
       pinCode: voter.pinCode,
       preferableCandidate: voter.preferableCandidate,
       satisfiedByPresentGov: voter.satisfiedByPresentGov,

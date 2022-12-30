@@ -58,13 +58,13 @@
                 <mat-form-field appearance="fill">
                   <mat-label>State</mat-label>
                   <mat-select matNativeControl required formControlName="state">
-                    <mat-option [value]="x.name" *ngFor="let x of states">{{x.name}}</mat-option>
+                    <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                   <mat-label>District</mat-label>
                   <mat-select matNativeControl required formControlName="district">
-                    <mat-option [value]="x.name" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
+                    <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
@@ -507,7 +507,10 @@
               <td *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td>
               <td *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td>
               <td *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
-              <td *ngIf="showPhoto == true" scope="row"><img src="{{x.id}}.jpeg" alt=""></td>
+              <td *ngIf="showPhoto == true" scope="row" style="width: 56px; height: 55px; border: #e8c50e solid">
+<!--                <img loading="lazy" decoding="async" [src]="imageSrcTable + '' +x.personId + '.jpg'" style="width: 56px; height: 55px; border: #e8c50e solid" (error)="" alt="">-->
+                <img loading="lazy" decoding="async" [src]="this.imageSrcVoter + '' + x.personId + '.jpg'" style="width: 56px; height: 55px; border: #e8c50e solid"  alt="">
+              </td>
             </tr>
         </tbody>
       </table>
