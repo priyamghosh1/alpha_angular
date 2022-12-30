@@ -135,6 +135,7 @@ export class MpLevelComponent implements OnInit {
   });
   //
 
+  showPhoto = true;
   showName = true;
   showMemberCode = false;
   showGuardianName = true;
@@ -154,6 +155,8 @@ export class MpLevelComponent implements OnInit {
   showRoadNo = true;
   showPinCode = false;
   showPollingNumber = false;
+
+
   areas: Area[] = [];
   pollingMembers: PollingMember[] = [];
   loggedInUser: User | undefined;
@@ -526,6 +529,7 @@ export class MpLevelComponent implements OnInit {
     this.showRoadNo = x === 'showRoadNo' ? y : this.showRoadNo;
     this.showPinCode = x === 'showPinCode' ? y : this.showPinCode;
     this.showPollingNumber = x === 'showPollingNumber' ? y : this.showPollingNumber;
+    this.showPhoto = x === 'showPhoto' ? y : this.showPhoto;
 
 
   }

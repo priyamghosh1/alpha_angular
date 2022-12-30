@@ -443,6 +443,8 @@
         class="p-1 example-margin">Cast</mat-checkbox>
       <mat-checkbox [checked]="showAadharId" (change)="changeShowStatus('showAadharId', $event.checked)"
         class="p-1 example-margin">Aadhar Id</mat-checkbox>
+        <mat-checkbox [checked]="showPhoto" (change)="changeShowStatus('showPhoto', $event.checked)"
+        class="p-1 example-margin">Aadhar Id</mat-checkbox>
     </div>
 
 
@@ -480,6 +482,7 @@
             <th *ngIf="showRoadNo == true" scope="col">Road Name</th>
             <th *ngIf="showPinCode == true" scope="col">Pin code</th>
             <th *ngIf="showPollingNumber == true" scope="col">pollingNumber</th>
+            <th *ngIf="showPhoto == true" scope="col">Picture</th>
           </tr>
         </thead>
         <tbody *ngFor="let x of pollingMembers">
@@ -504,6 +507,7 @@
               <td *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td>
               <td *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td>
               <td *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
+              <td *ngIf="showPhoto == true" scope="row"><img src="{{x.id}}.jpeg" alt=""></td>
             </tr>
         </tbody>
       </table>
