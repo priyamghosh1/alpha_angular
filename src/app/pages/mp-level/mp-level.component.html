@@ -83,6 +83,13 @@
                   <mat-label>Aadhar Id</mat-label>
                   <input matInput placeholder="Aadhar Id" formControlName="aadharId" required>
                 </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Polling No.</mat-label>
+                  <mat-select matNativeControl required formControlName="pollingStationId">
+                    <mat-option [value]="x.pollingStationId"
+                      *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
             </div>
             <!--            <div class="fluid" style="background-color: white; max-height: 12vh; max-width: 12vw; margin: 2%; " >-->
@@ -155,13 +162,13 @@
                 <mat-option [value]="x" *ngFor="let x of cast">{{x}}</mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <!-- <mat-form-field appearance="fill">
               <mat-label>Polling No.</mat-label>
               <mat-select matNativeControl required formControlName="pollingStationId">
                 <mat-option [value]="x.pollingStationId"
                   *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
               </mat-select>
-            </mat-form-field>
+            </mat-form-field> -->
             <mat-form-field appearance="fill">
               <mat-label>Previous Voting History</mat-label>
               <mat-select matNativeControl required formControlName="prevVotingHistory">
@@ -462,54 +469,54 @@
       <table class="table" style="">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th *ngIf="showName == true" scope="col">Name</th>
-            <th *ngIf="showMemberCode == true" scope="col">Member code</th>
-            <th *ngIf="showGuardianName == true" scope="col">Guardian Name</th>
-            <th *ngIf="showAge == true" scope="col">Age</th>
-            <th *ngIf="showGender == true" scope="col">Gender</th>
-            <th *ngIf="showPoliceStation == true" scope="col">Police Station</th>
-            <th *ngIf="showOcupation == true" scope="col">Occupation</th>
-            <th *ngIf="showReligion == true" scope="col">Religion</th>
-            <th *ngIf="showEmail == true" scope="col">Email</th>
-            <th *ngIf="showMobileOne == true" scope="col">mobile1</th>
-            <th *ngIf="showMobileTwo == true" scope="col">mobile2</th>
-            <th *ngIf="showVoterId == true" scope="col">voterId</th>
-            <th *ngIf="showAadharId == true" scope="col">Adhaar Id</th>
-            <th *ngIf="showCast == true" scope="col">Cast</th>
-            <th *ngIf="showPostOffice == true" scope="col">Post Office</th>
-            <th *ngIf="showHouseNo == true" scope="col">House No.</th>
-            <th *ngIf="showRoadNo == true" scope="col">Road Name</th>
-            <th *ngIf="showPinCode == true" scope="col">Pin code</th>
-            <th *ngIf="showPollingNumber == true" scope="col">pollingNumber</th>
-            <th *ngIf="showPhoto == true" scope="col">Picture</th>
+            <th class="text-center" scope="col">#</th>
+            <th class="text-center" *ngIf="showName == true" scope="col">Name</th>
+            <th class="text-center" *ngIf="showMemberCode == true" scope="col">Member code</th>
+            <th class="text-center" *ngIf="showGuardianName == true" scope="col">Guardian Name</th>
+            <th class="text-center" *ngIf="showAge == true" scope="col">Age</th>
+            <th class="text-center" *ngIf="showGender == true" scope="col">Gender</th>
+            <th class="text-center" *ngIf="showPoliceStation == true" scope="col">Police Station</th>
+            <th class="text-center" *ngIf="showOcupation == true" scope="col">Occupation</th>
+            <th class="text-center" *ngIf="showReligion == true" scope="col">Religion</th>
+            <th class="text-center" *ngIf="showEmail == true" scope="col">Email</th>
+            <th class="text-center" *ngIf="showMobileOne == true" scope="col">mobile1</th>
+            <th class="text-center" *ngIf="showMobileTwo == true" scope="col">mobile2</th>
+            <th class="text-center" *ngIf="showVoterId == true" scope="col">voterId</th>
+            <th class="text-center" *ngIf="showAadharId == true" scope="col">Adhaar Id</th>
+            <th class="text-center" *ngIf="showCast == true" scope="col">Cast</th>
+            <th class="text-center" *ngIf="showPostOffice == true" scope="col">Post Office</th>
+            <th class="text-center" *ngIf="showHouseNo == true" scope="col">House No.</th>
+            <th class="text-center" *ngIf="showRoadNo == true" scope="col">Road Name</th>
+            <th class="text-center" *ngIf="showPinCode == true" scope="col">Pin code</th>
+            <th class="text-center" *ngIf="showPollingNumber == true" scope="col">pollingNumber</th>
+            <th class="text-center" *ngIf="showPhoto == true" scope="col">Picture</th>
           </tr>
         </thead>
         <tbody *ngFor="let x of pollingMembers">
             <tr (click)="editVoters(x)">
-              <td scope="row">{{x.personId}}</td>
-              <td *ngIf="showName == true" scope="row">{{x.personName}}</td>
-              <td *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td>
-              <td *ngIf="showGuardianName == true" scope="row">{{x.guardianName}}</td>
-              <td *ngIf="showAge == true" scope="row">{{x.age}}</td>
-              <td *ngIf="showGender == true" scope="row">{{x.gender}}</td>
-              <td *ngIf="showPoliceStation == true" scope="row">{{x.police_station}}</td>
-              <td *ngIf="showOcupation == true" scope="row">{{x.occupation}}</td>
-              <td *ngIf="showReligion == true" scope="row">{{x.religion}}</td>
-              <td *ngIf="showEmail == true" scope="row">{{x.email}}</td>
-              <td *ngIf="showMobileOne == true" scope="row">{{x.mobile1}}</td>
-              <td *ngIf="showMobileTwo == true" scope="row">{{x.mobile2}}</td>
-              <td *ngIf="showVoterId == true" scope="row">{{x.voterId}}</td>
-              <td *ngIf="showAadharId == true" scope="row">{{x.aadharId}}</td>
-              <td *ngIf="showCast == true" scope="row">{{x.cast}}</td>
-              <td *ngIf="showPostOffice == true" scope="row">{{x.postOffice}}</td>
-              <td *ngIf="showHouseNo == true" scope="row">{{x.houseNo}}</td>
-              <td *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td>
-              <td *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td>
-              <td *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
-              <td *ngIf="showPhoto == true" scope="row" style="width: 56px; height: 55px; border: #e8c50e solid">
+              <td class="text-center pt-3" scope="row">{{x.personId}}</td>
+              <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
+              <td class="text-center pt-3" *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td>
+              <td class="text-center pt-3" *ngIf="showGuardianName == true" scope="row">{{x.guardianName}}</td>
+              <td class="text-center pt-3" *ngIf="showAge == true" scope="row">{{x.age}}</td>
+              <td class="text-center pt-3" *ngIf="showGender == true" scope="row">{{x.gender}}</td>
+              <td class="text-center pt-3" *ngIf="showPoliceStation == true" scope="row">{{x.police_station}}</td>
+              <td class="text-center pt-3" *ngIf="showOcupation == true" scope="row">{{x.occupation}}</td>
+              <td class="text-center pt-3" *ngIf="showReligion == true" scope="row">{{x.religion}}</td>
+              <td class="text-center pt-3" *ngIf="showEmail == true" scope="row">{{x.email}}</td>
+              <td class="text-center pt-3" *ngIf="showMobileOne == true" scope="row">{{x.mobile1}}</td>
+              <td class="text-center pt-3" *ngIf="showMobileTwo == true" scope="row">{{x.mobile2}}</td>
+              <td class="text-center pt-3" *ngIf="showVoterId == true" scope="row">{{x.voterId}}</td>
+              <td class="text-center pt-3" *ngIf="showAadharId == true" scope="row">{{x.aadharId}}</td>
+              <td class="text-center pt-3" *ngIf="showCast == true" scope="row">{{x.cast}}</td>
+              <td class="text-center pt-3" *ngIf="showPostOffice == true" scope="row">{{x.postOffice}}</td>
+              <td class="text-center pt-3" *ngIf="showHouseNo == true" scope="row">{{x.houseNo}}</td>
+              <td  class="text-center pt-3" *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td>
+              <td  class="text-center pt-3" *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td>
+              <td  class="text-center pt-3" *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
+              <td  class="text-center " *ngIf="showPhoto == true" scope="row" style="">
 <!--                <img loading="lazy" decoding="async" [src]="imageSrcTable + '' +x.personId + '.jpg'" style="width: 56px; height: 55px; border: #e8c50e solid" (error)="" alt="">-->
-                <img loading="lazy" decoding="async" [src]="this.imageSrcVoter + '' + x.personId + '.jpg'" style="width: 56px; height: 55px; border: #e8c50e solid"  alt="">
+                <img loading="lazy" decoding="async" [src]="this.imageSrcVoter + '' + x.personId + '.jpg'" style=" height: 50px; border: #e8c50e solid"  alt="">
               </td>
             </tr>
         </tbody>
