@@ -41,9 +41,17 @@ export class UserRegistrationService {
   saveNewUser(userData: any){
     return this.http.post<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/pollingAgent', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
-        console.log(response.data);
         this.pollingMembers.unshift(response.data);
         this.pollingMemberSubject.next([...this.pollingMembers]);
+      }));
+  }
+
+  updateExistingUser(userData: any){
+    return this.http.put<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/pollingAgent', userData)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        console.log(response.data);
+        // this.pollingMembers.unshift(response.data);
+        // this.pollingMemberSubject.next([...this.pollingMembers]);
       }));
   }
 

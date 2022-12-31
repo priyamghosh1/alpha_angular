@@ -106,7 +106,7 @@ export class MpLevelComponent implements OnInit {
     partNo: new FormControl(null, [Validators.required]),
     postOffice: new FormControl(null, [Validators.required]),
     houseNo: new FormControl(null, [Validators.required]),
-    state: new FormControl(null, [Validators.required]),
+    // state: new FormControl(null, [Validators.required]),
     district: new FormControl(null, [Validators.required]),
     pinCode: new FormControl(null, [Validators.required]),
     preferableCandidate: new FormControl(null, [Validators.required]),
@@ -399,7 +399,7 @@ export class MpLevelComponent implements OnInit {
         formData.append("remark", this.userForm.value.remark);
         formData.append("roadName", personFormData.roadName);
         formData.append("district", personFormData.district);
-        formData.append("state", personFormData.state);
+        // formData.append("state", personFormData.state);
 
         formData.append("file", this.file);
 
@@ -436,6 +436,71 @@ export class MpLevelComponent implements OnInit {
           // when error occured
           console.log('data saving error', error);
         });
+      }
+    });
+  }
+
+  updateMember(){
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Do you sure to create user?',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, create It!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // tslint:disable-next-line:max-line-length
+        // console.log(this.loggedInUser?.uniqueId);return;
+        const personFormData = this.personForm.value;
+        const userFormData = this.userForm.value;
+        const md5 = new Md5();
+        const passwordMd5 = md5.appendStr('1234').end();
+        const masterData = {
+          personId: personFormData.id,
+          personTypeId: 3,
+          personName: personFormData.personName,
+          age: personFormData.age,
+          gender: personFormData.gender,
+          // email: this.loggedInUser?.uniqueId,
+
+
+          // religion: new FormControl(null, [Validators.required]),
+          religion: personFormData.religion,
+          occupation: personFormData.occupation,
+          policeStation: personFormData.policeStation,
+          cast: personFormData.cast,
+          partNo: personFormData.partNo,
+          postOffice: personFormData.postOffice,
+          houseNo: personFormData.houseNo,
+          guardianName: personFormData.guardianName,
+          aadharId: personFormData.aadharId,
+
+          state: personFormData.state,
+          district: personFormData.district,
+          pinCode: personFormData.pinCode,
+          preferableCandidate: personFormData.preferableCandidate,
+          satisfiedByPresentGov: personFormData.satisfiedByPresentGov,
+          suggestion: personFormData.suggestion,
+          previousVotingHistory: personFormData.prevVotingHistory,
+
+          email: personFormData.email,
+          password: passwordMd5,
+          mobile1: personFormData.mobile1,
+          mobile2: personFormData.mobile2,
+          voterId: personFormData.voterId,
+          pollingStationId: personFormData.pollingStationId,
+          parentId: this.loggedInUser?.uniqueId,
+          remark: this.userForm.value.remark,
+          roadName: personFormData.roadName,
+
+        };
+        // formData.append("state", personFormData.state);
+        this.userRegistrationService.updateExistingUser(masterData).subscribe(response => {
+
+        });
+
       }
     });
   }
@@ -509,8 +574,10 @@ export class MpLevelComponent implements OnInit {
       remark: voter.remark,
       roadName: voter.roadName,
     });
-
+    console.log(voter);
     this.imageSrc = this.imageSrcVoter + '' + voter.id + '.jpg'
+
+    // this.onchange(this.imageSrc);
 
     // var reader = new FileReader();
     // reader.readAsDataURL(tempImg);
