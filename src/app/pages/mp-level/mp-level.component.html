@@ -111,7 +111,9 @@
 
           <div>
             <button class="m-2 bg-warning btn" mat-button matStepperNext>Next</button>
-            <button type="submit" class="btn btn-info" (click)="onSubmit()">Submit</button>
+            <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
+            <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info" (click)="onSubmit()">Submit</button>
+            <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info" (click)="onSubmit()">Update</button>
 
           </div>
         </form>
@@ -195,7 +197,9 @@
 
           <div>
             <button class="m-2 bg-warning btn" matStepperPrevious>Back</button>
-            <button type="submit" class="btn btn-info" (click)="onSubmit()">Submit</button>
+            <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
+            <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info" (click)="onSubmit()">Submit</button>
+            <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info" (click)="onSubmit()">Update</button>
           </div>
         </form>
       </mat-step>

@@ -157,7 +157,7 @@ export class MpLevelComponent implements OnInit {
   showPinCode = false;
   showPollingNumber = false;
 
-
+  isUpdateAble = false;
   areas: Area[] = [];
   pollingMembers: PollingMember[] = [];
   loggedInUser: User | undefined;
@@ -274,15 +274,12 @@ export class MpLevelComponent implements OnInit {
     }
     // @ts-ignore
     this.file = event.target.files[0];
-    // console.log(this.file);
 
     var reader = new FileReader();
     reader.readAsDataURL(this.file);
     reader.onload = (_event) => {
-      // this.msg = "";
       this.imageSrc = reader.result;
     }
-    // this.imageSrc = reader.result;
   }
 
   getAllArea() {
@@ -371,7 +368,7 @@ export class MpLevelComponent implements OnInit {
 
         const formData = new FormData();
         // @ts-ignore
-        formData.append("personTypeId", 3);
+        formData.append("personTypeId", 10);
         formData.append("personName", personFormData.personName);
         formData.append("age", personFormData.age);
         formData.append("gender", personFormData.gender);
@@ -406,11 +403,6 @@ export class MpLevelComponent implements OnInit {
 
         formData.append("file", this.file);
 
-
-
-        console.log("test",formData);
-        // return;
-        // console.log(masterData);
         this.userRegistrationService.saveNewUser(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
@@ -507,7 +499,7 @@ export class MpLevelComponent implements OnInit {
       preferableCandidate: voter.preferableCandidate,
       satisfiedByPresentGov: voter.satisfiedByPresentGov,
       suggestion: voter.suggestion,
-      previousVotingHistory: voter.previousVotingHistory,
+      prevVotingHistory: voter.previousVotingHistory,
       password: voter.password,
       mobile1: voter.mobile1,
       mobile2: voter.mobile2,
@@ -517,6 +509,24 @@ export class MpLevelComponent implements OnInit {
       remark: voter.remark,
       roadName: voter.roadName,
     });
+
+    this.imageSrc = this.imageSrcVoter + '' + voter.id + '.jpg'
+
+    // var reader = new FileReader();
+    // reader.readAsDataURL(tempImg);
+    // reader.onload = (_event) => {
+    //   this.imageSrc = reader.result;
+    // }
+
+    this.isUpdateAble = true;
+  }
+
+  clearForms(){
+    this.personForm.reset();
+    this.userForm.reset();
+    // @ts-ignore
+    this.file = File;
+    this.isUpdateAble = false;
   }
 
   changeShowStatus(x: any, y: any) {
