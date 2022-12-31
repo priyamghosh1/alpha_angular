@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   BASE_API_URL: 'http://127.0.0.1:8000/api',
   //BASE_API_URL: '/alpha_project/alpha_api/public/api',
-  BASE_PUBLIC_URL: '/alpha_project/alpha_api/public',
+  BASE_PUBLIC_URL: 'http://127.0.0.1/alpha_project/alpha_api/public',
 };
 
 /*

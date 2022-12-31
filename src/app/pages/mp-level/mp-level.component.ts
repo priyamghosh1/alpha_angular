@@ -13,6 +13,7 @@ import { AssemblyService } from 'src/app/services/assembly.service';
 import { PollingMember } from "../../models/PollingMember";
 import { HttpClient } from '@angular/common/http';
 import {CommonService} from "../../services/common.service";
+import {environment} from "../../../environments/environment";
 
 
 
@@ -169,6 +170,8 @@ export class MpLevelComponent implements OnInit {
   genderList = ["male", "female",  "others" ];
   file: File;
 
+  private BASE_PUBLIC_URL=environment.BASE_PUBLIC_URL;
+
 
   constructor(
     private userRegistrationService: UserRegistrationService,
@@ -189,8 +192,11 @@ export class MpLevelComponent implements OnInit {
     });
     this.states = this.areaService.getstate();
 
-    this.defaultPicture = this.commonService.getPublic() + '/profile_pic/no_dp.png';
-    this.imageSrcVoter = this.commonService.getPublic() + '/voter_pic/';
+    // this.defaultPicture = this.commonService.getPublic() + '/profile_pic/no_dp.png';
+    // this.imageSrcVoter = this.commonService.getPublic() + '/voter_pic/';
+
+    this.defaultPicture = this.BASE_PUBLIC_URL + '/profile_pic/no_dp.png';
+    this.imageSrcVoter = this.BASE_PUBLIC_URL + '/voter_pic/';
 
     // const user = localStorage.getItem('user');
     // if (user){
