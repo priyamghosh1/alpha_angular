@@ -1,4 +1,4 @@
-<div class="container pt-1" style="background-color: rgb(255, 255, 255); color: black !important;">
+<div class="container pt-1" style="background-color: rgb(255, 255, 255); color: black !important;" [hidden]="true">
 
 
 
@@ -55,12 +55,12 @@
                 </mat-form-field>
               </div>
               <div>
-<!--                <mat-form-field appearance="fill">-->
-<!--                  <mat-label>State</mat-label>-->
-<!--                  <mat-select matNativeControl required formControlName="state">-->
-<!--                    <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>-->
-<!--                  </mat-select>-->
-<!--                </mat-form-field>-->
+                <!--                <mat-form-field appearance="fill">-->
+                <!--                  <mat-label>State</mat-label>-->
+                <!--                  <mat-select matNativeControl required formControlName="state">-->
+                <!--                    <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>-->
+                <!--                  </mat-select>-->
+                <!--                </mat-form-field>-->
                 <mat-form-field appearance="fill">
                   <mat-label>District</mat-label>
                   <mat-select matNativeControl required formControlName="district">
@@ -93,8 +93,7 @@
               </div>
             </div>
             <!--            <div class="fluid" style="background-color: white; max-height: 12vh; max-width: 12vw; margin: 2%; " >-->
-            <div class="fluid"
-              style="background-color: white; max-height: 100px;  margin: 2%; text-align: center ">
+            <div class="fluid" style="background-color: white; max-height: 100px;  margin: 2%; text-align: center ">
               <!--              <img id="img" style="max-height: 100px;  max-width: 100px;" src="http://127.0.0.1/alpha_project/alpha_api/public/profile_pic/profile_pic_1.jpeg">-->
               <!--              <input class="form-control" accept="image/png, image/gif, image/jpeg, image/jpg" type="file" #fileUploader>-->
               <button [matMenuTriggerFor]="test1" [disabled]="isUpdateAble == true">
@@ -112,8 +111,10 @@
           <div>
             <button class="m-2 bg-warning btn" mat-button matStepperNext>Next</button>
             <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
-            <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info" (click)="onSubmit()">Submit</button>
-            <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info" (click)="updateMember()">Update</button>
+            <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
+              (click)="onSubmit()">Submit</button>
+            <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info"
+              (click)="updateMember()">Update</button>
 
           </div>
         </form>
@@ -198,7 +199,8 @@
           <div>
             <button class="m-2 bg-warning btn" matStepperPrevious>Back</button>
             <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
-            <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info" (click)="onSubmit()">Submit</button>
+            <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
+              (click)="onSubmit()">Submit</button>
             <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info" (click)="onSubmit()">Update</button>
           </div>
         </form>
@@ -454,7 +456,7 @@
         class="p-1 example-margin">Cast</mat-checkbox>
       <mat-checkbox [checked]="showAadharId" (change)="changeShowStatus('showAadharId', $event.checked)"
         class="p-1 example-margin">Aadhar Id</mat-checkbox>
-        <mat-checkbox [checked]="showPhoto" (change)="changeShowStatus('showPhoto', $event.checked)"
+      <mat-checkbox [checked]="showPhoto" (change)="changeShowStatus('showPhoto', $event.checked)"
         class="p-1 example-margin">Aadhar Id</mat-checkbox>
     </div>
 
@@ -497,32 +499,33 @@
           </tr>
         </thead>
         <tbody *ngFor="let x of pollingMembers">
-            <tr (click)="editVoters(x)">
-              <td class="text-center pt-3" scope="row">{{x.personId}}</td>
-              <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
-              <td class="text-center pt-3" *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td>
-              <td class="text-center pt-3" *ngIf="showGuardianName == true" scope="row">{{x.guardianName}}</td>
-              <td class="text-center pt-3" *ngIf="showAge == true" scope="row">{{x.age}}</td>
-              <td class="text-center pt-3" *ngIf="showGender == true" scope="row">{{x.gender}}</td>
-              <td class="text-center pt-3" *ngIf="showPoliceStation == true" scope="row">{{x.police_station}}</td>
-              <td class="text-center pt-3" *ngIf="showOcupation == true" scope="row">{{x.occupation}}</td>
-              <td class="text-center pt-3" *ngIf="showReligion == true" scope="row">{{x.religion}}</td>
-              <td class="text-center pt-3" *ngIf="showEmail == true" scope="row">{{x.email}}</td>
-              <td class="text-center pt-3" *ngIf="showMobileOne == true" scope="row">{{x.mobile1}}</td>
-              <td class="text-center pt-3" *ngIf="showMobileTwo == true" scope="row">{{x.mobile2}}</td>
-              <td class="text-center pt-3" *ngIf="showVoterId == true" scope="row">{{x.voterId}}</td>
-              <td class="text-center pt-3" *ngIf="showAadharId == true" scope="row">{{x.aadharId}}</td>
-              <td class="text-center pt-3" *ngIf="showCast == true" scope="row">{{x.cast}}</td>
-              <td class="text-center pt-3" *ngIf="showPostOffice == true" scope="row">{{x.postOffice}}</td>
-              <td class="text-center pt-3" *ngIf="showHouseNo == true" scope="row">{{x.houseNo}}</td>
-              <td  class="text-center pt-3" *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td>
-              <td  class="text-center pt-3" *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td>
-              <td  class="text-center pt-3" *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
-              <td  class="text-center " *ngIf="showPhoto == true" scope="row" style="">
-<!--                <img loading="lazy" decoding="async" [src]="imageSrcTable + '' +x.personId + '.jpg'" style="width: 56px; height: 55px; border: #e8c50e solid" (error)="" alt="">-->
-                <img loading="lazy" decoding="async" [src]="this.imageSrcVoter + '' + x.personId + '.jpg'" style=" height: 50px; border: #e8c50e solid"  alt="">
-              </td>
-            </tr>
+          <tr (click)="editVoters(x)">
+            <td class="text-center pt-3" scope="row">{{x.personId}}</td>
+            <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
+            <td class="text-center pt-3" *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td>
+            <td class="text-center pt-3" *ngIf="showGuardianName == true" scope="row">{{x.guardianName}}</td>
+            <td class="text-center pt-3" *ngIf="showAge == true" scope="row">{{x.age}}</td>
+            <td class="text-center pt-3" *ngIf="showGender == true" scope="row">{{x.gender}}</td>
+            <td class="text-center pt-3" *ngIf="showPoliceStation == true" scope="row">{{x.police_station}}</td>
+            <td class="text-center pt-3" *ngIf="showOcupation == true" scope="row">{{x.occupation}}</td>
+            <td class="text-center pt-3" *ngIf="showReligion == true" scope="row">{{x.religion}}</td>
+            <td class="text-center pt-3" *ngIf="showEmail == true" scope="row">{{x.email}}</td>
+            <td class="text-center pt-3" *ngIf="showMobileOne == true" scope="row">{{x.mobile1}}</td>
+            <td class="text-center pt-3" *ngIf="showMobileTwo == true" scope="row">{{x.mobile2}}</td>
+            <td class="text-center pt-3" *ngIf="showVoterId == true" scope="row">{{x.voterId}}</td>
+            <td class="text-center pt-3" *ngIf="showAadharId == true" scope="row">{{x.aadharId}}</td>
+            <td class="text-center pt-3" *ngIf="showCast == true" scope="row">{{x.cast}}</td>
+            <td class="text-center pt-3" *ngIf="showPostOffice == true" scope="row">{{x.postOffice}}</td>
+            <td class="text-center pt-3" *ngIf="showHouseNo == true" scope="row">{{x.houseNo}}</td>
+            <td class="text-center pt-3" *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td>
+            <td class="text-center pt-3" *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td>
+            <td class="text-center pt-3" *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
+            <td class="text-center " *ngIf="showPhoto == true" scope="row" style="">
+              <!--                <img loading="lazy" decoding="async" [src]="imageSrcTable + '' +x.personId + '.jpg'" style="width: 56px; height: 55px; border: #e8c50e solid" (error)="" alt="">-->
+              <img loading="lazy" decoding="async" [src]="this.imageSrcVoter + '' + x.personId + '.jpg'"
+                style=" height: 50px; border: #e8c50e solid" alt="">
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -544,4 +547,27 @@
     </div>
   </div>
 
+</div>
+<div>
+  <button class="btn btn-primary" aria-label=" Generate Bill" (click)="viewBill()">
+    View Bill
+  </button>
+  <button class="btn-primary" mat-stroked-button printSectionId="printBillDiv" [printStyle]="printDivStyle"
+    ngxPrint><mat-icon>print</mat-icon>
+  </button>
+</div>
+<!-- <div [hidden]="!showBill"> -->
+<div [hidden]="false">
+  <div id="printBillDiv">
+    <div class="printDiv" style="border: 1px solid black !important; min-width: 200px; float: left !important;">
+      dfgdfgfdgd
+    </div>
+    <div class="printDiv" style="border: 1px solid black; min-width: 200px; float: left !important;">
+      dfgdfgfdgd
+    </div>
+    <div class="printDiv" style="border: 1px solid black; min-width: 200px; float: left !important;">
+      dfgdfgfdgd
+    </div>
+
+  </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { AreaService } from 'src/app/services/area.service';
 import { UserRegistrationService } from 'src/app/services/user-registration.service';
 import { Area } from 'src/app/models/area.model';
@@ -93,46 +93,46 @@ export class MpLevelComponent implements OnInit {
 
   // items = this.cartService.getItems();
 
-  personForm = new FormGroup({
-    id: new FormControl(null),
-    personTypeId: new FormControl(null, [Validators.required]),
-    personName: new FormControl(null, [Validators.required]),
-    email: new FormControl(null, [Validators.required]),
-    guardianName: new FormControl(null, [Validators.required]),
-    religion: new FormControl(null, [Validators.required]),
-    occupation: new FormControl(null, [Validators.required]),
-    policeStation: new FormControl(null, [Validators.required]),
-    cast: new FormControl(null, [Validators.required]),
-    partNo: new FormControl(null, [Validators.required]),
-    postOffice: new FormControl(null, [Validators.required]),
-    houseNo: new FormControl(null, [Validators.required]),
+  personForm = new UntypedFormGroup({
+    id: new UntypedFormControl(null),
+    personTypeId: new UntypedFormControl(null, [Validators.required]),
+    personName: new UntypedFormControl(null, [Validators.required]),
+    email: new UntypedFormControl(null, [Validators.required]),
+    guardianName: new UntypedFormControl(null, [Validators.required]),
+    religion: new UntypedFormControl(null, [Validators.required]),
+    occupation: new UntypedFormControl(null, [Validators.required]),
+    policeStation: new UntypedFormControl(null, [Validators.required]),
+    cast: new UntypedFormControl(null, [Validators.required]),
+    partNo: new UntypedFormControl(null, [Validators.required]),
+    postOffice: new UntypedFormControl(null, [Validators.required]),
+    houseNo: new UntypedFormControl(null, [Validators.required]),
     // state: new FormControl(null, [Validators.required]),
-    district: new FormControl(null, [Validators.required]),
-    pinCode: new FormControl(null, [Validators.required]),
-    preferableCandidate: new FormControl(null, [Validators.required]),
-    suggestion: new FormControl(null, [Validators.required]),
-    prevVotingHistory: new FormControl(null, [Validators.required]),
-    satisfiedByPresentGov: new FormControl(null, [Validators.required]),
-    age: new FormControl(null, [Validators.required]),
-    gender: new FormControl(null, [Validators.required]),
-    mobile1: new FormControl(null, [Validators.required]),
-    mobile2: new FormControl(null),
-    aadharId: new FormControl(null, [Validators.required]),
-    roadName: new FormControl(null),
-    voterId: new FormControl(null, [Validators.required]),
-    pollingStationId: new FormControl(null, [Validators.required]),
+    district: new UntypedFormControl(null, [Validators.required]),
+    pinCode: new UntypedFormControl(null, [Validators.required]),
+    preferableCandidate: new UntypedFormControl(null, [Validators.required]),
+    suggestion: new UntypedFormControl(null, [Validators.required]),
+    prevVotingHistory: new UntypedFormControl(null, [Validators.required]),
+    satisfiedByPresentGov: new UntypedFormControl(null, [Validators.required]),
+    age: new UntypedFormControl(null, [Validators.required]),
+    gender: new UntypedFormControl(null, [Validators.required]),
+    mobile1: new UntypedFormControl(null, [Validators.required]),
+    mobile2: new UntypedFormControl(null),
+    aadharId: new UntypedFormControl(null, [Validators.required]),
+    roadName: new UntypedFormControl(null),
+    voterId: new UntypedFormControl(null, [Validators.required]),
+    pollingStationId: new UntypedFormControl(null, [Validators.required]),
     // remark: new FormControl(null),
   });
 
-  userForm = new FormGroup({
-    id: new FormControl(null),
-    personId: new FormControl(null, [Validators.required]),
-    parentId: new FormControl(null, [Validators.required]),
-    areaId: new FormControl(null),
-    remark: new FormControl(null, [Validators.required]),
-    areaDescription: new FormControl(null, [Validators.required]),
-    email: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required]),
+  userForm = new UntypedFormGroup({
+    id: new UntypedFormControl(null),
+    personId: new UntypedFormControl(null, [Validators.required]),
+    parentId: new UntypedFormControl(null, [Validators.required]),
+    areaId: new UntypedFormControl(null),
+    remark: new UntypedFormControl(null, [Validators.required]),
+    areaDescription: new UntypedFormControl(null, [Validators.required]),
+    email: new UntypedFormControl(null, [Validators.required]),
+    password: new UntypedFormControl(null, [Validators.required]),
   });
   //
 
@@ -170,6 +170,9 @@ export class MpLevelComponent implements OnInit {
   genderList = ["male", "female",  "others" ];
   file: File;
 
+  showBill = false;
+
+
   private BASE_PUBLIC_URL=environment.BASE_PUBLIC_URL;
 
 
@@ -177,10 +180,10 @@ export class MpLevelComponent implements OnInit {
     private userRegistrationService: UserRegistrationService,
     private authService: AuthService,
     private pollingStationService: PollingStationService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private areaService: AreaService,
     private http: HttpClient,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private commonService: CommonService
   ) {
 
@@ -215,11 +218,16 @@ export class MpLevelComponent implements OnInit {
 
   }
 
-
+  printDivStyle = {
+    printBillDiv: {marginRight : '3px', marginLeft : '3px', marginTop : '5px'},
+    table: {'border-collapse': 'collapse', width : '100%'},
+    label: {width: '100%'},
+    div: {border: '1px  solid black'}
+  };
 
   ngOnInit(): void {
 
-
+    this.showBill = false;
 
     this.areas = this.areaService.getArea();
     this.areaService.getGameTypeListener().subscribe((response: Area[]) => {
@@ -255,6 +263,13 @@ export class MpLevelComponent implements OnInit {
 
 
 
+  }
+
+  viewBill(){
+    if(this.showBill==false)
+      this.showBill = true;
+    else
+    this.showBill = false;
   }
 
   onChange(event: Event){

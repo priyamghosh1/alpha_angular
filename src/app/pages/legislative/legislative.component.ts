@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {PollingMember} from "../../models/PollingMember";
 import {User} from "../../models/user.model";
 import {UserRegistrationService} from "../../services/user-registration.service";
@@ -16,31 +16,31 @@ import {PollingVolunteer} from "../../models/PollingVolunteer";
   styleUrls: ['./legislative.component.scss']
 })
 export class LegislativeComponent implements OnInit {
-  personForm = new FormGroup({
-    id: new FormControl(null),
-    personTypeId: new FormControl(null, [Validators.required]),
-    personName: new FormControl(null, [Validators.required]),
-    email: new FormControl(null, [Validators.required]),
+  personForm = new UntypedFormGroup({
+    id: new UntypedFormControl(null),
+    personTypeId: new UntypedFormControl(null, [Validators.required]),
+    personName: new UntypedFormControl(null, [Validators.required]),
+    email: new UntypedFormControl(null, [Validators.required]),
     // areaId: new FormControl(null, [Validators.required]),
-    age: new FormControl(null),
-    gender: new FormControl(null),
-    mobile1: new FormControl(null),
-    mobile2: new FormControl(null),
-    aadharId: new FormControl(null),
-    voterId: new FormControl(null, [Validators.required]),
-    pollingStationId: new FormControl(null),
-    remark: new FormControl(null)
+    age: new UntypedFormControl(null),
+    gender: new UntypedFormControl(null),
+    mobile1: new UntypedFormControl(null),
+    mobile2: new UntypedFormControl(null),
+    aadharId: new UntypedFormControl(null),
+    voterId: new UntypedFormControl(null, [Validators.required]),
+    pollingStationId: new UntypedFormControl(null),
+    remark: new UntypedFormControl(null)
   });
 
-  userForm = new FormGroup({
-    id: new FormControl(null),
-    personId: new FormControl(null, [Validators.required]),
-    parentId: new FormControl(null, [Validators.required]),
-    areaId: new FormControl(null),
-    remark: new FormControl(null, [Validators.required]),
-    areaDescription: new FormControl(null, [Validators.required]),
-    email: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required]),
+  userForm = new UntypedFormGroup({
+    id: new UntypedFormControl(null),
+    personId: new UntypedFormControl(null, [Validators.required]),
+    parentId: new UntypedFormControl(null, [Validators.required]),
+    areaId: new UntypedFormControl(null),
+    remark: new UntypedFormControl(null, [Validators.required]),
+    areaDescription: new UntypedFormControl(null, [Validators.required]),
+    email: new UntypedFormControl(null, [Validators.required]),
+    password: new UntypedFormControl(null, [Validators.required]),
   });
 
   pollingVolunteers: PollingVolunteer[] = [];
@@ -52,7 +52,7 @@ export class LegislativeComponent implements OnInit {
     private userRegistrationService: UserRegistrationService,
     private authService: AuthService,
     private pollingStationService: PollingStationService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private areaService: AreaService
   ) { }
 

@@ -13,6 +13,10 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatMenuModule} from "@angular/material/menu";
 import { MatOptionModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+import {NgxPrintModule} from 'ngx-print';
 
 
 @NgModule({
@@ -34,7 +38,10 @@ import { MatOptionModule } from '@angular/material/core';
     MatStepperModule,
     MatMenuModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatIconModule,
+    MatButtonModule,
+    NgxPrintModule
     // FormGroupModule,
   ]
 })
