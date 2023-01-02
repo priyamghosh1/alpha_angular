@@ -31,6 +31,7 @@ import { SidenavMpModule } from './sidenavs/sidenav-mp/sidenav-mp.module';
 import {SidenavLegislativeModule} from "./sidenavs/sidenav-legislative/sidenav-legislative.module";
 import {SidenavPollingVolunteerModule} from "./sidenavs/sidenav-polling-volunteer/sidenav-polling-volunteer.module";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import { SidenavVolunteerModule } from './sidenavs/sidenav-volunteer/sidenav-volunteer.module';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
         SidenavOwnerModule,
         SidenavDeveloperModule,
         SidenavMpModule,
+        SidenavVolunteerModule,
         FontAwesomeModule,
         MatProgressSpinnerModule,
         SidenavLegislativeModule,

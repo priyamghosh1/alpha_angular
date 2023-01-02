@@ -21,6 +21,7 @@ const routes: Routes = [
   },
   { path: 'owner', loadChildren: () => import('./pages/owner/owner.module').then(m => m.OwnerModule) },
   { path: 'mp', loadChildren: () => import('./pages/mp-level/mp-level.module').then(m => m.MpLevelModule) },
+  { path: 'volunteer', loadChildren: () => import('./volunteer/volunteer.module').then(m => m.VolunteerModule) },
   { path: 'legislative', loadChildren: () => import('./pages/legislative/legislative.module').then(m => m.LegislativeModule) },
   { path: 'assemblyAdminDashboard', loadChildren: () => import('./pages/assembly-admin-dashboard/assembly-admin-dashboard.module').then(m => m.AssemblyAdminDashboardModule) },
 
@@ -67,9 +68,13 @@ const routes: Routes = [
 
   { path: 'boothVolunteer', loadChildren: () => import('./booth-volunteer/booth-volunteer.module').then(m => m.BoothVolunteerModule) },
 
-  { path: 'volunteer', loadChildren: () => import('./volunteer/volunteer.module').then(m => m.VolunteerModule) },
+  // { path: 'volunteer', loadChildren: () => import('.pages/volunteer/v').then(m => m.VolunteerModule) },
 
   { path: 'legendVolunteer', loadChildren: () => import('./legend-volunteer/legend-volunteer.module').then(m => m.LegendVolunteerModule) },
+
+  { path: 'sidenavVolunteer', loadChildren: () => import('./sidenavs/sidenav-volunteer/sidenav-volunteer.module').then(m => m.SidenavVolunteerModule) },
+
+  // { path: 'volunteer', loadChildren: () => import('./pages/volunteer/volunteer.module').then(m => m.VolunteerModule) },
 
 
 ];
