@@ -553,7 +553,7 @@
 
 
 <div>
-  <button class="btn btn-primary" aria-label=" Generate Bill" (click)="viewBill()" [hidden]="true">
+  <button class="btn btn-primary" aria-label=" Generate Bill" (click)="viewBill()" [hidden]="false">
     View voters list
   </button>
   <button class="btn-primary" mat-stroked-button printSectionId="printBillDiv" [printStyle]="printDivStyle"
@@ -577,7 +577,7 @@
         House No: {{x.houseNo}}
       </div>
       <div class="printDiv"
-        style="border: 1px solid black !important; min-width: 100px; float: left !important; text-align: right;">
+        style=" min-width: 100px; float: left !important; text-align: right;">
         <div>{{x.voterId}}</div>
         <img [src]="this.imageSrcVoter + '' + x.personId + '.jpg'" style=" height: 65px; width: 40px; border: #000000 solid" alt="">
       </div>
