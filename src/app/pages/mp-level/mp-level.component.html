@@ -1,4 +1,4 @@
-<div class="container pt-1" style="background-color: rgb(255, 255, 255); color: black !important;" [hidden]="true">
+<div class="container pt-1" style="background-color: rgb(255, 255, 255); color: black !important;" [hidden]="showBill">
 
 
 
@@ -548,26 +548,46 @@
   </div>
 
 </div>
+
+
+
+
 <div>
-  <button class="btn btn-primary" aria-label=" Generate Bill" (click)="viewBill()">
-    View Bill
+  <button class="btn btn-primary" aria-label=" Generate Bill" (click)="viewBill()" [hidden]="true">
+    View voters list
   </button>
   <button class="btn-primary" mat-stroked-button printSectionId="printBillDiv" [printStyle]="printDivStyle"
     ngxPrint><mat-icon>print</mat-icon>
   </button>
 </div>
+<!-- {{pollingMembers | json}} -->
+<!-- {{this.imageSrcVoter}} -->
 <!-- <div [hidden]="!showBill"> -->
-<div [hidden]="false">
-  <div id="printBillDiv">
+<div [hidden]="!showBill">
+  <div id="printBillDiv" style="font-size: xx-small !important;">
+
+    <div class="printDiv" *ngFor="let x of pollingMembers; let i=index"
+      style="border: #000000 solid; min-width: 200px; float: left !important; padding: 4px;">
+      <div class="printDiv" style="  min-width: 100px; max-width: 100px !important; float: left !important; font-size: xx-small !important;">
+        <div style="border: #000000 solid;  text-align: right;">{{i+1}}</div>
+        <span>Name: {{x.personName}}</span><br>
+        Guardian's Name: {{x.guardianName}}<br>
+        Age: {{x.age}}
+        Gender: {{x.gender}}<br>
+        House No: {{x.houseNo}}
+      </div>
+      <div class="printDiv"
+        style="border: 1px solid black !important; min-width: 100px; float: left !important; text-align: right;">
+        <div>{{x.voterId}}</div>
+        <img [src]="this.imageSrcVoter + '' + x.personId + '.jpg'" style=" height: 65px; width: 40px; border: #000000 solid" alt="">
+      </div>
+    </div>
+    <!-- <div class="printDiv" style="border: 1px solid black; min-width: 200px; float: left !important;">
+      dfgdfgfdgd
+    </div>
     <div class="printDiv" style="border: 1px solid black !important; min-width: 200px; float: left !important;">
       dfgdfgfdgd
-    </div>
-    <div class="printDiv" style="border: 1px solid black; min-width: 200px; float: left !important;">
-      dfgdfgfdgd
-    </div>
-    <div class="printDiv" style="border: 1px solid black; min-width: 200px; float: left !important;">
-      dfgdfgfdgd
-    </div>
+    </div> -->
 
   </div>
 </div>
