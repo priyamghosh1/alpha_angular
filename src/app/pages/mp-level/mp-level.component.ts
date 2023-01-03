@@ -14,6 +14,7 @@ import { PollingMember } from "../../models/PollingMember";
 import { HttpClient } from '@angular/common/http';
 import {CommonService} from "../../services/common.service";
 import {environment} from "../../../environments/environment";
+import * as XLSX from 'xlsx';
 
 
 
@@ -266,10 +267,22 @@ export class MpLevelComponent implements OnInit {
   }
 
   viewBill(){
-    if(this.showBill==false)
-      this.showBill = true;
-    else
-    this.showBill = false;
+    this.showBill = !this.showBill;
+  }
+
+  exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, 'test.xlsx');
+
   }
 
   onChange(event: Event){
