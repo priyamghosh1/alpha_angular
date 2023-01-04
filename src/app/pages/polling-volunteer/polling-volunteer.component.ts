@@ -165,6 +165,15 @@ export class PollingVolunteerComponent implements OnInit {
     this.userRegistrationService.getAllGeneralMembersByPollingId(this.loggedInUser?.uniqueId).subscribe((response: {status:string,message:string,data:GeneralMember[]}) => {
       this.pollingGeneralMembers =  response.data;
     });
+    this.userRegistrationService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: { status: string, message: string, data: PollingMember[] }) => {
+      this.pollingMembers = response.data;
+    });
+    this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {
+      status: boolean,
+      message: string, data: any
+    }) => {
+      this.pollingStations = response.data;
+    });
     this.userRegistrationService.getAllGeneralMembersByPollingIdListener().subscribe((response: any) => {
       this.pollingGeneralMembers = response;
     });
@@ -308,7 +317,7 @@ export class PollingVolunteerComponent implements OnInit {
         const userFormData = this.userForm.value;
         const md5 = new Md5();
         const passwordMd5 = md5.appendStr('1234').end();
-        
+
 
         const formData = new FormData();
         // @ts-ignore
@@ -347,7 +356,7 @@ export class PollingVolunteerComponent implements OnInit {
 
         formData.append("file", this.file);
 
-        this.userRegistrationService.saveNewUser(formData).subscribe(response => {
+        this.userRegistrationService.saveNewVolunteer(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
             this.volunteers=response.data;

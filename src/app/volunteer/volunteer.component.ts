@@ -167,6 +167,7 @@ export class VolunteerComponent implements OnInit {
     this.imageSrcVoter = this.BASE_PUBLIC_URL + '/voter_pic/';
 
 
+
     if (this.states.length < 2) {
       this.states.id = 1;
     }
@@ -180,12 +181,17 @@ export class VolunteerComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.loggedInUser = this.authService.userBehaviorSubject.value;
 
     this.showBill = false;
 
     this.areas = this.areaService.getArea();
     this.areaService.getGameTypeListener().subscribe((response: Area[]) => {
       this.areas = response;
+    });
+
+    this.userRegistrationService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: { status: string, message: string, data: PollingMember[] }) => {
+      this.pollingMembers = response.data;
     });
 
     this.areaService.getStateListener().subscribe((response) => {
@@ -200,7 +206,6 @@ export class VolunteerComponent implements OnInit {
     }) => {
       this.pollingStations = response.data;
     });
-
 
     this.userRegistrationService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: { status: string, message: string, data: PollingMember[] }) => {
       this.pollingMembers = response.data;
@@ -283,7 +288,7 @@ export class VolunteerComponent implements OnInit {
         const userFormData = this.userForm.value;
         const md5 = new Md5();
         const passwordMd5 = md5.appendStr('1234').end();
-        
+
 
         const formData = new FormData();
         // @ts-ignore
@@ -420,7 +425,7 @@ export class VolunteerComponent implements OnInit {
     });
   }
 
-  
+
 
   editVoters(voter: any){
     // console.log(voter);
