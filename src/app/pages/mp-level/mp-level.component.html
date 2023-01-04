@@ -499,7 +499,7 @@
           </tr>
         </thead>
         <tbody *ngFor="let x of pollingMembers">
-          <tr (click)="editVoters(x)">
+          <tr (dblclick)="editVoters(x)">
             <td class="text-center pt-3" scope="row">{{x.personId}}</td>
             <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
             <td class="text-center pt-3" *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td>
