@@ -8,6 +8,7 @@ import {PollingMember} from "../models/PollingMember";
 import {Subject} from 'rxjs';
 import {PollingVolunteer} from "../models/PollingVolunteer";
 import {GeneralMember} from "../models/GeneralMember";
+import {ServerResponse} from "../models/ServerResponse.model";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class UserRegistrationService {
   private BASE_API_URL = environment.BASE_API_URL;
   pollingMemberSubject = new Subject<any[]>();
   pollingVolunteerSubject = new Subject<any[]>();
+  volunteerAgentByPolingAgentSubject = new Subject<any[]>();
   generalVolunteerSubject = new Subject<any[]>();
   pollingMembers: PollingMember[] = [];
   pollingVolunteers: PollingVolunteer[] = [];
@@ -63,7 +65,21 @@ export class UserRegistrationService {
       }));
   }
 
+  getVolunteerByPointAgentListener(){
+    return this.volunteerAgentByPolingAgentSubject.asObservable();
+  }
 
+  getVolunteerByPolingAgent(pollingAgentId: number){
+    // return  this.http.get(this.BASE_API_URL + '/volunteer/' + pollingAgentId).subscribe((response: ServerResponse) => {
+    //   console.log(response);
+    // });
+
+    return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/volunteer/'+ pollingAgentId)
+      .pipe(catchError(this.errorService.serverError),
+        tap((response : {status:string,message:string,data:any[]}) => {
+          console.log(response);
+        }));
+  }
 
 
   getAllVolunteersByPollingId(userParentId:number):any{

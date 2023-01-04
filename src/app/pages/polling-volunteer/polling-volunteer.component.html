@@ -363,6 +363,7 @@
           <tr>
             <th class="text-center" scope="col">#</th>
             <th class="text-center" *ngIf="showName == true" scope="col">Name</th>
+            <th class="text-center" scope="col">Email</th>
             <th class="text-center" *ngIf="showMemberCode == true" scope="col">Member code</th>
             <th class="text-center" *ngIf="showGuardianName == true" scope="col">Guardian Name</th>
             <th class="text-center" *ngIf="showAge == true" scope="col">Age</th>
@@ -384,10 +385,11 @@
             <th class="text-center" *ngIf="showPhoto == true" scope="col">Picture</th>
           </tr>
         </thead>
-        <tbody *ngFor="let x of pollingMembers">
-          <tr (click)="editVoters(x)">
+        <tbody *ngFor="let x of volunteerByPolingAgent">
+          <tr (dblclick)="editVoters(x)">
             <td class="text-center pt-3" scope="row">{{x.personId}}</td>
             <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
+            <td class="text-center pt-3" scope="row">{{x.email}}</td>
             <td class="text-center pt-3" *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td>
             <td class="text-center pt-3" *ngIf="showGuardianName == true" scope="row">{{x.guardianName}}</td>
             <td class="text-center pt-3" *ngIf="showAge == true" scope="row">{{x.age}}</td>

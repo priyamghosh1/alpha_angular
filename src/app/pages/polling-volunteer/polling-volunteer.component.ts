@@ -79,6 +79,7 @@ export class PollingVolunteerComponent implements OnInit {
   pollingMembers: PollingMember[] = [];
   volunteers: any;
   isUpdateAble = false;
+  volunteerByPolingAgent: any[] = [];
 
   isLinear = false;
 
@@ -177,6 +178,9 @@ export class PollingVolunteerComponent implements OnInit {
     this.userRegistrationService.getAllGeneralMembersByPollingIdListener().subscribe((response: any) => {
       this.pollingGeneralMembers = response;
     });
+    this.userRegistrationService.getVolunteerByPolingAgent(this.loggedInUser.uniqueId).subscribe((response: any) => {
+      this.volunteerByPolingAgent = response.data;
+    })
   }
 
   viewBill(){
