@@ -2,7 +2,7 @@
 .scroll::-webkit-scrollbar {
     display: none;
   }
-  
+
   /* Hide scrollbar for IE, Edge and Firefox */
   .scroll {
     -ms-overflow-style: none;  /* IE and Edge */
@@ -12,7 +12,7 @@
   .mat-stepper-horizontal {
     margin-top: 8px;
   }
-  
+
   .mat-mdc-form-field {
     margin-top: 16px;
   }
@@ -27,6 +27,9 @@
     float: left !important;
   }
 
+  input{
+  text-transform: uppercase;
+ }
 
 
   @media print {
