@@ -59,6 +59,7 @@ const routes: Routes = [
   { path: 'sidenavLegislative', loadChildren: () => import('./sidenavs/sidenav-legislative/sidenav-legislative.module').then(m => m.SidenavLegislativeModule) },
 
   { path: 'pollingVolunteer', loadChildren: () => import('./pages/polling-volunteer/polling-volunteer.module').then(m => m.PollingVolunteerModule) },
+  { path: 'assemblyConstituency', loadChildren: () => import('./assembly-constituency/assembly-constituency.module').then(m => m.AssemblyConstituencyModule) },
 
   { path: 'sidenavPollingVolunteer', loadChildren: () => import('./sidenavs/sidenav-polling-volunteer/sidenav-polling-volunteer.module').then(m => m.SidenavPollingVolunteerModule) },
 
@@ -73,6 +74,8 @@ const routes: Routes = [
   { path: 'legendVolunteer', loadChildren: () => import('./legend-volunteer/legend-volunteer.module').then(m => m.LegendVolunteerModule) },
 
   { path: 'sidenavVolunteer', loadChildren: () => import('./sidenavs/sidenav-volunteer/sidenav-volunteer.module').then(m => m.SidenavVolunteerModule) },
+
+  { path: 'sidenav-assembly-constituency', loadChildren: () => import('./sidenavs/sidenav-assembly-constituency/sidenav-assembly-constituency.module').then(m => m.SidenavAssemblyConstituencyModule) },
 
   // { path: 'volunteer', loadChildren: () => import('./pages/volunteer/volunteer.module').then(m => m.VolunteerModule) },
 

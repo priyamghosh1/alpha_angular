@@ -9,7 +9,6 @@ import { AuthService } from '../services/auth.service';
 import { PollingStationService } from '../services/polling-station.service';
 import { UserRegistrationService } from '../services/user-registration.service';
 import * as XLSX from 'xlsx';
-import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -106,15 +105,15 @@ export class AssemblyConstituencyComponent implements OnInit {
     // id: new UntypedFormControl(null),
     personTypeId: new UntypedFormControl(null, [Validators.required]),
     personName: new UntypedFormControl(null, [Validators.required]),
-    email: new UntypedFormControl(''),
-    guardianName: new UntypedFormControl(''),
+    email: new UntypedFormControl(null, [Validators.required]),
+    guardianName: new UntypedFormControl(null, [Validators.required]),
     religion: new UntypedFormControl(null, [Validators.required]),
     occupation: new UntypedFormControl(null, [Validators.required]),
     policeStation: new UntypedFormControl(null, [Validators.required]),
     cast: new UntypedFormControl(null, [Validators.required]),
     partNo: new UntypedFormControl(null, [Validators.required]),
     postOffice: new UntypedFormControl(null, [Validators.required]),
-    houseNo: new UntypedFormControl(''),
+    houseNo: new UntypedFormControl(null, [Validators.required]),
     // state: new FormControl(null, [Validators.required]),
     district: new UntypedFormControl(null, [Validators.required]),
     pinCode: new UntypedFormControl(null, [Validators.required]),
@@ -122,7 +121,7 @@ export class AssemblyConstituencyComponent implements OnInit {
     suggestion: new UntypedFormControl(null, [Validators.required]),
     prevVotingHistory: new UntypedFormControl(null, [Validators.required]),
     satisfiedByPresentGov: new UntypedFormControl(null, [Validators.required]),
-    age: new UntypedFormControl(''),
+    age: new UntypedFormControl(null, [Validators.required]),
     gender: new UntypedFormControl(null, [Validators.required]),
     mobile1: new UntypedFormControl('', [Validators.required]),
     mobile2: new UntypedFormControl(''),
@@ -136,7 +135,6 @@ export class AssemblyConstituencyComponent implements OnInit {
   pollingMembers: PollingMember[] = [];
   loggedInUser: User | undefined;
   // public assemblyConstituencyId: number;
-  private BASE_PUBLIC_URL = environment.BASE_PUBLIC_URL;
 
 
 
@@ -152,11 +150,6 @@ export class AssemblyConstituencyComponent implements OnInit {
       this.states = response;
     });
     this.states = this.areaService.getstate();
-
-
-
-    this.defaultPicture = this.BASE_PUBLIC_URL + '/profile_pic/no_dp.png';
-    this.imageSrcVoter = this.BASE_PUBLIC_URL + '/voter_pic/';
   }
 
   ngOnInit(): void {

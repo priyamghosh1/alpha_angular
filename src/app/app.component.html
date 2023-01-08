@@ -6,7 +6,7 @@
       <app-sidenav-legislative *ngIf="authService.isLegislativeCandidate()"></app-sidenav-legislative>
       <app-sidenav-polling-volunteer *ngIf="authService.isPollingStationVolunteer()"></app-sidenav-polling-volunteer>
       <app-sidenav-volunteer *ngIf="authService.isVolunteer()"></app-sidenav-volunteer>
-      <!-- <app-sidenav-owner *ngIf="authService.isOwner()"></app-sidenav-owner> -->
+      <app-sidenav-assembly-constituency *ngIf="authService.isAssemblyConstituency()"></app-sidenav-assembly-constituency>
 
     </mat-drawer>
     <mat-drawer-content>
