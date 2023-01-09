@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     }
     // console.log(this.loginForm.value);
     // converting password to MD5
-    console.log(this.assemblyData);
+    // console.log(this.assemblyData);
     let loginType = 'others';
     if(this.assemblyData!=''){
       console.log(this.assemblyData.assembly.assemblyId);

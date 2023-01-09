@@ -124,7 +124,7 @@ export class AuthService {
     }
   }
 
-  
+
 
 
   // isRefinish(): boolean{
@@ -159,6 +159,40 @@ export class AuthService {
     const loadedUser = new User(userData.uniqueId, userData.userName, userData._authKey, userData.userTypeId,userData.userTypeName,userData.assemblyConstituencyId);
     if (loadedUser.authKey){
       this.userBehaviorSubject.next(loadedUser);
+      if (this.isOwner()){
+        this.router.navigate(['/owner']).then(r => {});
+      }
+      if (this.isDeveloper()){
+        this.router.navigate(['/developer']).then(r => {});
+      }
+      if (this.isLegislativeCandidate()){
+        this.router.navigate(['/mp']).then(r => {});
+      }
+
+      if (this.isLegendPanel()){
+        this.router.navigate(['/legendVolunteer']).then(r => {});
+      }
+
+      if (this.isDistrictAdminPanel()){
+        this.router.navigate(['/districtAdminPanel']).then(r => {});
+      }
+
+      if (this.isAssemblyConstituency()){
+        this.router.navigate(['/assemblyConstituency']).then(r => {});
+      }
+
+      if (this.isBoothVolunteer()){
+        this.router.navigate(['/boothVolunteer']).then(r => {});
+      }
+
+      if (this.isVolunteer()){
+        this.router.navigate(['/volunteer']).then(r => {});
+      }
+
+      if (this.isPollingStationVolunteer()){
+        this.router.navigate(['/pollingVolunteer']).then(r => {});
+      }
+      // this.userBehaviorSubject.next(loadedUser);
     }
   }
 
