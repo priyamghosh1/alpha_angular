@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VolunteerComponent } from './volunteer.component';
+import {VolunteerGuard} from "../services/volunteer.guard";
 
-const routes: Routes = [{ path: '', component: VolunteerComponent }];
+const routes: Routes = [{ path: '', canActivate : [VolunteerGuard], component: VolunteerComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
