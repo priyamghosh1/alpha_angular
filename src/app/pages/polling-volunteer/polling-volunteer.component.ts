@@ -325,7 +325,7 @@ export class PollingVolunteerComponent implements OnInit {
 
         const formData = new FormData();
         // @ts-ignore
-        formData.append("personTypeId", 9);
+        formData.append("personTypeId", 8);
         formData.append("personName", personFormData.personName);
         formData.append("age", personFormData.age);
         formData.append("gender", personFormData.gender);
