@@ -108,28 +108,28 @@ export class AssemblyConstituencyComponent implements OnInit {
     personName: new UntypedFormControl(null, [Validators.required]),
     email: new UntypedFormControl(''),
     guardianName: new UntypedFormControl(''),
-    religion: new UntypedFormControl(null, [Validators.required]),
-    occupation: new UntypedFormControl(null, [Validators.required]),
-    policeStation: new UntypedFormControl(null, [Validators.required]),
-    cast: new UntypedFormControl(null, [Validators.required]),
-    partNo: new UntypedFormControl(null, [Validators.required]),
+    religion: new UntypedFormControl(''),
+    occupation: new UntypedFormControl(''),
+    policeStation: new UntypedFormControl(''),
+    cast: new UntypedFormControl(''),
+    partNo: new UntypedFormControl(''),
     postOffice: new UntypedFormControl(null, [Validators.required]),
     houseNo: new UntypedFormControl(''),
     // state: new FormControl(null, [Validators.required]),
-    district: new UntypedFormControl(null, [Validators.required]),
-    pinCode: new UntypedFormControl(null, [Validators.required]),
-    preferableCandidate: new UntypedFormControl(null, [Validators.required]),
-    suggestion: new UntypedFormControl(null, [Validators.required]),
+    district: new UntypedFormControl(''),
+    pinCode: new UntypedFormControl(''),
+    preferableCandidate: new UntypedFormControl(''),
+    suggestion: new UntypedFormControl(''),
     prevVotingHistory: new UntypedFormControl(null, [Validators.required]),
     satisfiedByPresentGov: new UntypedFormControl(null, [Validators.required]),
     age: new UntypedFormControl(''),
     gender: new UntypedFormControl(null, [Validators.required]),
-    mobile1: new UntypedFormControl('', [Validators.required]),
+    mobile1: new UntypedFormControl(''),
     mobile2: new UntypedFormControl(''),
-    aadharId: new UntypedFormControl('', [Validators.required]),
+    aadharId: new UntypedFormControl(''),
     roadName: new UntypedFormControl(null),
-    voterId: new UntypedFormControl(null, [Validators.required]),
-    pollingStationId: new UntypedFormControl(null, [Validators.required]),
+    voterId: new UntypedFormControl(''),
+    pollingStationId: new UntypedFormControl(''),
     // remark: new FormControl(null),
   });
   pollingStations: any;
@@ -203,16 +203,16 @@ export class AssemblyConstituencyComponent implements OnInit {
 
   onSubmit(): void {
 
-    if (!this.file.size) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Upload Photo',
-        showConfirmButton: false,
-        timer: 3000
-      });
-      return;
-    }
+    // if (!this.file.size) {
+    //   Swal.fire({
+    //     position: 'top-end',
+    //     icon: 'error',
+    //     title: 'Upload Photo',
+    //     showConfirmButton: false,
+    //     timer: 3000
+    //   });
+    //   return;
+    // }
 
     Swal.fire({
       title: 'Confirmation',
@@ -304,7 +304,7 @@ export class AssemblyConstituencyComponent implements OnInit {
         formData.append("district", personFormData.district);
         // formData.append("state", personFormData.state);
 
-        formData.append("file", this.file);
+        // formData.append("file", this.file);
 
         this.userRegistrationService.saveNewVolunteer(formData).subscribe(response => {
           if (response.status) {

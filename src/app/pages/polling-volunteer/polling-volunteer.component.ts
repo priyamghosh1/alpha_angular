@@ -26,16 +26,16 @@ export class PollingVolunteerComponent implements OnInit {
     personTypeId: new UntypedFormControl(null, [Validators.required]),
     personName: new UntypedFormControl(null, [Validators.required]),
     email: new UntypedFormControl(null, [Validators.required]),
-    guardianName: new UntypedFormControl(null, [Validators.required]),
-    religion: new UntypedFormControl(null, [Validators.required]),
-    occupation: new UntypedFormControl(null, [Validators.required]),
-    policeStation: new UntypedFormControl(null, [Validators.required]),
-    cast: new UntypedFormControl(null, [Validators.required]),
-    partNo: new UntypedFormControl(null, [Validators.required]),
-    postOffice: new UntypedFormControl(null, [Validators.required]),
-    houseNo: new UntypedFormControl(null, [Validators.required]),
-    // state: new FormControl(null, [Validators.required]),
-    district: new UntypedFormControl(null, [Validators.required]),
+    guardianName: new UntypedFormControl(''),
+    religion: new UntypedFormControl(''),
+    occupation: new UntypedFormControl(''),
+    policeStation: new UntypedFormControl(''),
+    cast: new UntypedFormControl(''),
+    partNo: new UntypedFormControl(''),
+    postOffice: new UntypedFormControl(''),
+    houseNo: new UntypedFormControl(''),
+    // state: new FormControl(''),
+    district: new UntypedFormControl(''),
     pinCode: new UntypedFormControl(null, [Validators.required]),
     preferableCandidate: new UntypedFormControl(null, [Validators.required]),
     suggestion: new UntypedFormControl(null, [Validators.required]),
@@ -43,12 +43,12 @@ export class PollingVolunteerComponent implements OnInit {
     satisfiedByPresentGov: new UntypedFormControl(null, [Validators.required]),
     age: new UntypedFormControl(null, [Validators.required]),
     gender: new UntypedFormControl(null, [Validators.required]),
-    mobile1: new UntypedFormControl(null, [Validators.required]),
+    mobile1: new UntypedFormControl(''),
     mobile2: new UntypedFormControl(null),
-    aadharId: new UntypedFormControl(null, [Validators.required]),
+    aadharId: new UntypedFormControl(''),
     roadName: new UntypedFormControl(null),
-    voterId: new UntypedFormControl(null, [Validators.required]),
-    pollingStationId: new UntypedFormControl(null, [Validators.required]),
+    voterId: new UntypedFormControl(''),
+    pollingStationId: new UntypedFormControl(''),
     // remark: new FormControl(null),
   });
   userForm = new UntypedFormGroup({
@@ -294,16 +294,16 @@ export class PollingVolunteerComponent implements OnInit {
 
   onSubmit(): void {
 
-    if(!this.file.size){
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Upload Photo',
-        showConfirmButton: false,
-        timer: 3000
-      });
-      return;
-    }
+    // if(!this.file.size){
+    //   Swal.fire({
+    //     position: 'top-end',
+    //     icon: 'error',
+    //     title: 'Upload Photo',
+    //     showConfirmButton: false,
+    //     timer: 3000
+    //   });
+    //   return;
+    // }
 
     Swal.fire({
       title: 'Confirmation',
@@ -325,7 +325,7 @@ export class PollingVolunteerComponent implements OnInit {
 
         const formData = new FormData();
         // @ts-ignore
-        formData.append("personTypeId", 9);
+        formData.append("personTypeId", 8);
         formData.append("personName", personFormData.personName);
         formData.append("age", personFormData.age);
         formData.append("gender", personFormData.gender);
@@ -358,7 +358,7 @@ export class PollingVolunteerComponent implements OnInit {
         formData.append("district", personFormData.district);
         // formData.append("state", personFormData.state);
 
-        formData.append("file", this.file);
+        // formData.append("file", this.file);
 
         this.userRegistrationService.saveNewVolunteer(formData).subscribe(response => {
           if (response.status) {

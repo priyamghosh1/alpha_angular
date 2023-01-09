@@ -1,4 +1,6 @@
-<!-- <p>district-admin-panel works!</p> -->
+<!-- <p>general-member-with-booth-volunteer works!</p> -->
+
+<!-- <p>booth-volunteer works!</p> -->
 
 
 <!-- <h3>Create General Worker:</h3>
@@ -104,7 +106,7 @@
 
 
 <div class="container pt-1" style="background-color: rgb(255, 255, 255); color: black !important;" [hidden]="showBill">
-    <h3><u>Create Polling Volunteer</u> </h3>
+    <h3><u>Create General Member</u> </h3>
   
     <div>
       <!-- test2 -->
@@ -163,27 +165,23 @@
                   <!--                    <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>-->
                   <!--                  </mat-select>-->
                   <!--                </mat-form-field>-->
-                                 <mat-form-field appearance="fill">
-                                   <mat-label>District</mat-label>
-                                   <mat-select matNativeControl required formControlName="district">
-                                     <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
-                                   </mat-select>
-                                 </mat-form-field>
-                                 <mat-form-field appearance="fill">
-                                  <mat-label>Email</mat-label>
-                                  <input matInput placeholder="Email" formControlName="email" required>
-                                </mat-form-field>
+                  <!--                <mat-form-field appearance="fill">-->
+                  <!--                  <mat-label>District</mat-label>-->
+                  <!--                  <mat-select matNativeControl required formControlName="district">-->
+                  <!--                    <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>-->
+                  <!--                  </mat-select>-->
+                  <!--                </mat-form-field>-->
                   <!-- <mat-form-field appearance="fill">
                     <mat-label>Religion</mat-label>
                     <mat-select matNativeControl required formControlName="religion">
                       <mat-option [value]="x" *ngFor="let x of religion">{{x}}</mat-option>
                     </mat-select>
-                  </mat-form-field> -->
-                  <!-- <mat-form-field appearance="fill">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
                     <mat-label>Occupation</mat-label>
                     <input matInput placeholder="Occupation" formControlName="occupation" required>
-                  </mat-form-field> -->
-                  <!-- <mat-form-field appearance="fill">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
                     <mat-label>Polling No.</mat-label>
                     <mat-select matNativeControl required formControlName="pollingStationId">
                       <mat-option [value]="x.pollingStationId"
@@ -191,10 +189,14 @@
                     </mat-select>
   
                   </mat-form-field> -->
-                  <!-- <mat-form-field appearance="fill">
+                  <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="Email" formControlName="email" required>
-                  </mat-form-field> -->
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Aadhar Id</mat-label>
+                    <input matInput placeholder="Aadhar Id" formControlName="aadharId" required>
+                  </mat-form-field>
                 </div>
                 <div>
                   <!-- <mat-form-field appearance="fill">
@@ -230,7 +232,7 @@
               <!--            <button class="m-2 bg-warning btn" mat-button matStepperNext>Next</button>-->
               <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
               <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
-                (click)="onSubmit()">Submit</button>
+                (click)="onSubmitVolunteer()">Submit</button>
               <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info"
                 (click)="updateMember()">Update</button>
   
@@ -438,3 +440,4 @@
         </div>
       </div> -->
   </div>
+

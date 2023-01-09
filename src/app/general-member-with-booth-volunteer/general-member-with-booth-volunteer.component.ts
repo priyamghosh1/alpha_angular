@@ -13,11 +13,12 @@ import * as XLSX from 'xlsx';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-booth-volunteer',
-  templateUrl: './booth-volunteer.component.html',
-  styleUrls: ['./booth-volunteer.component.scss']
+  selector: 'app-general-member-with-booth-volunteer',
+  templateUrl: './general-member-with-booth-volunteer.component.html',
+  styleUrls: ['./general-member-with-booth-volunteer.component.scss']
 })
-export class BoothVolunteerComponent implements OnInit {
+export class GeneralMemberWithBoothVolunteerComponent implements OnInit {
+
 
   showBill = false;
   isLinear = false;
@@ -115,19 +116,19 @@ export class BoothVolunteerComponent implements OnInit {
     partNo: new UntypedFormControl(''),
     postOffice: new UntypedFormControl(''),
     houseNo: new UntypedFormControl(''),
-    // state: new FormControl(''),
-    district: new UntypedFormControl(''),
+    // state: new FormControl(null, [Validators.required]),
+    district: new UntypedFormControl(null, [Validators.required]),
     pinCode: new UntypedFormControl(''),
-    preferableCandidate: new UntypedFormControl(''),
-    suggestion: new UntypedFormControl(''),
+    preferableCandidate: new UntypedFormControl(null, [Validators.required]),
+    suggestion: new UntypedFormControl(null, [Validators.required]),
     prevVotingHistory: new UntypedFormControl(null, [Validators.required]),
     satisfiedByPresentGov: new UntypedFormControl(null, [Validators.required]),
     age: new UntypedFormControl(''),
     gender: new UntypedFormControl(null, [Validators.required]),
-    mobile1: new UntypedFormControl('', [Validators.required]),
+    mobile1: new UntypedFormControl(''),
     mobile2: new UntypedFormControl(''),
-    aadharId: new UntypedFormControl('', [Validators.required]),
-    roadName: new UntypedFormControl(null),
+    aadharId: new UntypedFormControl(''),
+    roadName: new UntypedFormControl(''),
     voterId: new UntypedFormControl(''),
     pollingStationId: new UntypedFormControl(''),
     // remark: new FormControl(null),
@@ -167,6 +168,7 @@ export class BoothVolunteerComponent implements OnInit {
       this.pollingStations = response.data;
     });
   }
+
   printDivStyle = {
     printBillDiv: { marginRight: '3px', marginLeft: '3px', marginTop: '5px' },
     table: { 'border-collapse': 'collapse', width: '100%' },
@@ -266,7 +268,7 @@ export class BoothVolunteerComponent implements OnInit {
 
         const formData = new FormData();
         // @ts-ignore
-        formData.append("personTypeId", 9);
+        formData.append("personTypeId", 10);
         formData.append("personName", personFormData.personName);
         formData.append("age", personFormData.age);
         formData.append("gender", personFormData.gender);
@@ -504,5 +506,6 @@ export class BoothVolunteerComponent implements OnInit {
 
 
   }
+
 
 }

@@ -60,6 +60,9 @@ const routes: Routes = [
 
   { path: 'pollingVolunteer', loadChildren: () => import('./pages/polling-volunteer/polling-volunteer.module').then(m => m.PollingVolunteerModule) },
   { path: 'assemblyConstituency', loadChildren: () => import('./assembly-constituency/assembly-constituency.module').then(m => m.AssemblyConstituencyModule) },
+  { path: 'boothVolunteer', loadChildren: () => import('./booth-volunteer/booth-volunteer.module').then(m => m.BoothVolunteerModule) },
+  { path: 'boothVolunteerCreateGeneralMember', loadChildren: () => import('./general-member-with-booth-volunteer/general-member-with-booth-volunteer.module').then(m => m.GeneralMemberWithBoothVolunteerModule) },
+  { path: 'DitrictAdmin', loadChildren: () => import('./pages/district-admin-panel/district-admin-panel.module').then(m => m.DistrictAdminPanelModule) },
 
   { path: 'sidenavPollingVolunteer', loadChildren: () => import('./sidenavs/sidenav-polling-volunteer/sidenav-polling-volunteer.module').then(m => m.SidenavPollingVolunteerModule) },
 
@@ -76,6 +79,12 @@ const routes: Routes = [
   { path: 'sidenavVolunteer', loadChildren: () => import('./sidenavs/sidenav-volunteer/sidenav-volunteer.module').then(m => m.SidenavVolunteerModule) },
 
   { path: 'sidenav-assembly-constituency', loadChildren: () => import('./sidenavs/sidenav-assembly-constituency/sidenav-assembly-constituency.module').then(m => m.SidenavAssemblyConstituencyModule) },
+
+  { path: 'sidenavBoothVolunteer', loadChildren: () => import('./sidenavs/sidenav-booth-volunteer/sidenav-booth-volunteer.module').then(m => m.SidenavBoothVolunteerModule) },
+
+  { path: 'GeneralMemberWithBoothVolunteer', loadChildren: () => import('./general-member-with-booth-volunteer/general-member-with-booth-volunteer.module').then(m => m.GeneralMemberWithBoothVolunteerModule) },
+
+  { path: 'sidenavDistricttAdmin', loadChildren: () => import('./sidenavs/sidenav-districtt-admin/sidenav-districtt-admin.module').then(m => m.SidenavDistricttAdminModule) },
 
   // { path: 'volunteer', loadChildren: () => import('./pages/volunteer/volunteer.module').then(m => m.VolunteerModule) },
 

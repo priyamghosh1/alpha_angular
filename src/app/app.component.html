@@ -7,6 +7,8 @@
       <app-sidenav-polling-volunteer *ngIf="authService.isPollingStationVolunteer()"></app-sidenav-polling-volunteer>
       <app-sidenav-volunteer *ngIf="authService.isVolunteer()"></app-sidenav-volunteer>
       <app-sidenav-assembly-constituency *ngIf="authService.isAssemblyConstituency()"></app-sidenav-assembly-constituency>
+      <app-sidenav-booth-volunteer *ngIf="authService.isBoothVolunteer()"></app-sidenav-booth-volunteer>
+      <app-sidenav-districtt-admin *ngIf="authService.isDistrictAdminPanel()"></app-sidenav-districtt-admin>
 
     </mat-drawer>
     <mat-drawer-content>

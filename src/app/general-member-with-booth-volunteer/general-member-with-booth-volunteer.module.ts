@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BoothVolunteerRoutingModule } from './booth-volunteer-routing.module';
-import { BoothVolunteerComponent } from './booth-volunteer.component';
+import { GeneralMemberWithBoothVolunteerRoutingModule } from './general-member-with-booth-volunteer-routing.module';
+import { GeneralMemberWithBoothVolunteerComponent } from './general-member-with-booth-volunteer.component';
 import { NgxPrintModule } from 'ngx-print';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,17 +14,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
   declarations: [
-    BoothVolunteerComponent
+    GeneralMemberWithBoothVolunteerComponent
   ],
   imports: [
     CommonModule,
-    BoothVolunteerRoutingModule,
+    GeneralMemberWithBoothVolunteerRoutingModule,
 
     FormsModule,
     MatFormFieldModule,
@@ -44,4 +45,4 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     NgxPrintModule
   ]
 })
-export class BoothVolunteerModule { }
+export class GeneralMemberWithBoothVolunteerModule { }

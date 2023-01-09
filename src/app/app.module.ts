@@ -33,6 +33,8 @@ import {SidenavPollingVolunteerModule} from "./sidenavs/sidenav-polling-voluntee
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { SidenavVolunteerModule } from './sidenavs/sidenav-volunteer/sidenav-volunteer.module';
 import { SidenavAssemblyConstituencyModule } from './sidenavs/sidenav-assembly-constituency/sidenav-assembly-constituency.module';
+import { SidenavBoothVolunteerModule } from './sidenavs/sidenav-booth-volunteer/sidenav-booth-volunteer.module';
+import { SidenavDistricttAdminModule } from './sidenavs/sidenav-districtt-admin/sidenav-districtt-admin.module';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { SidenavAssemblyConstituencyModule } from './sidenavs/sidenav-assembly-c
         MatProgressSpinnerModule,
         SidenavLegislativeModule,
         SidenavPollingVolunteerModule,
-        SidenavAssemblyConstituencyModule
+        SidenavAssemblyConstituencyModule,
+        SidenavBoothVolunteerModule,
+        SidenavDistricttAdminModule
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

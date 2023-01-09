@@ -124,33 +124,43 @@
                                     <mat-label>Guardian Name</mat-label>
                                     <input matInput placeholder="Guardian Name" formControlName="guardianName" required>
                                 </mat-form-field> -->
-                <!-- <mat-form-field appearance="fill">
+                <mat-form-field appearance="fill">
                                     <mat-label>Age</mat-label>
                                     <input matInput placeholder="Your age" formControlName="age" required>
-                                </mat-form-field> -->
-                <mat-form-field appearance="fill">
+                                </mat-form-field>
+                <!-- <mat-form-field appearance="fill">
                   <mat-label>Gender</mat-label>
                   <mat-select matNativeControl required formControlName="gender">
                     <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
                   </mat-select>
-                </mat-form-field>
+                </mat-form-field> -->
               </div>
               <div>
                 <!-- <mat-form-field appearance="fill">
                                     <mat-label>House No.</mat-label>
                                     <input matInput placeholder="House No." formControlName="houseNo" required>
                                 </mat-form-field> -->
-                <mat-form-field appearance="fill">
+                <!-- <mat-form-field appearance="fill">
                   <mat-label>Road Name</mat-label>
                   <input matInput placeholder="Road Name" formControlName="roadName" required>
-                </mat-form-field>
-                <mat-form-field appearance="fill">
+                </mat-form-field> -->
+                <!-- <mat-form-field appearance="fill">
                   <mat-label>Voter No.</mat-label>
                   <input matInput placeholder="Voter No." formControlName="voterId" required>
-                </mat-form-field>
-                <mat-form-field appearance="fill">
+                </mat-form-field> -->
+                <!-- <mat-form-field appearance="fill">
                   <mat-label>Mobile1</mat-label>
                   <input matInput placeholder="Mobile1" formControlName="mobile1" required>
+                </mat-form-field> -->
+                <mat-form-field appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="Email" formControlName="email" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Gender</mat-label>
+                  <mat-select matNativeControl required formControlName="gender">
+                    <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
+                  </mat-select>
                 </mat-form-field>
               </div>
               <div>
@@ -166,16 +176,16 @@
                 <!--                    <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>-->
                 <!--                  </mat-select>-->
                 <!--                </mat-form-field>-->
-                <mat-form-field appearance="fill">
+                <!-- <mat-form-field appearance="fill">
                   <mat-label>Religion</mat-label>
                   <mat-select matNativeControl required formControlName="religion">
                     <mat-option [value]="x" *ngFor="let x of religion">{{x}}</mat-option>
                   </mat-select>
-                </mat-form-field>
-                <mat-form-field appearance="fill">
+                </mat-form-field> -->
+                <!-- <mat-form-field appearance="fill">
                   <mat-label>Occupation</mat-label>
                   <input matInput placeholder="Occupation" formControlName="occupation" required>
-                </mat-form-field>
+                </mat-form-field> -->
                 <mat-form-field appearance="fill">
                   <mat-label>Polling No.</mat-label>
                   <mat-select matNativeControl required formControlName="pollingStationId">
@@ -190,10 +200,10 @@
                 </mat-form-field> -->
               </div>
               <div>
-                <mat-form-field appearance="fill">
+                <!-- <mat-form-field appearance="fill">
                   <mat-label>Aadhar Id</mat-label>
                   <input matInput placeholder="Aadhar Id" formControlName="aadharId" required>
-                </mat-form-field>
+                </mat-form-field> -->
                 <!--                <mat-form-field appearance="fill">-->
                 <!--                  <mat-label>Polling No.</mat-label>-->
                 <!--                  <mat-select matNativeControl required formControlName="pollingStationId">-->
@@ -207,11 +217,11 @@
             <div class="fluid" style="background-color: white; max-height: 100px;  margin: 2%; text-align: right ">
               <!--              <img id="img" style="max-height: 100px;  max-width: 100px;" src="http://127.0.0.1/alpha_project/alpha_api/public/profile_pic/profile_pic_1.jpeg">-->
               <!--              <input class="form-control" accept="image/png, image/gif, image/jpeg, image/jpg" type="file" #fileUploader>-->
-              <button [matMenuTriggerFor]="test1" [disabled]="isUpdateAble == true">
+              <!-- <button [matMenuTriggerFor]="test1" [disabled]="isUpdateAble == true">
                 <div style=" border: #e8c50e solid">
                   <img style="width: 100px; height: 100px" [src]="imageSrc" (error)="imageSrc = defaultPicture">
                 </div>
-              </button>
+              </button> -->
               <mat-menu #test1="matMenu">
                 <input [disabled]="isUpdateAble == true" type="file" name="filename" (change)="onChange($event)">
               </mat-menu>

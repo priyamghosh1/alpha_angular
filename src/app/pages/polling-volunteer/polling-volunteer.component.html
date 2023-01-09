@@ -120,10 +120,10 @@
                   <mat-label>Name</mat-label>
                   <input matInput placeholder="Last name, First name" formControlName="personName"  required>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
+                <!-- <mat-form-field appearance="fill">
                   <mat-label>Guardian Name</mat-label>
                   <input matInput placeholder="Guardian Name" formControlName="guardianName" required>
-                </mat-form-field>
+                </mat-form-field> -->
                 <mat-form-field appearance="fill">
                   <mat-label>Age</mat-label>
                   <input matInput placeholder="Your age" formControlName="age" required>
@@ -137,6 +137,18 @@
               </div>
               <div>
                 <mat-form-field appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="Email" formControlName="email" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Polling No.</mat-label>
+                  <mat-select matNativeControl required formControlName="pollingStationId">
+                    <mat-option [value]="x.pollingStationId"
+                      *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <!-- <mat-form-field appearance="fill">
                   <mat-label>House No.</mat-label>
                   <input matInput placeholder="House No." formControlName="houseNo" required>
                 </mat-form-field>
@@ -151,7 +163,7 @@
                 <mat-form-field appearance="fill">
                   <mat-label>Mobile1</mat-label>
                   <input matInput placeholder="Mobile1" formControlName="mobile1" required>
-                </mat-form-field>
+                </mat-form-field> -->
               </div>
               <div>
                 <!--                <mat-form-field appearance="fill">-->
@@ -166,7 +178,7 @@
 <!--                    <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>-->
 <!--                  </mat-select>-->
 <!--                </mat-form-field>-->
-                <mat-form-field appearance="fill">
+                <!-- <mat-form-field appearance="fill">
                   <mat-label>Religion</mat-label>
                   <mat-select matNativeControl required formControlName="religion">
                     <mat-option [value]="x" *ngFor="let x of religion">{{x}}</mat-option>
@@ -175,31 +187,31 @@
                 <mat-form-field appearance="fill">
                   <mat-label>Occupation</mat-label>
                   <input matInput placeholder="Occupation" formControlName="occupation" required>
-                </mat-form-field>
+                </mat-form-field> -->
               </div>
               <div>
-                <mat-form-field appearance="fill">
+                <!-- <mat-form-field appearance="fill">
                   <mat-label>Aadhar Id</mat-label>
                   <input matInput placeholder="Aadhar Id" formControlName="aadharId" required>
-                </mat-form-field>
-<!--                <mat-form-field appearance="fill">-->
-<!--                  <mat-label>Polling No.</mat-label>-->
-<!--                  <mat-select matNativeControl required formControlName="pollingStationId">-->
-<!--                    <mat-option [value]="x.pollingStationId"-->
-<!--                      *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>-->
-<!--                  </mat-select>-->
-<!--                </mat-form-field>-->
+                </mat-form-field> -->
+               <!-- <mat-form-field appearance="fill">
+                 <mat-label>Polling No.</mat-label>
+                 <mat-select matNativeControl required formControlName="pollingStationId">
+                   <mat-option [value]="x.pollingStationId"
+                     *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
+                 </mat-select>
+               </mat-form-field> -->
               </div>
             </div>
             <!--            <div class="fluid" style="background-color: white; max-height: 12vh; max-width: 12vw; margin: 2%; " >-->
             <div class="fluid" style="background-color: white; max-height: 100px;  margin: 2%; text-align: center ">
               <!--              <img id="img" style="max-height: 100px;  max-width: 100px;" src="http://127.0.0.1/alpha_project/alpha_api/public/profile_pic/profile_pic_1.jpeg">-->
               <!--              <input class="form-control" accept="image/png, image/gif, image/jpeg, image/jpg" type="file" #fileUploader>-->
-              <button [matMenuTriggerFor]="test1" [disabled]="isUpdateAble == true">
+              <!-- <button [matMenuTriggerFor]="test1" [disabled]="isUpdateAble == true">
                 <div style=" border: #e8c50e solid">
                   <img style="width: 100px; height: 100px" [src]="imageSrc" (error)="imageSrc = defaultPicture">
                 </div>
-              </button>
+              </button> -->
               <mat-menu #test1="matMenu">
                 <input [disabled]="isUpdateAble == true" type="file" name="filename" (change)="onChange($event)">
               </mat-menu>
