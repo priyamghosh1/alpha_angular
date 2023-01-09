@@ -106,140 +106,140 @@
 
 
 <div class="container pt-1" style="background-color: rgb(255, 255, 255); color: black !important;" [hidden]="showBill">
-    <h3><u>Create General Member</u> </h3>
-  
-    <div>
-      <!-- test2 -->
-      <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  <h3><u>Create voters</u> </h3>
+
+  <div>
+    <!-- test2 -->
+    <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
           {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
         </button> -->
-      <mat-stepper style="background-color: rgb(31, 111, 180) !important; color: black !important; border-radius: 10px;"
-        [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="personForm">
-          <form [formGroup]="personForm">
-            <ng-template matStepLabel>Fill out your name</ng-template>
-            <div class="d-flex">
-              <div class="col-9">
-                <div>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Name</mat-label>
-                    <input matInput placeholder="Last name, First name" formControlName="personName" required>
-                  </mat-form-field>
-                  <!-- <mat-form-field appearance="fill">
-                                      <mat-label>Guardian Name</mat-label>
-                                      <input matInput placeholder="Guardian Name" formControlName="guardianName" required>
-                                  </mat-form-field> -->
-                  <mat-form-field appearance="fill">
-                                      <mat-label>Age</mat-label>
-                                      <input matInput placeholder="Your age" formControlName="age" required>
-                                  </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Gender</mat-label>
-                    <mat-select matNativeControl required formControlName="gender">
-                      <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div>
-                  <!-- <mat-form-field appearance="fill">
-                                      <mat-label>House No.</mat-label>
-                                      <input matInput placeholder="House No." formControlName="houseNo" required>
-                                  </mat-form-field> -->
-                  <!-- <mat-form-field appearance="fill">
-                    <mat-label>Road Name</mat-label>
-                    <input matInput placeholder="Road Name" formControlName="roadName" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Voter No.</mat-label>
-                    <input matInput placeholder="Voter No." formControlName="voterId" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Mobile1</mat-label>
-                    <input matInput placeholder="Mobile1" formControlName="mobile1" required>
-                  </mat-form-field> -->
-                </div>
-                <div>
-                  <!--                <mat-form-field appearance="fill">-->
-                  <!--                  <mat-label>State</mat-label>-->
-                  <!--                  <mat-select matNativeControl required formControlName="state">-->
-                  <!--                    <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>-->
-                  <!--                  </mat-select>-->
-                  <!--                </mat-form-field>-->
-                  <!--                <mat-form-field appearance="fill">-->
-                  <!--                  <mat-label>District</mat-label>-->
-                  <!--                  <mat-select matNativeControl required formControlName="district">-->
-                  <!--                    <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>-->
-                  <!--                  </mat-select>-->
-                  <!--                </mat-form-field>-->
-                  <!-- <mat-form-field appearance="fill">
-                    <mat-label>Religion</mat-label>
-                    <mat-select matNativeControl required formControlName="religion">
-                      <mat-option [value]="x" *ngFor="let x of religion">{{x}}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Occupation</mat-label>
-                    <input matInput placeholder="Occupation" formControlName="occupation" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Polling No.</mat-label>
-                    <mat-select matNativeControl required formControlName="pollingStationId">
-                      <mat-option [value]="x.pollingStationId"
-                        *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
-                    </mat-select>
-  
-                  </mat-form-field> -->
-                  <mat-form-field appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input matInput placeholder="Email" formControlName="email" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Aadhar Id</mat-label>
-                    <input matInput placeholder="Aadhar Id" formControlName="aadharId" required>
-                  </mat-form-field>
-                </div>
-                <div>
-                  <!-- <mat-form-field appearance="fill">
-                    <mat-label>Aadhar Id</mat-label>
-                    <input matInput placeholder="Aadhar Id" formControlName="aadharId" required>
-                  </mat-form-field> -->
-                  <!--                <mat-form-field appearance="fill">-->
-                  <!--                  <mat-label>Polling No.</mat-label>-->
-                  <!--                  <mat-select matNativeControl required formControlName="pollingStationId">-->
-                  <!--                    <mat-option [value]="x.pollingStationId"-->
-                  <!--                      *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>-->
-                  <!--                  </mat-select>-->
-                  <!--                </mat-form-field>-->
-                </div>
+    <mat-stepper style="background-color: rgb(31, 111, 180) !important; color: black !important; border-radius: 10px;"
+      [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="personForm">
+        <form [formGroup]="personForm">
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <div class="d-flex">
+            <div class="">
+              <div>
+                <mat-form-field appearance="fill">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="Last name, First name" formControlName="personName" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Guardian Name</mat-label>
+                  <input matInput placeholder="Guardian Name" formControlName="guardianName" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Age</mat-label>
+                  <input matInput placeholder="Your age" formControlName="age" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Gender</mat-label>
+                  <mat-select matNativeControl required formControlName="gender">
+                    <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
-              <!--            <div class="fluid" style="background-color: white; max-height: 12vh; max-width: 12vw; margin: 2%; " >-->
-              <div class="fluid" style="background-color: white; max-height: 100px;  margin: 2%; text-align: right ">
+              <div>
+                <mat-form-field appearance="fill">
+                  <mat-label>House No.</mat-label>
+                  <input matInput placeholder="House No." formControlName="houseNo" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Road Name</mat-label>
+                  <input matInput placeholder="Road Name" formControlName="roadName" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Voter No.</mat-label>
+                  <input matInput placeholder="Voter No." formControlName="voterId" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Mobile1</mat-label>
+                  <input matInput placeholder="Mobile1" formControlName="mobile1" required>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="fill">
+                  <mat-label>State</mat-label>
+                  <mat-select matNativeControl required formControlName="state">
+                    <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>District</mat-label>
+                  <mat-select matNativeControl required formControlName="district">
+                    <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Religion</mat-label>
+                  <mat-select matNativeControl required formControlName="religion">
+                    <mat-option [value]="x" *ngFor="let x of religion">{{x}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Occupation</mat-label>
+                  <input matInput placeholder="Occupation" formControlName="occupation" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Polling No.</mat-label>
+                  <mat-select matNativeControl required formControlName="pollingStationId">
+                    <mat-option [value]="x.pollingStationId"
+                      *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
+                  </mat-select>
+
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="Email" formControlName="email" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Aadhar Id</mat-label>
+                  <input matInput placeholder="Aadhar Id" formControlName="aadharId" required>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="fill">
+                  <mat-label>Aadhar Id</mat-label>
+                  <input matInput placeholder="Aadhar Id" formControlName="aadharId" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Polling No.</mat-label>
+                  <mat-select matNativeControl required formControlName="pollingStationId">
+                    <mat-option [value]="x.pollingStationId"
+                      *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="fluid" style="background-color: white; max-height: 12vh; max-width: 12vw; margin: 2%; ">
+              <!-- <div class="fluid" style="background-color: white; max-height: 100px;  margin: 2%; text-align: right "> -->
                 <!--              <img id="img" style="max-height: 100px;  max-width: 100px;" src="http://127.0.0.1/alpha_project/alpha_api/public/profile_pic/profile_pic_1.jpeg">-->
                 <!--              <input class="form-control" accept="image/png, image/gif, image/jpeg, image/jpg" type="file" #fileUploader>-->
-                <!-- <button [matMenuTriggerFor]="test1" [disabled]="isUpdateAble == true">
+                <button [matMenuTriggerFor]="test1" [disabled]="isUpdateAble == true">
                   <div style=" border: #e8c50e solid">
                     <img style="width: 100px; height: 100px" [src]="imageSrc" (error)="imageSrc = defaultPicture">
                   </div>
-                </button> -->
+                </button>
                 <mat-menu #test1="matMenu">
                   <input [disabled]="isUpdateAble == true" type="file" name="filename" (change)="onChange($event)">
                 </mat-menu>
               </div>
-  
+
             </div>
-  
+
             <div>
-              <!--            <button class="m-2 bg-warning btn" mat-button matStepperNext>Next</button>-->
+                         <button class="m-2 bg-warning btn" mat-button matStepperNext>Next</button>
               <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
               <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
                 (click)="onSubmitVolunteer()">Submit</button>
               <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info"
                 (click)="updateMember()">Update</button>
-  
+
             </div>
-          </form>
-        </mat-step>
-        <!-- <mat-step [stepControl]="personForm" label="Fill out your address">
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="personForm" label="Fill out your address">
             <form [formGroup]="personForm">
               <div>
                 <mat-form-field appearance="fill">
@@ -313,17 +313,17 @@
                 <button class="m-2 bg-warning btn" matStepperPrevious>Back</button>
                 <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
                 <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
-                  (click)="onSubmit()">Submit</button>
-                <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info" (click)="onSubmit()">Update</button>
+                  (click)="onSubmitVolunteer()">Submit</button>
+                <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info" (click)="updateMember()">Update</button>
               </div>
             </form>
-          </mat-step> -->
-  
-      </mat-stepper>
-  
-  
-    </div>
-    <!-- <div
+          </mat-step>
+
+    </mat-stepper>
+
+
+  </div>
+  <div
       style="border: 2px solid white; border-radius: 5px;  background-color: rgba(27, 109, 197, 0.524); max-width: 100vw; overflow: scroll;"
       class="p-3 mt-2 mb-2 scroll">
       <div class="d-flex">
@@ -374,9 +374,9 @@
       </div>
   
   
-    </div> -->
-  
-    <!-- <div class="card">
+    </div>
+
+  <div class="card">
         <div class="card-body scroll"
           style="max-width: 100vw; overflow: scroll;  border-radius: 5px;  background-color: rgba(27, 109, 197, 0.524);">
           <table class="table" style="">
@@ -406,7 +406,7 @@
                 <th class="text-center" *ngIf="showPhoto == true" scope="col">Picture</th>
               </tr>
             </thead>
-            <tbody *ngFor="let x of volunteerByPolingAgent">
+            <tbody *ngFor="let x of voters">
               <tr (dblclick)="editVoters(x)">
                 <td class="text-center pt-3" scope="row">{{x.personId}}</td>
                 <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
@@ -438,6 +438,5 @@
             </tbody>
           </table>
         </div>
-      </div> -->
-  </div>
-
+      </div>
+</div>

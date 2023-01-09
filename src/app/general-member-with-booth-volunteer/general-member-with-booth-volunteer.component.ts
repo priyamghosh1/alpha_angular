@@ -167,6 +167,10 @@ export class GeneralMemberWithBoothVolunteerComponent implements OnInit {
     }) => {
       this.pollingStations = response.data;
     });
+
+    this.userRegistrationService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: { status: string, message: string, data: PollingMember[] }) => {
+      this.voters = response.data;
+    });
   }
 
   printDivStyle = {
@@ -307,6 +311,9 @@ export class GeneralMemberWithBoothVolunteerComponent implements OnInit {
           if (response.status) {
             const responseData = response.data;
             this.voters = response.data;
+            // this.volunteerByPolingAgent.unshift(responseData);
+            this.voters.unshift(responseData);
+
             this.personForm.reset();
             this.userForm.reset();
             // @ts-ignore

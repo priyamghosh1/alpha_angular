@@ -367,7 +367,7 @@ export class PollingVolunteerComponent implements OnInit {
         this.userRegistrationService.saveNewBoothMember(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
-            this.volunteerByPolingAgent.unshift(responseData)
+            this.volunteerByPolingAgent.unshift(responseData);
             this.personForm.reset();
             this.userForm.reset();
             // @ts-ignore

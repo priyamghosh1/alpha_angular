@@ -198,16 +198,16 @@ export class BoothVolunteerComponent implements OnInit {
 
   onSubmitVolunteer(): void {
 
-    // if (!this.file.size) {
-    //   Swal.fire({
-    //     position: 'top-end',
-    //     icon: 'error',
-    //     title: 'Upload Photo',
-    //     showConfirmButton: false,
-    //     timer: 3000
-    //   });
-    //   return;
-    // }
+    if (!this.file.size) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Upload Photo',
+        showConfirmButton: false,
+        timer: 3000
+      });
+      return;
+    }
 
     Swal.fire({
       title: 'Confirmation',
@@ -299,7 +299,7 @@ export class BoothVolunteerComponent implements OnInit {
         formData.append("district", personFormData.district);
         // formData.append("state", personFormData.state);
 
-        // formData.append("file", this.file);
+        formData.append("file", this.file);
 
         this.userRegistrationService.saveNewVolunteer(formData).subscribe(response => {
           if (response.status) {
