@@ -56,6 +56,22 @@ export class UserRegistrationService {
       }));
   }
 
+  saveNewPollingByAssembly(userData: any){
+    return this.http.post<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/pollingVolunteer', userData)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        // this.pollingMembers.unshift(response.data);
+        // this.pollingMemberSubject.next([...this.pollingMembers]);
+      }));
+  }
+
+  saveNewBoothMember(userData: any){
+    return this.http.post<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/boothVolunteer', userData)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        // this.pollingMembers.unshift(response.data);
+        // this.pollingMemberSubject.next([...this.pollingMembers]);
+      }));
+  }
+
   updateExistingUser(userData: any){
     return this.http.put<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/pollingAgent', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
@@ -77,7 +93,19 @@ export class UserRegistrationService {
     return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/volunteer/'+ pollingAgentId)
       .pipe(catchError(this.errorService.serverError),
         tap((response : {status:string,message:string,data:any[]}) => {
-          console.log(response);
+          // console.log(response);
+        }));
+  }
+
+  getBoothByPolingAgent(pollingAgentId: number){
+    // return  this.http.get(this.BASE_API_URL + '/volunteer/' + pollingAgentId).subscribe((response: ServerResponse) => {
+    //   console.log(response);
+    // });
+
+    return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/boothVolunteer/'+ pollingAgentId)
+      .pipe(catchError(this.errorService.serverError),
+        tap((response : {status:string,message:string,data:any[]}) => {
+          // console.log(response);
         }));
   }
 

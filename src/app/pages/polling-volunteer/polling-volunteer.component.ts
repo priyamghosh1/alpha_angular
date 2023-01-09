@@ -178,7 +178,7 @@ export class PollingVolunteerComponent implements OnInit {
     this.userRegistrationService.getAllGeneralMembersByPollingIdListener().subscribe((response: any) => {
       this.pollingGeneralMembers = response;
     });
-    this.userRegistrationService.getVolunteerByPolingAgent(this.loggedInUser.uniqueId).subscribe((response: any) => {
+    this.userRegistrationService.getBoothByPolingAgent(this.loggedInUser.uniqueId).subscribe((response: any) => {
       this.volunteerByPolingAgent = response.data;
     })
   }
@@ -361,7 +361,7 @@ export class PollingVolunteerComponent implements OnInit {
 
         // formData.append("file", this.file);
 
-        this.userRegistrationService.saveNewVolunteer(formData).subscribe(response => {
+        this.userRegistrationService.saveNewBoothMember(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
             this.volunteers=response.data;

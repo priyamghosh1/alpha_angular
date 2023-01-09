@@ -306,7 +306,7 @@ export class AssemblyConstituencyComponent implements OnInit {
 
         // formData.append("file", this.file);
 
-        this.userRegistrationService.saveNewVolunteer(formData).subscribe(response => {
+        this.userRegistrationService.saveNewPollingByAssembly(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
             this.voters = response.data;
