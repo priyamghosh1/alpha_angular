@@ -23,6 +23,12 @@ export class UserRegistrationService {
   pollingVolunteers: PollingVolunteer[] = [];
   pollingGeneralMembers: GeneralMember[] = [];
 
+  pollingSubject = new Subject<any[]>();
+  pollings: PollingMember[] = [];
+
+  boothMemberSubject = new Subject<any[]>();
+  boothMembers: any[] = [];
+
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
 
@@ -59,17 +65,21 @@ export class UserRegistrationService {
   saveNewPollingByAssembly(userData: any){
     return this.http.post<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/pollingVolunteer', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
-        // this.pollingMembers.unshift(response.data);
-        // this.pollingMemberSubject.next([...this.pollingMembers]);
+        this.pollings.unshift(response.data);
+        this.pollingSubject.next([...this.pollings]);
       }));
   }
 
   saveNewBoothMember(userData: any){
     return this.http.post<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/boothVolunteer', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
-        // this.pollingMembers.unshift(response.data);
-        // this.pollingMemberSubject.next([...this.pollingMembers]);
+        this.boothMembers.unshift(response.data);
+        this.boothMemberSubject.next([...this.boothMembers]);
       }));
+  }
+
+  boothMemberSubjectListener(){
+    return this.boothMemberSubject.asObservable();
   }
 
   updateExistingUser(userData: any){
@@ -105,7 +115,9 @@ export class UserRegistrationService {
     return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/boothVolunteer/'+ pollingAgentId)
       .pipe(catchError(this.errorService.serverError),
         tap((response : {status:string,message:string,data:any[]}) => {
-          // console.log(response);
+          console.log(response);
+          this.boothMembers.unshift(response.data);
+          this.boothMemberSubject.next([...this.boothMembers]);
         }));
   }
 

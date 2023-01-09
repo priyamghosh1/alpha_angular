@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonService } from 'src/app/services/common.service';
 import { environment } from 'src/environments/environment';
 import { Area } from 'src/app/models/area.model';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-polling-volunteer',
@@ -134,7 +135,7 @@ export class PollingVolunteerComponent implements OnInit {
   showPollingNumber = false;
 
 
-
+  boothVolunteer: any[] =[];
 
 
 
@@ -181,6 +182,8 @@ export class PollingVolunteerComponent implements OnInit {
     this.userRegistrationService.getBoothByPolingAgent(this.loggedInUser.uniqueId).subscribe((response: any) => {
       this.volunteerByPolingAgent = response.data;
     })
+
+  
   }
 
   viewBill(){
@@ -364,7 +367,7 @@ export class PollingVolunteerComponent implements OnInit {
         this.userRegistrationService.saveNewBoothMember(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
-            this.volunteers=response.data;
+            this.volunteerByPolingAgent.unshift(responseData)
             this.personForm.reset();
             this.userForm.reset();
             // @ts-ignore
