@@ -25,6 +25,9 @@ export class CommonService {
   value$ = new BehaviorSubject(20);
   currentValue = 0;
 
+  headerVisibleFlag = true;
+
+
   isDeviceXs = false;
   projectData: ProjectData | undefined;
   public currentTime: object | undefined;
@@ -77,6 +80,9 @@ export class CommonService {
     const now = new Date();
     const currentDate = formatDate(now, 'dd-MM-yyyy', 'en');
     return currentDate;
+  }
+  isHeaderVisible(){
+    return this.headerVisibleFlag;
   }
 
   getCurrentTime(){

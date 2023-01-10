@@ -170,6 +170,7 @@ export class GeneralMemberWithBoothVolunteerComponent implements OnInit {
 
     this.userRegistrationService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: { status: string, message: string, data: PollingMember[] }) => {
       this.voters = response.data;
+      console.log(this.voters);
     });
   }
 

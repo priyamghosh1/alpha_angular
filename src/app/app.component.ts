@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   mediaSub: Subscription;
   private isDeviceXs: boolean | undefined;
   isNavigating: boolean=false;
-  constructor(public router: Router, public authService: AuthService, public mediaObserver: MediaObserver,private commonService: CommonService, private primengConfig: PrimeNGConfig ) {
+  constructor(public router: Router, public authService: AuthService, public mediaObserver: MediaObserver,public commonService: CommonService, private primengConfig: PrimeNGConfig ) {
     this.primengConfig.ripple = true;
     AOS.init();
     this.router.events.subscribe(ev=>{
@@ -41,6 +41,11 @@ export class AppComponent implements OnInit {
       }
     );
     this.authService.autoLogin();
+
+    
+    setTimeout(() => {
+      this.sideBarOpen=false;
+    }, 3000);
   }
   ngOnDestroy(): void {
     this.mediaSub.unsubscribe();

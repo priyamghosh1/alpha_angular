@@ -1,5 +1,6 @@
 <mat-drawer-container>
-    <mat-drawer mode="side" [opened]="sideBarOpen">
+    <!-- <mat-drawer mode="side" [opened]="sideBarOpen" > -->
+      <mat-drawer mode="side" [opened]="sideBarOpen" *ngIf="commonService.isHeaderVisible()">
       <app-sidenav *ngIf="authService.isNotAuthenticated()"></app-sidenav>
       <app-sidenav-developer *ngIf="authService.isDeveloper()"></app-sidenav-developer>
       <app-sidenav-mp *ngIf="authService.isOwner()"></app-sidenav-mp>
