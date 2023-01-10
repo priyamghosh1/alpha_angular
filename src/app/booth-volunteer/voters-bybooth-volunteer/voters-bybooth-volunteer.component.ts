@@ -3,22 +3,21 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Md5 } from 'ts-md5';
-import { PollingMember } from '../models/PollingMember';
-import { User } from '../models/user.model';
-import { AreaService } from '../services/area.service';
-import { AuthService } from '../services/auth.service';
-import { PollingStationService } from '../services/polling-station.service';
-import { UserRegistrationService } from '../services/user-registration.service';
+import { PollingMember } from '../../models/PollingMember';
+import { User } from '../../models/user.model';
+import { AreaService } from '../../services/area.service';
+import { AuthService } from '../../services/auth.service';
+import { PollingStationService } from '../../services/polling-station.service';
+import { UserRegistrationService } from '../../services/user-registration.service';
 import * as XLSX from 'xlsx';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-general-member-with-booth-volunteer',
-  templateUrl: './general-member-with-booth-volunteer.component.html',
-  styleUrls: ['./general-member-with-booth-volunteer.component.scss']
+  selector: 'app-voters-bybooth-volunteer',
+  templateUrl: './voters-bybooth-volunteer.component.html',
+  styleUrls: ['./voters-bybooth-volunteer.component.scss']
 })
-export class GeneralMemberWithBoothVolunteerComponent implements OnInit {
-
+export class VotersByboothVolunteerComponent implements OnInit {
 
   showBill = false;
   isLinear = false;
@@ -107,7 +106,7 @@ export class GeneralMemberWithBoothVolunteerComponent implements OnInit {
     // id: new UntypedFormControl(null),
     personTypeId: new UntypedFormControl(null, [Validators.required]),
     personName: new UntypedFormControl(null, [Validators.required]),
-    email: new UntypedFormControl(''),
+    email: new UntypedFormControl(null, [Validators.required]),
     guardianName: new UntypedFormControl(''),
     religion: new UntypedFormControl(''),
     occupation: new UntypedFormControl(''),
@@ -118,6 +117,7 @@ export class GeneralMemberWithBoothVolunteerComponent implements OnInit {
     houseNo: new UntypedFormControl(''),
     // state: new FormControl(null, [Validators.required]),
     district: new UntypedFormControl(null, [Validators.required]),
+    state: new UntypedFormControl(null, [Validators.required]),
     pinCode: new UntypedFormControl(''),
     preferableCandidate: new UntypedFormControl(null, [Validators.required]),
     suggestion: new UntypedFormControl(null, [Validators.required]),
@@ -144,7 +144,7 @@ export class GeneralMemberWithBoothVolunteerComponent implements OnInit {
      private pollingStationService: PollingStationService,
        private authService: AuthService,
        private userRegistrationService: UserRegistrationService,
-  ) {
+  ) { 
     this.areaService.getStateListener().subscribe((response) => {
       this.states = response;
     });
@@ -154,7 +154,7 @@ export class GeneralMemberWithBoothVolunteerComponent implements OnInit {
 
     this.defaultPicture = this.BASE_PUBLIC_URL + '/profile_pic/no_dp.png';
     this.imageSrcVoter = this.BASE_PUBLIC_URL + '/voter_pic/';
-   }
+  }
 
   ngOnInit(): void {
 
@@ -308,15 +308,15 @@ export class GeneralMemberWithBoothVolunteerComponent implements OnInit {
         formData.append("remark", this.userForm.value.remark);
         formData.append("roadName", personFormData.roadName);
         formData.append("district", personFormData.district);
-        // formData.append("state", personFormData.state);
+        formData.append("state", personFormData.state);
 
-        // formData.append("file", this.file);
+        formData.append("file", this.file);
 
-        this.userRegistrationService.saveNewVolunteer(formData).subscribe(response => {
+        this.userRegistrationService.saveNewUser(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
             this.voters = response.data;
-            // this.volunteerByPolingAgent.unshift(responseData);
+            
             this.voters.unshift(responseData);
 
             this.personForm.reset();
@@ -518,6 +518,5 @@ export class GeneralMemberWithBoothVolunteerComponent implements OnInit {
 
 
   }
-
 
 }

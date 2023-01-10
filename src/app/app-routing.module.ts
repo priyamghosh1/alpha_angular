@@ -61,7 +61,7 @@ const routes: Routes = [
   { path: 'pollingVolunteer', loadChildren: () => import('./pages/polling-volunteer/polling-volunteer.module').then(m => m.PollingVolunteerModule) },
   { path: 'assemblyConstituency', loadChildren: () => import('./assembly-constituency/assembly-constituency.module').then(m => m.AssemblyConstituencyModule) },
   { path: 'boothVolunteer', loadChildren: () => import('./booth-volunteer/booth-volunteer.module').then(m => m.BoothVolunteerModule) },
-  { path: 'boothVolunteerCreateGeneralMember', loadChildren: () => import('./general-member-with-booth-volunteer/general-member-with-booth-volunteer.module').then(m => m.GeneralMemberWithBoothVolunteerModule) },
+  { path: 'boothVolunteerCreateVoter', loadChildren: () => import('./booth-volunteer/voters-bybooth-volunteer/voters-bybooth-volunteer.module').then(m => m.VotersByboothVolunteerModule) },
   { path: 'DitrictAdmin', loadChildren: () => import('./pages/district-admin-panel/district-admin-panel.module').then(m => m.DistrictAdminPanelModule) },
 
   { path: 'sidenavPollingVolunteer', loadChildren: () => import('./sidenavs/sidenav-polling-volunteer/sidenav-polling-volunteer.module').then(m => m.SidenavPollingVolunteerModule) },
@@ -85,6 +85,10 @@ const routes: Routes = [
   { path: 'GeneralMemberWithBoothVolunteer', loadChildren: () => import('./general-member-with-booth-volunteer/general-member-with-booth-volunteer.module').then(m => m.GeneralMemberWithBoothVolunteerModule) },
 
   { path: 'sidenavDistricttAdmin', loadChildren: () => import('./sidenavs/sidenav-districtt-admin/sidenav-districtt-admin.module').then(m => m.SidenavDistricttAdminModule) },
+
+  { path: 'votersByboothVolunteer', loadChildren: () => import('./booth-volunteer/voters-bybooth-volunteer/voters-bybooth-volunteer.module').then(m => m.VotersByboothVolunteerModule) },
+
+  { path: 'sidenavVotersByBooth', loadChildren: () => import('./sidenavs/sidenav-booth-volunteer/sidenav-voters-by-booth/sidenav-voters-by-booth.module').then(m => m.SidenavVotersByBoothModule) },
 
   // { path: 'volunteer', loadChildren: () => import('./pages/volunteer/volunteer.module').then(m => m.VolunteerModule) },
 
