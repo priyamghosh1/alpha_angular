@@ -420,11 +420,11 @@
 <!--            <td class="text-center pt-3" *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td>-->
 <!--            <td class="text-center pt-3" *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td>-->
             <td class="text-center pt-3" *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
-<!--            <td class="text-center " *ngIf="showPhoto == true" scope="row" style="">-->
-<!--              &lt;!&ndash;                <img loading="lazy" decoding="async" [src]="imageSrcTable + '' +x.personId + '.jpg'" style="width: 56px; height: 55px; border: #e8c50e solid" (error)="" alt="">&ndash;&gt;-->
-<!--              <img loading="lazy" decoding="async" [src]="this.imageSrcVoter + '' + x.personId + '.jpg'"-->
-<!--                style=" height: 50px; border: #e8c50e solid" alt="">-->
-<!--            </td>-->
+           <td class="text-center " *ngIf="showPhoto == true" scope="row" style="">
+                           <!-- <img loading="lazy" decoding="async" [src]="imageSrcTable + '' +x.personId + '.jpg'" style="width: 56px; height: 55px; border: #e8c50e solid"  alt=""> -->
+             <img loading="lazy" decoding="async" [src]="this.imageSrcVoter + '' + x.personId + '.jpg'"
+               style=" height: 50px; border: #e8c50e solid" alt="">
+           </td>
           </tr>
         </tbody>
       </table>

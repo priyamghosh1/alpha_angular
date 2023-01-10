@@ -103,7 +103,7 @@
 
 
 
-<div class="container pt-1" style="background-color: rgb(255, 255, 255); color: black !important;" [hidden]="showBill">
+<div class="container pt-1" style="background-color: rgba(255, 255, 255, 0); color: black !important;" [hidden]="showBill">
     <h3><u>Create Polling Volunteer</u> </h3>
   
     <div>
@@ -111,7 +111,7 @@
       <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
           {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
         </button> -->
-      <mat-stepper style="background-color: rgb(31, 111, 180) !important; color: black !important; border-radius: 10px;"
+      <mat-stepper style="background-color: rgb(7, 138, 182) !important; color: black !important; border-radius: 10px;"
         [linear]="isLinear" #stepper>
         <mat-step [stepControl]="personForm">
           <form [formGroup]="personForm">
@@ -374,7 +374,7 @@
   
     </div> -->
   
-    <!-- <div class="card">
+    <div class="card">
         <div class="card-body scroll"
           style="max-width: 100vw; overflow: scroll;  border-radius: 5px;  background-color: rgba(27, 109, 197, 0.524);">
           <table class="table" style="">
@@ -404,7 +404,7 @@
                 <th class="text-center" *ngIf="showPhoto == true" scope="col">Picture</th>
               </tr>
             </thead>
-            <tbody *ngFor="let x of volunteerByPolingAgent">
+            <!-- <tbody *ngFor="let x of volunteerByPolingAgent">
               <tr (dblclick)="editVoters(x)">
                 <td class="text-center pt-3" scope="row">{{x.personId}}</td>
                 <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
@@ -433,8 +433,8 @@
                     style=" height: 50px; border: #e8c50e solid" alt="">
                 </td>
               </tr>
-            </tbody>
+            </tbody> -->
           </table>
         </div>
-      </div> -->
+      </div>
   </div>

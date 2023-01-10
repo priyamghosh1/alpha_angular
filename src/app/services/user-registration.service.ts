@@ -122,6 +122,26 @@ export class UserRegistrationService {
   }
 
 
+  getPolingAgentByAssembly(assemblyId: number){
+    // return  this.http.get(this.BASE_API_URL + '/volunteer/' + pollingAgentId).subscribe((response: ServerResponse) => {
+    //   console.log(response);
+    // });
+
+    return this.http.get<{status:string,message:string,data:PollingMember[]}>(this.BASE_API_URL + '/pollingVolunteer/getPollingVolunteerByAssembly/'+ assemblyId)
+      .pipe(catchError(this.errorService.serverError),
+        tap((response : {status:string,message:string,data:any}) => {
+          console.log(response);
+          this.pollingMembers.unshift(response.data);
+          this.pollingMemberSubject.next([...this.pollingMembers]);
+        }));
+  }
+
+
+  getPolingAgentByAssemblyListener(){
+    return this.pollingMemberSubject.asObservable();
+  }
+
+
   getAllVolunteersByPollingId(userParentId:number):any{
 
     return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/legislative/'+ userParentId)

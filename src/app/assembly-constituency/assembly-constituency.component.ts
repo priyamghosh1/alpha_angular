@@ -139,7 +139,7 @@ export class AssemblyConstituencyComponent implements OnInit {
   private BASE_PUBLIC_URL = environment.BASE_PUBLIC_URL;
 
 
-
+  PolingAgentByAssembly: any[]=[];
 
   constructor(
     private areaService: AreaService,
@@ -169,6 +169,12 @@ export class AssemblyConstituencyComponent implements OnInit {
     }) => {
       this.pollingStations = response.data;
     });
+
+
+    this.userRegistrationService.getPolingAgentByAssembly(this.loggedInUser.uniqueId).subscribe((response: any) => {
+      this.PolingAgentByAssembly = response.data;
+      console.log("PolingAgentByAssembly",this.PolingAgentByAssembly)
+    })
 
   }
 

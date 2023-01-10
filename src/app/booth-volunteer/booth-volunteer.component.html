@@ -104,46 +104,46 @@
 
 
 <div class="container pt-1" style="background-color: rgb(255, 255, 255); color: black !important;" [hidden]="showBill">
-    <h3><u>Create Volunteer</u> </h3>
-  
-    <div>
-      <!-- test2 -->
-      <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  <h3><u>Create Volunteer</u> </h3>
+
+  <div>
+    <!-- test2 -->
+    <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
           {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
         </button> -->
-      <mat-stepper style="background-color: rgb(31, 111, 180) !important; color: black !important; border-radius: 10px;"
-        [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="personForm">
-          <form [formGroup]="personForm">
-            <ng-template matStepLabel>Fill out your name</ng-template>
-            <div class="d-flex">
-              <div class="col-9">
-                <div>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Name</mat-label>
-                    <input matInput placeholder="Last name, First name" formControlName="personName" required>
-                  </mat-form-field>
-                  <!-- <mat-form-field appearance="fill">
+    <mat-stepper style="background-color: rgb(31, 111, 180) !important; color: black !important; border-radius: 10px;"
+      [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="personForm">
+        <form [formGroup]="personForm">
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <div class="d-flex">
+            <div class="col-9">
+              <div>
+                <mat-form-field appearance="fill">
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="Last name, First name" formControlName="personName" required>
+                </mat-form-field>
+                <!-- <mat-form-field appearance="fill">
                                       <mat-label>Guardian Name</mat-label>
                                       <input matInput placeholder="Guardian Name" formControlName="guardianName" required>
                                   </mat-form-field> -->
-                  <mat-form-field appearance="fill">
-                                      <mat-label>Age</mat-label>
-                                      <input matInput placeholder="Your age" formControlName="age" required>
-                                  </mat-form-field>
-                  <!-- <mat-form-field appearance="fill">
+                <mat-form-field appearance="fill">
+                  <mat-label>Age</mat-label>
+                  <input matInput placeholder="Your age" formControlName="age" required>
+                </mat-form-field>
+                <!-- <mat-form-field appearance="fill">
                     <mat-label>Gender</mat-label>
                     <mat-select matNativeControl required formControlName="gender">
                       <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
                     </mat-select>
                   </mat-form-field> -->
-                </div>
-                <div>
-                  <!-- <mat-form-field appearance="fill">
+              </div>
+              <div>
+                <!-- <mat-form-field appearance="fill">
                                       <mat-label>House No.</mat-label>
                                       <input matInput placeholder="House No." formControlName="houseNo" required>
                                   </mat-form-field> -->
-                  <!-- <mat-form-field appearance="fill">
+                <!-- <mat-form-field appearance="fill">
                     <mat-label>Road Name</mat-label>
                     <input matInput placeholder="Road Name" formControlName="roadName" required>
                   </mat-form-field>
@@ -155,31 +155,31 @@
                     <mat-label>Mobile1</mat-label>
                     <input matInput placeholder="Mobile1" formControlName="mobile1" required>
                   </mat-form-field> -->
-                </div>
-                <div>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Gender</mat-label>
-                    <mat-select matNativeControl required formControlName="gender">
-                      <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input matInput placeholder="Email" formControlName="email" required>
-                  </mat-form-field>
-                  <!--                <mat-form-field appearance="fill">-->
-                  <!--                  <mat-label>State</mat-label>-->
-                  <!--                  <mat-select matNativeControl required formControlName="state">-->
-                  <!--                    <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>-->
-                  <!--                  </mat-select>-->
-                  <!--                </mat-form-field>-->
-                  <!--                <mat-form-field appearance="fill">-->
-                  <!--                  <mat-label>District</mat-label>-->
-                  <!--                  <mat-select matNativeControl required formControlName="district">-->
-                  <!--                    <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>-->
-                  <!--                  </mat-select>-->
-                  <!--                </mat-form-field>-->
-                  <!-- <mat-form-field appearance="fill">
+              </div>
+              <div>
+                <mat-form-field appearance="fill">
+                  <mat-label>Gender</mat-label>
+                  <mat-select matNativeControl required formControlName="gender">
+                    <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="Email" formControlName="email" required>
+                </mat-form-field>
+                <!--                <mat-form-field appearance="fill">-->
+                <!--                  <mat-label>State</mat-label>-->
+                <!--                  <mat-select matNativeControl required formControlName="state">-->
+                <!--                    <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>-->
+                <!--                  </mat-select>-->
+                <!--                </mat-form-field>-->
+                <!--                <mat-form-field appearance="fill">-->
+                <!--                  <mat-label>District</mat-label>-->
+                <!--                  <mat-select matNativeControl required formControlName="district">-->
+                <!--                    <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>-->
+                <!--                  </mat-select>-->
+                <!--                </mat-form-field>-->
+                <!-- <mat-form-field appearance="fill">
                     <mat-label>Religion</mat-label>
                     <mat-select matNativeControl required formControlName="religion">
                       <mat-option [value]="x" *ngFor="let x of religion">{{x}}</mat-option>
@@ -197,53 +197,53 @@
                     </mat-select>
   
                   </mat-form-field> -->
-                  <!-- <mat-form-field appearance="fill">
+                <!-- <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="Email" formControlName="email" required>
                   </mat-form-field> -->
-                </div>
-                <div>
-                  <!-- <mat-form-field appearance="fill">
+              </div>
+              <div>
+                <!-- <mat-form-field appearance="fill">
                     <mat-label>Aadhar Id</mat-label>
                     <input matInput placeholder="Aadhar Id" formControlName="aadharId" required>
                   </mat-form-field> -->
-                  <!--                <mat-form-field appearance="fill">-->
-                  <!--                  <mat-label>Polling No.</mat-label>-->
-                  <!--                  <mat-select matNativeControl required formControlName="pollingStationId">-->
-                  <!--                    <mat-option [value]="x.pollingStationId"-->
-                  <!--                      *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>-->
-                  <!--                  </mat-select>-->
-                  <!--                </mat-form-field>-->
-                </div>
+                <!--                <mat-form-field appearance="fill">-->
+                <!--                  <mat-label>Polling No.</mat-label>-->
+                <!--                  <mat-select matNativeControl required formControlName="pollingStationId">-->
+                <!--                    <mat-option [value]="x.pollingStationId"-->
+                <!--                      *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>-->
+                <!--                  </mat-select>-->
+                <!--                </mat-form-field>-->
               </div>
-              <!--            <div class="fluid" style="background-color: white; max-height: 12vh; max-width: 12vw; margin: 2%; " >-->
-              <div class="fluid" style="background-color: white; max-height: 100px;  margin: 2%; text-align: right ">
-                <!--              <img id="img" style="max-height: 100px;  max-width: 100px;" src="http://127.0.0.1/alpha_project/alpha_api/public/profile_pic/profile_pic_1.jpeg">-->
-                <!--              <input class="form-control" accept="image/png, image/gif, image/jpeg, image/jpg" type="file" #fileUploader>-->
-                <!-- <button [matMenuTriggerFor]="test1" [disabled]="isUpdateAble == true">
+            </div>
+            <!--            <div class="fluid" style="background-color: white; max-height: 12vh; max-width: 12vw; margin: 2%; " >-->
+            <div class="fluid" style="background-color: white; max-height: 100px;  margin: 2%; text-align: right ">
+              <!--              <img id="img" style="max-height: 100px;  max-width: 100px;" src="http://127.0.0.1/alpha_project/alpha_api/public/profile_pic/profile_pic_1.jpeg">-->
+              <!--              <input class="form-control" accept="image/png, image/gif, image/jpeg, image/jpg" type="file" #fileUploader>-->
+              <!-- <button [matMenuTriggerFor]="test1" [disabled]="isUpdateAble == true">
                   <div style=" border: #e8c50e solid">
                     <img style="width: 100px; height: 100px" [src]="imageSrc" (error)="imageSrc = defaultPicture">
                   </div>
                 </button> -->
-                <mat-menu #test1="matMenu">
-                  <input [disabled]="isUpdateAble == true" type="file" name="filename" (change)="onChange($event)">
-                </mat-menu>
-              </div>
-  
+              <mat-menu #test1="matMenu">
+                <input [disabled]="isUpdateAble == true" type="file" name="filename" (change)="onChange($event)">
+              </mat-menu>
             </div>
-  
-            <div>
-              <!--            <button class="m-2 bg-warning btn" mat-button matStepperNext>Next</button>-->
-              <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
-              <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
-                (click)="onSubmitVolunteer()">Submit</button>
-              <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info"
-                (click)="updateMember()">Update</button>
-  
-            </div>
-          </form>
-        </mat-step>
-        <!-- <mat-step [stepControl]="personForm" label="Fill out your address">
+
+          </div>
+
+          <div>
+            <!--            <button class="m-2 bg-warning btn" mat-button matStepperNext>Next</button>-->
+            <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
+            <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
+              (click)="onSubmitVolunteer()">Submit</button>
+            <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info"
+              (click)="updateMember()">Update</button>
+
+          </div>
+        </form>
+      </mat-step>
+      <!-- <mat-step [stepControl]="personForm" label="Fill out your address">
             <form [formGroup]="personForm">
               <div>
                 <mat-form-field appearance="fill">
@@ -322,12 +322,12 @@
               </div>
             </form>
           </mat-step> -->
-  
-      </mat-stepper>
-  
-  
-    </div>
-    <!-- <div
+
+    </mat-stepper>
+
+
+  </div>
+  <!-- <div
       style="border: 2px solid white; border-radius: 5px;  background-color: rgba(27, 109, 197, 0.524); max-width: 100vw; overflow: scroll;"
       class="p-3 mt-2 mb-2 scroll">
       <div class="d-flex">
@@ -379,68 +379,68 @@
   
   
     </div> -->
-  
-    <!-- <div class="card">
-        <div class="card-body scroll"
-          style="max-width: 100vw; overflow: scroll;  border-radius: 5px;  background-color: rgba(27, 109, 197, 0.524);">
-          <table class="table" style="">
-            <thead>
-              <tr>
-                <th class="text-center" scope="col">#</th>
-                <th class="text-center" *ngIf="showName == true" scope="col">Name</th>
-                <th class="text-center" scope="col">Email</th>
-                <th class="text-center" *ngIf="showMemberCode == true" scope="col">Member code</th>
-                <th class="text-center" *ngIf="showGuardianName == true" scope="col">Guardian Name</th>
-                <th class="text-center" *ngIf="showAge == true" scope="col">Age</th>
-                <th class="text-center" *ngIf="showGender == true" scope="col">Gender</th>
-                <th class="text-center" *ngIf="showPoliceStation == true" scope="col">Police Station</th>
-                <th class="text-center" *ngIf="showOcupation == true" scope="col">Occupation</th>
-                <th class="text-center" *ngIf="showReligion == true" scope="col">Religion</th>
-                <th class="text-center" *ngIf="showEmail == true" scope="col">Email</th>
-                <th class="text-center" *ngIf="showMobileOne == true" scope="col">mobile1</th>
-                <th class="text-center" *ngIf="showMobileTwo == true" scope="col">mobile2</th>
-                <th class="text-center" *ngIf="showVoterId == true" scope="col">voterId</th>
-                <th class="text-center" *ngIf="showAadharId == true" scope="col">Adhaar Id</th>
-                <th class="text-center" *ngIf="showCast == true" scope="col">Cast</th>
-                <th class="text-center" *ngIf="showPostOffice == true" scope="col">Post Office</th>
-                <th class="text-center" *ngIf="showHouseNo == true" scope="col">House No.</th>
-                <th class="text-center" *ngIf="showRoadNo == true" scope="col">Road Name</th>
-                <th class="text-center" *ngIf="showPinCode == true" scope="col">Pin code</th>
-                <th class="text-center" *ngIf="showPollingNumber == true" scope="col">pollingNumber</th>
-                <th class="text-center" *ngIf="showPhoto == true" scope="col">Picture</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let x of volunteerByPolingAgent">
-              <tr (dblclick)="editVoters(x)">
-                <td class="text-center pt-3" scope="row">{{x.personId}}</td>
-                <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
-                <td class="text-center pt-3" scope="row">{{x.email}}</td>
-                <td class="text-center pt-3" *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td>
-                <td class="text-center pt-3" *ngIf="showGuardianName == true" scope="row">{{x.guardianName}}</td>
-                <td class="text-center pt-3" *ngIf="showAge == true" scope="row">{{x.age}}</td>
-                <td class="text-center pt-3" *ngIf="showGender == true" scope="row">{{x.gender}}</td>
-                <td class="text-center pt-3" *ngIf="showPoliceStation == true" scope="row">{{x.police_station}}</td>
-                <td class="text-center pt-3" *ngIf="showOcupation == true" scope="row">{{x.occupation}}</td>
-                <td class="text-center pt-3" *ngIf="showReligion == true" scope="row">{{x.religion}}</td>
-                <td class="text-center pt-3" *ngIf="showEmail == true" scope="row">{{x.email}}</td>
-                <td class="text-center pt-3" *ngIf="showMobileOne == true" scope="row">{{x.mobile1}}</td>
-                <td class="text-center pt-3" *ngIf="showMobileTwo == true" scope="row">{{x.mobile2}}</td>
-                <td class="text-center pt-3" *ngIf="showVoterId == true" scope="row">{{x.voterId}}</td>
-                <td class="text-center pt-3" *ngIf="showAadharId == true" scope="row">{{x.aadharId}}</td>
-                <td class="text-center pt-3" *ngIf="showCast == true" scope="row">{{x.cast}}</td>
-                <td class="text-center pt-3" *ngIf="showPostOffice == true" scope="row">{{x.postOffice}}</td>
-                <td class="text-center pt-3" *ngIf="showHouseNo == true" scope="row">{{x.houseNo}}</td>
-                <td class="text-center pt-3" *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td>
-                <td class="text-center pt-3" *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td>
-                <td class="text-center pt-3" *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
-                <td class="text-center " *ngIf="showPhoto == true" scope="row" style="">
-                  
-                  <img loading="lazy" decoding="async" [src]="this.imageSrcVoter + '' + x.personId + '.jpg'"
-                    style=" height: 50px; border: #e8c50e solid" alt="">
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div> -->
+
+  <div class="card">
+    <div class="card-body scroll"
+      style="max-width: 100vw; overflow: scroll;  border-radius: 5px;  background-color: rgba(27, 109, 197, 0.524);">
+      <table class="table" style="">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">#</th>
+            <th class="text-center" *ngIf="showName == true" scope="col">Name</th>
+            <th class="text-center" scope="col">Email</th>
+            <th class="text-center" *ngIf="showMemberCode == true" scope="col">Member code</th>
+            <th class="text-center" *ngIf="showGuardianName == true" scope="col">Guardian Name</th>
+            <th class="text-center" *ngIf="showAge == true" scope="col">Age</th>
+            <th class="text-center" *ngIf="showGender == true" scope="col">Gender</th>
+            <th class="text-center" *ngIf="showPoliceStation == true" scope="col">Police Station</th>
+            <th class="text-center" *ngIf="showOcupation == true" scope="col">Occupation</th>
+            <th class="text-center" *ngIf="showReligion == true" scope="col">Religion</th>
+            <th class="text-center" *ngIf="showEmail == true" scope="col">Email</th>
+            <th class="text-center" *ngIf="showMobileOne == true" scope="col">mobile1</th>
+            <th class="text-center" *ngIf="showMobileTwo == true" scope="col">mobile2</th>
+            <th class="text-center" *ngIf="showVoterId == true" scope="col">voterId</th>
+            <th class="text-center" *ngIf="showAadharId == true" scope="col">Adhaar Id</th>
+            <th class="text-center" *ngIf="showCast == true" scope="col">Cast</th>
+            <th class="text-center" *ngIf="showPostOffice == true" scope="col">Post Office</th>
+            <th class="text-center" *ngIf="showHouseNo == true" scope="col">House No.</th>
+            <th class="text-center" *ngIf="showRoadNo == true" scope="col">Road Name</th>
+            <th class="text-center" *ngIf="showPinCode == true" scope="col">Pin code</th>
+            <th class="text-center" *ngIf="showPollingNumber == true" scope="col">pollingNumber</th>
+            <th class="text-center" *ngIf="showPhoto == true" scope="col">Picture</th>
+          </tr>
+        </thead>
+        <!-- <tbody *ngFor="let x of volunteerByPolingAgent"> -->
+          <!-- <tr (dblclick)="editVoters(x)">
+            <td class="text-center pt-3" scope="row">{{x.personId}}</td>
+            <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
+            <td class="text-center pt-3" scope="row">{{x.email}}</td>
+            <td class="text-center pt-3" *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td>
+            <td class="text-center pt-3" *ngIf="showGuardianName == true" scope="row">{{x.guardianName}}</td>
+            <td class="text-center pt-3" *ngIf="showAge == true" scope="row">{{x.age}}</td>
+            <td class="text-center pt-3" *ngIf="showGender == true" scope="row">{{x.gender}}</td>
+            <td class="text-center pt-3" *ngIf="showPoliceStation == true" scope="row">{{x.police_station}}</td>
+            <td class="text-center pt-3" *ngIf="showOcupation == true" scope="row">{{x.occupation}}</td>
+            <td class="text-center pt-3" *ngIf="showReligion == true" scope="row">{{x.religion}}</td>
+            <td class="text-center pt-3" *ngIf="showEmail == true" scope="row">{{x.email}}</td>
+            <td class="text-center pt-3" *ngIf="showMobileOne == true" scope="row">{{x.mobile1}}</td>
+            <td class="text-center pt-3" *ngIf="showMobileTwo == true" scope="row">{{x.mobile2}}</td>
+            <td class="text-center pt-3" *ngIf="showVoterId == true" scope="row">{{x.voterId}}</td>
+            <td class="text-center pt-3" *ngIf="showAadharId == true" scope="row">{{x.aadharId}}</td>
+            <td class="text-center pt-3" *ngIf="showCast == true" scope="row">{{x.cast}}</td>
+            <td class="text-center pt-3" *ngIf="showPostOffice == true" scope="row">{{x.postOffice}}</td>
+            <td class="text-center pt-3" *ngIf="showHouseNo == true" scope="row">{{x.houseNo}}</td>
+            <td class="text-center pt-3" *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td>
+            <td class="text-center pt-3" *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td>
+            <td class="text-center pt-3" *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td>
+            <td class="text-center " *ngIf="showPhoto == true" scope="row" style="">
+
+              <img loading="lazy" decoding="async" [src]="this.imageSrcVoter + '' + x.personId + '.jpg'"
+                style=" height: 50px; border: #e8c50e solid" alt="">
+            </td>
+          </tr> -->
+        <!-- </tbody> -->
+      </table>
+    </div>
   </div>
+</div>

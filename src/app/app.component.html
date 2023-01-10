@@ -1,4 +1,4 @@
-<mat-drawer-container>
+<mat-drawer-container style="background-color: rgb(255, 238, 193) !important;">
     <!-- <mat-drawer mode="side" [opened]="sideBarOpen" > -->
       <mat-drawer mode="side" [opened]="sideBarOpen" *ngIf="commonService.isHeaderVisible()">
       <app-sidenav *ngIf="authService.isNotAuthenticated()"></app-sidenav>
