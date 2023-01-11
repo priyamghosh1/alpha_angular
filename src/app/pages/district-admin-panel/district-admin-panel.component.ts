@@ -21,7 +21,7 @@ export class DistrictAdminPanelComponent implements OnInit {
 
   showBill = false;
   isLinear = false;
-  genderList = ["male", "female",  "others" ];
+  genderList = ["MALE", "FEMALE",  "OTHERS" ];
   isUpdateAble = false;
   states: any;
   voters: any;
@@ -52,31 +52,31 @@ export class DistrictAdminPanelComponent implements OnInit {
 
 
 
-  confirmation = ['yes', 'no'];
-  cast = ['General', 'ST', 'SC', 'OBC'];
-  religion = ['Hinduism',
-              'Christianity',
-              'Judaism',
-              'Buddhism',
-              'Sikhism',
-              'Shinto',
-              'Catholicism',
-              'Bahai Faith',
-              'Zoroastrianism',
-              'Jainism',
-              'Confucianism',
-              'Lutheranism',
-              'Protestantism',
-              'Taoism',
-              'Rastafari',
-              'Eastern Orthodox Church',
-              'Sunni Islam',
-              'Chinese Folk Religion',
-              'Babism',
-              'Modern Paganism',
-              'Shia Islam',
-              'Wicca',
-              'Traditional African Religions'
+  confirmation = ['YES', 'NO'];
+  cast = ['GENERAL', 'ST', 'SC', 'OBC'];
+  religion = ['HINDUISM',
+              'CHRISTIANITY',
+              'JUDAISM',
+              'BUDDHISM',
+              'SIKHISM',
+              'SHINTO',
+              'CATHOLICISM',
+              'BAHAI FAITH',
+              'ZOROASTRIANISM',
+              'JAINISM',
+              'CONFUCIANISM',
+              'LUTHERANISM',
+              'PROTESTANTISM',
+              'TAOISM',
+              'RASTAFARI',
+              'EASTERN ORTHODOX CHURCH',
+              'SUNNI ISLAM',
+              'CHINESE FOLK RELIGION',
+              'BABISM',
+              'MODERN PAGANISM',
+              'SHIA ISLAM',
+              'WICCA',
+              'TRADITIONAL AFRICAN RELIGIONS'
             ];
 
   

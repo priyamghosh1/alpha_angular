@@ -120,7 +120,7 @@
               <div class="col-9">
                 <div>
                   <mat-form-field appearance="fill">
-                    <mat-label>Name</mat-label>
+                    <mat-label>NAME</mat-label>
                     <input matInput placeholder="Last name, First name" formControlName="personName" required>
                   </mat-form-field>
                   <!-- <mat-form-field appearance="fill">
@@ -128,11 +128,11 @@
                                       <input matInput placeholder="Guardian Name" formControlName="guardianName" required>
                                   </mat-form-field> -->
                   <mat-form-field appearance="fill">
-                                      <mat-label>Age</mat-label>
+                                      <mat-label>AGE</mat-label>
                                       <input matInput placeholder="Your age" formControlName="age" required>
                                   </mat-form-field>
                   <mat-form-field appearance="fill">
-                    <mat-label>Gender</mat-label>
+                    <mat-label>GENDER</mat-label>
                     <mat-select matNativeControl required formControlName="gender">
                       <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
                     </mat-select>
@@ -164,13 +164,13 @@
                   <!--                  </mat-select>-->
                   <!--                </mat-form-field>-->
                                  <mat-form-field appearance="fill">
-                                   <mat-label>District</mat-label>
+                                   <mat-label>DISTRICT</mat-label>
                                    <mat-select matNativeControl required formControlName="district">
                                      <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
                                    </mat-select>
                                  </mat-form-field>
                                  <mat-form-field appearance="fill">
-                                  <mat-label>Email</mat-label>
+                                  <mat-label>EMAIL</mat-label>
                                   <input matInput placeholder="Email" formControlName="email" required>
                                 </mat-form-field>
                   <!-- <mat-form-field appearance="fill">
@@ -404,7 +404,7 @@
                 <th class="text-center" *ngIf="showPhoto == true" scope="col">Picture</th>
               </tr>
             </thead>
-            <!-- <tbody *ngFor="let x of volunteerByPolingAgent">
+            <tbody *ngFor="let x of volunteerByPolingAgent">
               <tr (dblclick)="editVoters(x)">
                 <td class="text-center pt-3" scope="row">{{x.personId}}</td>
                 <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
@@ -433,7 +433,7 @@
                     style=" height: 50px; border: #e8c50e solid" alt="">
                 </td>
               </tr>
-            </tbody> -->
+            </tbody>
           </table>
         </div>
       </div>

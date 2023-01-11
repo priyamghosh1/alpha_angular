@@ -127,7 +127,7 @@ export class UserRegistrationService {
     //   console.log(response);
     // });
 
-    return this.http.get<{status:string,message:string,data:PollingMember[]}>(this.BASE_API_URL + '/pollingVolunteer/getPollingVolunteerByAssembly/'+ assemblyId)
+    return this.http.get<{status:string,message:string,data:PollingMember[]}>(this.BASE_API_URL + '/pollingVolunteer/'+ assemblyId)
       .pipe(catchError(this.errorService.serverError),
         tap((response : {status:string,message:string,data:any}) => {
           console.log(response);

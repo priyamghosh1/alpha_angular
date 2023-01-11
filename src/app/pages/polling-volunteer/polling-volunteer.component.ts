@@ -15,6 +15,9 @@ import { environment } from 'src/environments/environment';
 import { Area } from 'src/app/models/area.model';
 import { ThisReceiver } from '@angular/compiler';
 
+
+import * as XLSX from 'xlsx';
+
 @Component({
   selector: 'app-polling-volunteer',
   templateUrl: './polling-volunteer.component.html',
@@ -63,7 +66,7 @@ export class PollingVolunteerComponent implements OnInit {
     password: new UntypedFormControl(null, [Validators.required]),
   });
   loggedInUser: User | undefined;
-  genderList = ["male", "female", "others"];
+  genderList = ["MALE", "FEMALE",  "OTHERS"];
   pollingGeneralMembers: GeneralMember[] = [];
 
 
@@ -84,31 +87,31 @@ export class PollingVolunteerComponent implements OnInit {
 
   isLinear = false;
 
-  confirmation = ['yes', 'no'];
-  cast = ['General', 'ST', 'SC', 'OBC'];
-  religion = ['Hinduism',
-    'Christianity',
-    'Judaism',
-    'Buddhism',
-    'Sikhism',
-    'Shinto',
-    'Catholicism',
-    'Bahai Faith',
-    'Zoroastrianism',
-    'Jainism',
-    'Confucianism',
-    'Lutheranism',
-    'Protestantism',
-    'Taoism',
-    'Rastafari',
-    'Eastern Orthodox Church',
-    'Sunni Islam',
-    'Chinese Folk Religion',
-    'Babism',
-    'Modern Paganism',
-    'Shia Islam',
-    'Wicca',
-    'Traditional African Religions'
+  confirmation = ['YES', 'NO'];
+  cast = ['GENERAL', 'ST', 'SC', 'OBC'];
+  religion = ['HINDUISM',
+  'CHRISTIANITY',
+  'JUDAISM',
+  'BUDDHISM',
+  'SIKHISM',
+  'SHINTO',
+  'CATHOLICISM',
+  'BAHAI FAITH',
+  'ZOROASTRIANISM',
+  'JAINISM',
+  'CONFUCIANISM',
+  'LUTHERANISM',
+  'PROTESTANTISM',
+  'TAOISM',
+  'RASTAFARI',
+  'EASTERN ORTHODOX CHURCH',
+  'SUNNI ISLAM',
+  'CHINESE FOLK RELIGION',
+  'BABISM',
+  'MODERN PAGANISM',
+  'SHIA ISLAM',
+  'WICCA',
+  'TRADITIONAL AFRICAN RELIGIONS'
   ];
 
   pollingStations: any;
@@ -184,6 +187,26 @@ export class PollingVolunteerComponent implements OnInit {
     })
 
   
+  }
+  printDivStyle = {
+    printDiv: { marginRight: '3px', marginLeft: '3px', marginTop: '5px' },
+    table: { 'border-collapse': 'collapse', width: '100%' },
+    label: { width: '100%' },
+    div: { border: '1px  solid black' }
+  }
+
+  exportexcel(): void {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, 'test.xlsx');
+
   }
 
   viewBill(){

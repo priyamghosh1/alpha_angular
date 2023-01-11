@@ -13,6 +13,7 @@ import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms
 import { UntypedFormBuilder } from '@angular/forms';
 import { Md5 } from 'ts-md5';
 import Swal from 'sweetalert2';
+import * as XLSX from 'xlsx';
 
 
 
@@ -364,6 +365,21 @@ export class VolunteerComponent implements OnInit {
         });
       }
     });
+  }
+
+  exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, 'test.xlsx');
+
   }
 
   updateMember(){

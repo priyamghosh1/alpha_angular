@@ -21,7 +21,7 @@ export class AssemblyConstituencyComponent implements OnInit {
 
   showBill = false;
   isLinear = false;
-  genderList = ["male", "female",  "others" ];
+  genderList = ["MALE", "FEMALE",  "OTHERS"];
   isUpdateAble = false;
   states: any;
   voters: any;
@@ -29,9 +29,9 @@ export class AssemblyConstituencyComponent implements OnInit {
 
 
 
-  imageSrc: string | ArrayBuffer | null ="";
-  imageSrcVoter: string | ArrayBuffer | null ="";
-  imageSrcTable: string | ArrayBuffer | null ="";
+  imageSrc: string | ArrayBuffer | null = "";
+  imageSrcVoter: string | ArrayBuffer | null = "";
+  imageSrcTable: string | ArrayBuffer | null = "";
   defaultPicture: string = "";
 
   // @ts-ignore
@@ -48,40 +48,40 @@ export class AssemblyConstituencyComponent implements OnInit {
     password: new UntypedFormControl(null, [Validators.required]),
   });
 
-  
 
 
 
-  confirmation = ['yes', 'no'];
-  cast = ['General', 'ST', 'SC', 'OBC'];
-  religion = ['Hinduism',
-              'Christianity',
-              'Judaism',
-              'Buddhism',
-              'Sikhism',
-              'Shinto',
-              'Catholicism',
-              'Bahai Faith',
-              'Zoroastrianism',
-              'Jainism',
-              'Confucianism',
-              'Lutheranism',
-              'Protestantism',
-              'Taoism',
-              'Rastafari',
-              'Eastern Orthodox Church',
-              'Sunni Islam',
-              'Chinese Folk Religion',
-              'Babism',
-              'Modern Paganism',
-              'Shia Islam',
-              'Wicca',
-              'Traditional African Religions'
-            ];
 
-  
-            showPhoto = true;
-  showName = true; 
+  confirmation = ['YES', 'NO'];
+  cast = ['GENERAL', 'ST', 'SC', 'OBC'];
+  religion = ['HINDUISM',
+    'CHRISTIANITY',
+    'JUDAISM',
+    'BUDDHISM',
+    'SIKHISM',
+    'SHINTO',
+    'CATHOLICISM',
+    'BAHAI FAITH',
+    'ZOROASTRIANISM',
+    'JAINISM',
+    'CONFUCIANISM',
+    'LUTHERANISM',
+    'PROTESTANTISM',
+    'TAOISM',
+    'RASTAFARI',
+    'EASTERN ORTHODOX CHURCH',
+    'SUNNI ISLAM',
+    'CHINESE FOLK RELIGION',
+    'BABISM',
+    'MODERN PAGANISM',
+    'SHIA ISLAM',
+    'WICCA',
+    'TRADITIONAL AFRICAN RELIGIONS'
+  ];
+
+
+  showPhoto = true;
+  showName = true;
   showMemberCode = false;
   showGuardianName = true;
   showAge = true;
@@ -139,14 +139,14 @@ export class AssemblyConstituencyComponent implements OnInit {
   private BASE_PUBLIC_URL = environment.BASE_PUBLIC_URL;
 
 
-  PolingAgentByAssembly: any[]=[];
+  PolingAgentByAssembly: any[] = [];
 
   constructor(
     private areaService: AreaService,
-     private pollingStationService: PollingStationService,
-       private authService: AuthService,
-       private userRegistrationService: UserRegistrationService,
-       ) { 
+    private pollingStationService: PollingStationService,
+    private authService: AuthService,
+    private userRegistrationService: UserRegistrationService,
+  ) {
 
     this.areaService.getStateListener().subscribe((response) => {
       this.states = response;
@@ -173,17 +173,10 @@ export class AssemblyConstituencyComponent implements OnInit {
 
     this.userRegistrationService.getPolingAgentByAssembly(this.loggedInUser.uniqueId).subscribe((response: any) => {
       this.PolingAgentByAssembly = response.data;
-      console.log("PolingAgentByAssembly",this.PolingAgentByAssembly)
+      console.log("PolingAgentByAssembly", this.PolingAgentByAssembly)
     })
 
   }
-
-  printDivStyle = {
-    printBillDiv: { marginRight: '3px', marginLeft: '3px', marginTop: '5px' },
-    table: { 'border-collapse': 'collapse', width: '100%' },
-    label: { width: '100%' },
-    div: { border: '1px  solid black' }
-  };
 
   exportexcel(): void {
     /* pass here the table id */
@@ -198,6 +191,15 @@ export class AssemblyConstituencyComponent implements OnInit {
     XLSX.writeFile(wb, 'test.xlsx');
 
   }
+
+  printDivStyle = {
+    printBillDiv: { marginRight: '3px', marginLeft: '3px', marginTop: '5px' },
+    table: { 'border-collapse': 'collapse', width: '100%' },
+    label: { width: '100%' },
+    div: { border: '1px  solid black' }
+  };
+
+  
 
   clearForms() {
     this.personForm.reset();
@@ -413,7 +415,7 @@ export class AssemblyConstituencyComponent implements OnInit {
       }
     });
   }
-   
+
   editVoters(voter: any) {
     // console.log(voter);
     this.personForm.patchValue({
@@ -461,10 +463,10 @@ export class AssemblyConstituencyComponent implements OnInit {
     this.isUpdateAble = true;
   }
 
-  onChange(event: Event){
+  onChange(event: Event) {
 
     // @ts-ignore
-    if((event.target.files[0].size/(1024*1000)) > 2){
+    if ((event.target.files[0].size / (1024 * 1000)) > 2) {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
@@ -486,7 +488,7 @@ export class AssemblyConstituencyComponent implements OnInit {
     }
   }
 
-  viewBill(){
+  viewBill() {
     this.showBill = !this.showBill;
   }
 
@@ -518,6 +520,6 @@ export class AssemblyConstituencyComponent implements OnInit {
 
 
 
-  
+
 
 }
