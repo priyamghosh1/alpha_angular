@@ -1,0 +1,55 @@
+<!-- <p>polling-number works!</p> -->
+
+<div class="container pt-1" style="background-color: rgb(255, 255, 255); color: black !important;">
+    <h3><u>Create Polling Volunteer</u> </h3>
+
+    <div>
+        <!-- test2 -->
+        <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+          {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+        </button> -->
+        <mat-stepper
+            style="background-color: rgb(31, 111, 180) !important; color: black !important; border-radius: 10px;"
+            [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="pollingForm">
+                <form [formGroup]="pollingForm">
+                    <ng-template matStepLabel>Fill out your name</ng-template>
+                    <div class="d-flex">
+                        <div class="">                            
+                            <div>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>POLLING NO.</mat-label>
+                                    <mat-select matNativeControl required formControlName="pollingStationId">
+                                        <mat-option [value]="x.pollingStationId"
+                                            *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>NAME</mat-label>
+                                    <input matInput placeholder="Last name, First name"
+                                        formControlName="pollingStationName" required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button> -->
+                        <button type="submit" class="btn btn-info" (click)="onSubmit()">Submit</button>
+                        <!-- <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info"
+                            (click)="updateMember()">Update</button> -->
+
+                    </div>
+                </form>
+            </mat-step>
+
+
+        </mat-stepper>
+
+
+    </div>
+
+
+
+</div>

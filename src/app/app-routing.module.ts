@@ -90,6 +90,8 @@ const routes: Routes = [
 
   { path: 'sidenavVotersByBooth', loadChildren: () => import('./sidenavs/sidenav-booth-volunteer/sidenav-voters-by-booth/sidenav-voters-by-booth.module').then(m => m.SidenavVotersByBoothModule) },
 
+  { path: 'pollingNumber', loadChildren: () => import('./assembly-constituency/polling-number/polling-number.module').then(m => m.PollingNumberModule) },
+
   // { path: 'volunteer', loadChildren: () => import('./pages/volunteer/volunteer.module').then(m => m.VolunteerModule) },
 
 

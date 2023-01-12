@@ -238,44 +238,7 @@ export class AssemblyConstituencyComponent implements OnInit {
         const userFormData = this.userForm.value;
         const md5 = new Md5();
         const passwordMd5 = md5.appendStr('1234').end();
-        // const masterData = {
-        //   personTypeId: 3,
-        //   personName: personFormData.personName,
-        //   age: personFormData.age,
-        //   gender: personFormData.gender,
-        //   // email: this.loggedInUser?.uniqueId,
-        //
-        //
-        //   // religion: new FormControl(null, [Validators.required]),
-        //   religion: personFormData.religion,
-        //   occupation: personFormData.occupation,
-        //   policeStation: personFormData.policeStation,
-        //   cast: personFormData.cast,
-        //   partNo: personFormData.partNo,
-        //   postOffice: personFormData.postOffice,
-        //   houseNo: personFormData.houseNo,
-        //   guardianName: personFormData.guardianName,
-        //   aadharId: personFormData.aadharId,
-        //
-        //   state: personFormData.state,
-        //   district: personFormData.district,
-        //   pinCode: personFormData.pinCode,
-        //   preferableCandidate: personFormData.preferableCandidate,
-        //   satisfiedByPresentGov: personFormData.satisfiedByPresentGov,
-        //   suggestion: personFormData.suggestion,
-        //   previousVotingHistory: personFormData.prevVotingHistory,
-        //
-        //   email: personFormData.email,
-        //   password: passwordMd5,
-        //   mobile1: personFormData.mobile1,
-        //   mobile2: personFormData.mobile2,
-        //   voterId: personFormData.voterId,
-        //   pollingStationId: personFormData.pollingStationId,
-        //   parentId: this.loggedInUser?.uniqueId,
-        //   remark: this.userForm.value.remark,
-        //   roadName: personFormData.roadName,
-        //
-        // };
+        
 
         const formData = new FormData();
         // @ts-ignore
