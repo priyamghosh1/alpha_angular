@@ -195,7 +195,7 @@
                       <mat-option [value]="x.pollingStationId"
                         *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
                     </mat-select>
-  
+
                   </mat-form-field> -->
                 <!-- <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
@@ -263,7 +263,7 @@
                   <input matInput placeholder="Mobile2" formControlName="mobile2" required>
                 </mat-form-field>
               </div>
-    
+
               <div>
                 <mat-form-field appearance="fill">
                   <mat-label>PinCode</mat-label>
@@ -305,14 +305,14 @@
               <div class="col-4">
                 <form [formGroup]="userForm">
                   <div class="d-flex ">
-    
+
                     <div class="form-group ">
                       <textarea class="form-control" rows="2" formControlName="remark" placeholder="Remark"></textarea>
                     </div>
                   </div>
                 </form>
               </div>
-    
+
               <div>
                 <button class="m-2 bg-warning btn" matStepperPrevious>Back</button>
                 <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
@@ -355,8 +355,8 @@
           class="p-1 example-margin">mobile2</mat-checkbox>
       </div>
       <div class="d-flex">
-  
-  
+
+
         <mat-checkbox [checked]="showVoterId" (change)="changeShowStatus('showVoterId', $event.checked)"
           class="p-1 example-margin">voterId</mat-checkbox>
         <mat-checkbox [checked]="showPollingNumber" (change)="changeShowStatus('showPollingNumber', $event.checked)"
@@ -376,8 +376,8 @@
         <mat-checkbox [checked]="showPhoto" (change)="changeShowStatus('showPhoto', $event.checked)"
           class="p-1 example-margin">Aadhar Id</mat-checkbox>
       </div>
-  
-  
+
+
     </div> -->
 
   <div class="card">
@@ -407,7 +407,7 @@
             <!-- <th class="text-center" *ngIf="showRoadNo == true" scope="col">Road Name</th> -->
             <!-- <th class="text-center" *ngIf="showPinCode == true" scope="col">Pin code</th> -->
             <!-- <th class="text-center" *ngIf="showPollingNumber == true" scope="col">pollingNumber</th> -->
-            <th class="text-center" *ngIf="showPhoto == true" scope="col">Picture</th>
+<!--            <th class="text-center" *ngIf="showPhoto == true" scope="col">Picture</th>-->
           </tr>
         </thead>
         <tbody *ngFor="let x of volunteer">
@@ -433,11 +433,11 @@
             <!-- <td class="text-center pt-3" *ngIf="showRoadNo == true" scope="row">{{x.roadName}}</td> -->
             <!-- <td class="text-center pt-3" *ngIf="showPinCode == true" scope="row">{{x.pinCode}}</td> -->
             <!-- <td class="text-center pt-3" *ngIf="showPollingNumber == true" scope="row">{{x.pollingNumber}}</td> -->
-            <td class="text-center " *ngIf="showPhoto == true" scope="row" style="">
+<!--            <td class="text-center " *ngIf="showPhoto == true" scope="row" style="">-->
 
-              <img loading="lazy" decoding="async" [src]="this.imageSrcVoter + '' + x.personId + '.jpg'"
-                style=" height: 50px; border: #e8c50e solid" alt="">
-            </td>
+<!--              <img loading="lazy" decoding="async" [src]="this.imageSrcVoter + '' + x.personId + '.jpg'"-->
+<!--                style=" height: 50px; border: #e8c50e solid" alt="">-->
+<!--            </td>-->
           </tr>
         </tbody>
       </table>

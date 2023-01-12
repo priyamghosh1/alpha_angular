@@ -150,8 +150,6 @@ export class VotersByboothVolunteerComponent implements OnInit {
     });
     this.states = this.areaService.getstate();
 
-
-
     this.defaultPicture = this.BASE_PUBLIC_URL + '/profile_pic/no_dp.png';
     this.imageSrcVoter = this.BASE_PUBLIC_URL + '/voter_pic/';
   }
@@ -170,7 +168,6 @@ export class VotersByboothVolunteerComponent implements OnInit {
 
     this.userRegistrationService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: { status: string, message: string, data: PollingMember[] }) => {
       this.voters = response.data;
-      console.log(this.voters);
     });
 
     // this.userRegistrationService.getAllPersonByAssemblyIdListener().subscribe((response: any) => {
@@ -315,9 +312,9 @@ export class VotersByboothVolunteerComponent implements OnInit {
         this.userRegistrationService.saveNewUser(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
-            this.voters = response.data;
-
-            this.voters.unshift(responseData);
+            // this.voters = response.data;
+            // console.log(response);
+            // this.voters.unshift(responseData);
 
             this.personForm.reset();
             this.userForm.reset();
