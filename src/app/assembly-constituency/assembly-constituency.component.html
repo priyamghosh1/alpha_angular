@@ -407,9 +407,9 @@
               <th class="text-center" *ngIf="showPhoto == true" scope="col">Picture</th>
             </tr>
           </thead>
-          <tbody *ngFor="let x of PolingAgentByAssembly">
+          <tbody *ngFor="let x of PolingAgentByAssembly; let i=index">
             <tr (dblclick)="editVoters(x)">
-              <td class="text-center pt-3" scope="row">{{x.personId}}</td>
+              <td class="text-center pt-3" scope="row">{{i+1}}</td>
               <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
               <td class="text-center pt-3" scope="row">{{x.email}}</td>
               <!-- <td class="text-center pt-3" *ngIf="showMemberCode == true" scope="row">{{x.memberCode}}</td> -->

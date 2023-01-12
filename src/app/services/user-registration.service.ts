@@ -28,6 +28,9 @@ export class UserRegistrationService {
 
   boothMemberSubject = new Subject<any[]>();
   boothMembers: any[] = [];
+  
+  voterSubject = new Subject<any[]>();
+  voters: any[] = [];
 
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
@@ -42,6 +45,21 @@ export class UserRegistrationService {
         }));
 
   }
+
+  getAllvotersByUserId(userId:number):any{
+
+    return this.http.get<{status:string,message:string,data:any[]}>(this.BASE_API_URL + '/volunteer/'+ userId + '/members')
+      .pipe(catchError(this.errorService.serverError),
+        tap((response : {status:string,message:string,data:any[]}) => {
+          this.voters = response.data;
+          this.voterSubject.next([...this.voters]);
+        }));
+
+  }
+  getAllVoterListener(){
+    return this.voterSubject.asObservable();
+  }
+
   getAllPersonByAssemblyIdListener(){
     return this.pollingMemberSubject.asObservable();
   }

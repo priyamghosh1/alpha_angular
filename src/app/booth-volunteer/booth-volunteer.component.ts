@@ -314,6 +314,7 @@ export class BoothVolunteerComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
+            this.volunteer.unshift(response.data);
             // updating terminal balance from here
 
           } else {

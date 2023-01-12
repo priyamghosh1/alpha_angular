@@ -331,6 +331,7 @@ export class AssemblyConstituencyComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
+            this.PolingAgentByAssembly.unshift(response.data);
             // updating terminal balance from here
 
           } else {

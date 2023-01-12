@@ -404,6 +404,7 @@ export class PollingVolunteerComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
+            this.volunteerByPolingAgent.unshift(response.data);
             // updating terminal balance from here
 
           } else {

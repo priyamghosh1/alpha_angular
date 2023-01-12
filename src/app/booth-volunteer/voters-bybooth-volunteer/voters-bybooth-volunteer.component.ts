@@ -139,6 +139,8 @@ export class VotersByboothVolunteerComponent implements OnInit {
   // public assemblyConstituencyId: number;
   private BASE_PUBLIC_URL = environment.BASE_PUBLIC_URL;
 
+  votersList: any[]=[];
+
   constructor(
     private areaService: AreaService,
     private pollingStationService: PollingStationService,
@@ -159,6 +161,7 @@ export class VotersByboothVolunteerComponent implements OnInit {
     this.showBill = false;
 
     this.loggedInUser = this.authService.userBehaviorSubject.value;
+    console.log(this.loggedInUser);
     this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {
       status: boolean,
       message: string, data: any
@@ -166,8 +169,8 @@ export class VotersByboothVolunteerComponent implements OnInit {
       this.pollingStations = response.data;
     });
 
-    this.userRegistrationService.getAllPersonByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: { status: string, message: string, data: PollingMember[] }) => {
-      this.voters = response.data;
+    this.userRegistrationService.getAllvotersByUserId(this.loggedInUser?.uniqueId).subscribe((response: { status: string, message: string, data: PollingMember[] }) => {
+      this.votersList = response.data;
     });
 
     // this.userRegistrationService.getAllPersonByAssemblyIdListener().subscribe((response: any) => {
@@ -329,6 +332,7 @@ export class VotersByboothVolunteerComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
+            this.votersList.unshift(response.data);
             // updating terminal balance from here
 
           } else {

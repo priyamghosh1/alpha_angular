@@ -82,7 +82,7 @@ const routes: Routes = [
 
   { path: 'sidenavBoothVolunteer', loadChildren: () => import('./sidenavs/sidenav-booth-volunteer/sidenav-booth-volunteer.module').then(m => m.SidenavBoothVolunteerModule) },
 
-  { path: 'GeneralMemberWithBoothVolunteer', loadChildren: () => import('./general-member-with-booth-volunteer/general-member-with-booth-volunteer.module').then(m => m.GeneralMemberWithBoothVolunteerModule) },
+  // { path: 'GeneralMemberWithBoothVolunteer', loadChildren: () => import('./general-member-with-booth-volunteer/general-member-with-booth-volunteer.module').then(m => m.GeneralMemberWithBoothVolunteerModule) },
 
   { path: 'sidenavDistricttAdmin', loadChildren: () => import('./sidenavs/sidenav-districtt-admin/sidenav-districtt-admin.module').then(m => m.SidenavDistricttAdminModule) },
 

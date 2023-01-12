@@ -31,31 +31,31 @@ export class VolunteerComponent implements OnInit {
 
   isLinear = false;
 
-  confirmation = ['yes', 'no'];
-  cast = ['General', 'ST', 'SC', 'OBC'];
-  religion = ['Hinduism',
-    'Christianity',
-    'Judaism',
-    'Buddhism',
-    'Sikhism',
-    'Shinto',
-    'Catholicism',
-    'Bahai Faith',
-    'Zoroastrianism',
-    'Jainism',
-    'Confucianism',
-    'Lutheranism',
-    'Protestantism',
-    'Taoism',
-    'Rastafari',
-    'Eastern Orthodox Church',
-    'Sunni Islam',
-    'Chinese Folk Religion',
-    'Babism',
-    'Modern Paganism',
-    'Shia Islam',
-    'Wicca',
-    'Traditional African Religions'
+  confirmation = ['YES', 'NO'];
+  cast = ['GENERAL', 'ST', 'SC', 'OBC'];
+  religion = ['HINDUISM',
+  'CHRISTIANITY',
+  'JUDAISM',
+  'BUDDHISM',
+  'SIKHISM',
+  'SHINTO',
+  'CATHOLICISM',
+  'BAHAI FAITH',
+  'ZOROASTRIANISM',
+  'JAINISM',
+  'CONFUCIANISM',
+  'LUTHERANISM',
+  'PROTESTANTISM',
+  'TAOISM',
+  'RASTAFARI',
+  'EASTERN ORTHODOX CHURCH',
+  'SUNNI ISLAM',
+  'CHINESE FOLK RELIGION',
+  'BABISM',
+  'MODERN PAGANISM',
+  'SHIA ISLAM',
+  'WICCA',
+  'TRADITIONAL AFRICAN RELIGIONS'
   ];
 
   states: any;
@@ -137,10 +137,12 @@ export class VolunteerComponent implements OnInit {
   imageSrcTable: string | ArrayBuffer | null = "";
   defaultPicture: string = "";
   // genderList = [{ "id": 1, "name": "male" }, { "id": 2, "name": "female" }, { "id": 3, "name": "others" }];
-  genderList = ["male", "female", "others"];
+  genderList = ["MALE", "FEMALE",  "OTHERS"];
   file: File;
 
   showBill = false;
+
+  votersList: any[]=[];
 
 
   private BASE_PUBLIC_URL = environment.BASE_PUBLIC_URL;
@@ -213,6 +215,10 @@ export class VolunteerComponent implements OnInit {
     });
     this.userRegistrationService.getAllPersonByAssemblyIdListener().subscribe((response: any) => {
       this.pollingMembers = response;
+    });
+
+    this.userRegistrationService.getAllvotersByUserId(this.loggedInUser?.uniqueId).subscribe((response: { status: string, message: string, data: PollingMember[] }) => {
+      this.votersList = response.data;
     });
 
     
@@ -347,6 +353,7 @@ export class VolunteerComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
+            this.votersList.unshift(response.data);
             // updating terminal balance from here
 
           } else {
