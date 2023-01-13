@@ -108,15 +108,9 @@ export class UserRegistrationService {
   updateExistingUser(userData: any){
     return this.http.put<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/pollingAgent', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
-<<<<<<< HEAD
-        console.log(response.data);
-        this.existingMembers.unshift(response.data);
-        this.existingMemberSubject.next([...this.existingMembers]);
-=======
         // console.log(response.data);
         // this.pollingMembers.unshift(response.data);
         // this.pollingMemberSubject.next([...this.pollingMembers]);
->>>>>>> d36c407b4c52b5651ee127af7efce2b4ddd5c958
       }));
   }
 
