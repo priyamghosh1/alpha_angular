@@ -1,100 +1,4 @@
-<!-- <h3>Create General Worker:</h3>
 
-
-
-<div class="container pt-5">
-
-
-
-  <form [formGroup]="personForm">
-    <div class="d-flex">
-      <div class="form-group">
-        <input class="form-control" formControlName="personName" placeholder="Name">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="age" placeholder="Age">
-      </div>
-      <div class="form-group pl-3">
-        <ng-select [items]="genderList"
-                   fxFlex="100"
-                   bindLabel="name"
-                   class="custom"
-                   bindValue="name"
-                   appendTo="body"
-                   formControlName="gender"
-                   placeholder="Gender"
-                   style="height: 200 !important;">
-        </ng-select>
-      </div>
-
-    </div>
-
-    <div class="d-flex pt-2">
-      <div class="form-group">
-        <input class="form-control" formControlName="mobile1"    placeholder="Mobile1">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="voterId" placeholder="Voter No.">
-      </div>
-    </div>
-  </form>
-
-  <div class="d-flex pt-2">
-    <form [formGroup]="userForm">
-      <div class="d-flex pt-2">
-
-        <div class="form-group pl-3">
-          <textarea class="form-control" rows="2" formControlName="remark"  placeholder="Remark"></textarea>
-        </div>
-        <div class="form-group pl-3">
-          <textarea class="form-control" rows="2" formControlName="areaDescription"  placeholder="Area"></textarea>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="pt-4 pb-3"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
-
-
-  <div class="card">
-    <div class="card-body">
-      <table class="table">
-        <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Member code</th>
-          <th scope="col">Name</th>
-          <th scope="col">Age</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Email</th>
-          <th scope="col">mobile1</th>
-          <th scope="col">mobile2</th>
-          <th scope="col">voterId</th>
-          <th scope="col">pollingNumber</th>
-        </tr>
-        </thead>
-        <tbody *ngFor="let x of pollingGeneralMembers">
-        <tr>
-          <td scope="row">{{x.personId}}</td>
-          <td scope="row">{{x.memberCode}}</td>
-          <td scope="row">{{x.personName}}</td>
-          <td scope="row">{{x.age}}</td>
-          <td scope="row">{{x.gender}}</td>
-          <td scope="row">{{x.email}}</td>
-          <td scope="row">{{x.mobile1}}</td>
-          <td scope="row">{{x.mobile2}}</td>
-          <td scope="row">{{x.voterId}}</td>
-          <td scope="row">{{x.pollingNumber}}</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row" *ngIf="false">
-    <div class="col"><pre>personForm = {{personForm.value | json}}</pre></div>
-    <div class="col"><pre>userForm = {{userForm.value | json}}</pre></div>
-  </div>
-
-</div> -->
 
 
 
@@ -120,38 +24,13 @@
                   <mat-label>NAME</mat-label>
                   <input matInput placeholder="Last name, First name" formControlName="personName" required>
                 </mat-form-field>
-                <!-- <mat-form-field appearance="fill">
-                                    <mat-label>Guardian Name</mat-label>
-                                    <input matInput placeholder="Guardian Name" formControlName="guardianName" required>
-                                </mat-form-field> -->
                 <mat-form-field appearance="fill">
                                     <mat-label>AGE</mat-label>
                                     <input matInput placeholder="Your age" formControlName="age" required>
                                 </mat-form-field>
-                <!-- <mat-form-field appearance="fill">
-                  <mat-label>Gender</mat-label>
-                  <mat-select matNativeControl required formControlName="gender">
-                    <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
-                  </mat-select>
-                </mat-form-field> -->
               </div>
               <div>
-                <!-- <mat-form-field appearance="fill">
-                                    <mat-label>House No.</mat-label>
-                                    <input matInput placeholder="House No." formControlName="houseNo" required>
-                                </mat-form-field> -->
-                <!-- <mat-form-field appearance="fill">
-                  <mat-label>Road Name</mat-label>
-                  <input matInput placeholder="Road Name" formControlName="roadName" required>
-                </mat-form-field> -->
-                <!-- <mat-form-field appearance="fill">
-                  <mat-label>Voter No.</mat-label>
-                  <input matInput placeholder="Voter No." formControlName="voterId" required>
-                </mat-form-field> -->
-                <!-- <mat-form-field appearance="fill">
-                  <mat-label>Mobile1</mat-label>
-                  <input matInput placeholder="Mobile1" formControlName="mobile1" required>
-                </mat-form-field> -->
+                
                 <mat-form-field appearance="fill">
                   <mat-label>EMAIL</mat-label>
                   <input matInput placeholder="Email" formControlName="email" required>
@@ -164,28 +43,7 @@
                 </mat-form-field>
               </div>
               <div>
-                <!--                <mat-form-field appearance="fill">-->
-                <!--                  <mat-label>State</mat-label>-->
-                <!--                  <mat-select matNativeControl required formControlName="state">-->
-                <!--                    <mat-option [value]="x.id" *ngFor="let x of states">{{x.name}}</mat-option>-->
-                <!--                  </mat-select>-->
-                <!--                </mat-form-field>-->
-                <!--                <mat-form-field appearance="fill">-->
-                <!--                  <mat-label>District</mat-label>-->
-                <!--                  <mat-select matNativeControl required formControlName="district">-->
-                <!--                    <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>-->
-                <!--                  </mat-select>-->
-                <!--                </mat-form-field>-->
-                <!-- <mat-form-field appearance="fill">
-                  <mat-label>Religion</mat-label>
-                  <mat-select matNativeControl required formControlName="religion">
-                    <mat-option [value]="x" *ngFor="let x of religion">{{x}}</mat-option>
-                  </mat-select>
-                </mat-form-field> -->
-                <!-- <mat-form-field appearance="fill">
-                  <mat-label>Occupation</mat-label>
-                  <input matInput placeholder="Occupation" formControlName="occupation" required>
-                </mat-form-field> -->
+                
                 <mat-form-field appearance="fill">
                   <mat-label>POLLING NO.</mat-label>
                   <mat-select matNativeControl required formControlName="pollingStationId">
@@ -194,34 +52,15 @@
                   </mat-select>
 
                 </mat-form-field>
-                <!-- <mat-form-field appearance="fill">
-                  <mat-label>Email</mat-label>
-                  <input matInput placeholder="Email" formControlName="email" required>
-                </mat-form-field> -->
+                
               </div>
               <div>
-                <!-- <mat-form-field appearance="fill">
-                  <mat-label>Aadhar Id</mat-label>
-                  <input matInput placeholder="Aadhar Id" formControlName="aadharId" required>
-                </mat-form-field> -->
-                <!--                <mat-form-field appearance="fill">-->
-                <!--                  <mat-label>Polling No.</mat-label>-->
-                <!--                  <mat-select matNativeControl required formControlName="pollingStationId">-->
-                <!--                    <mat-option [value]="x.pollingStationId"-->
-                <!--                      *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>-->
-                <!--                  </mat-select>-->
-                <!--                </mat-form-field>-->
+                
               </div>
             </div>
-            <!--            <div class="fluid" style="background-color: white; max-height: 12vh; max-width: 12vw; margin: 2%; " >-->
+            
             <div class="fluid" style="background-color: white; max-height: 100px;  margin: 2%; text-align: right ">
-              <!--              <img id="img" style="max-height: 100px;  max-width: 100px;" src="http://127.0.0.1/alpha_project/alpha_api/public/profile_pic/profile_pic_1.jpeg">-->
-              <!--              <input class="form-control" accept="image/png, image/gif, image/jpeg, image/jpg" type="file" #fileUploader>-->
-              <!-- <button [matMenuTriggerFor]="test1" [disabled]="isUpdateAble == true">
-                <div style=" border: #e8c50e solid">
-                  <img style="width: 100px; height: 100px" [src]="imageSrc" (error)="imageSrc = defaultPicture">
-                </div>
-              </button> -->
+              
               <mat-menu #test1="matMenu">
                 <input [disabled]="isUpdateAble == true" type="file" name="filename" (change)="onChange($event)">
               </mat-menu>
@@ -230,7 +69,7 @@
           </div>
 
           <div>
-            <!--            <button class="m-2 bg-warning btn" mat-button matStepperNext>Next</button>-->
+            
             <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
             <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
               (click)="onSubmit()">Submit</button>
@@ -239,85 +78,7 @@
           </div>
         </form>
       </mat-step>
-      <!-- <mat-step [stepControl]="personForm" label="Fill out your address">
-          <form [formGroup]="personForm">
-            <div>
-              <mat-form-field appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="Email" formControlName="email" required>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Police Station</mat-label>
-                <input matInput placeholder="Police Station" formControlName="policeStation" required>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Part No</mat-label>
-                <input matInput placeholder="Part No" formControlName="partNo" required>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Mobile2</mat-label>
-                <input matInput placeholder="Mobile2" formControlName="mobile2" required>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-form-field appearance="fill">
-                <mat-label>PinCode</mat-label>
-                <input matInput placeholder="PinCode" formControlName="pinCode" required>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Post Office</mat-label>
-                <input matInput placeholder="Post Office" formControlName="postOffice" required>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Preferable Candidate</mat-label>
-                <input matInput placeholder="Preferable Candidate" formControlName="preferableCandidate" required>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Suggestion</mat-label>
-                <input matInput placeholder="Suggestion" formControlName="suggestion" required>
-              </mat-form-field>
-            </div>
-            <div>
-              <mat-form-field appearance="fill">
-                <mat-label>Cast</mat-label>
-                <mat-select matNativeControl required formControlName="cast">
-                  <mat-option [value]="x" *ngFor="let x of cast">{{x}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Previous Voting History</mat-label>
-                <mat-select matNativeControl required formControlName="prevVotingHistory">
-                  <mat-option [value]="x" *ngFor="let x of confirmation">{{x}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Satisfied By Present Gov.</mat-label>
-                <mat-select matNativeControl required formControlName="satisfiedByPresentGov">
-                  <mat-option [value]="x" *ngFor="let x of confirmation">{{x}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-4">
-              <form [formGroup]="userForm">
-                <div class="d-flex ">
-
-                  <div class="form-group ">
-                    <textarea class="form-control" rows="2" formControlName="remark" placeholder="Remark"></textarea>
-                  </div>
-                </div>
-              </form>
-            </div>
-
-            <div>
-              <button class="m-2 bg-warning btn" matStepperPrevious>Back</button>
-              <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
-              <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
-                (click)="onSubmit()">Submit</button>
-              <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info" (click)="onSubmit()">Update</button>
-            </div>
-          </form>
-        </mat-step> -->
+      
 
     </mat-stepper>
 
@@ -407,7 +168,7 @@
             </tr>
           </thead>
           <tbody *ngFor="let x of PolingAgentByAssembly; let i=index">
-            <tr >
+            <tr  (dblclick)="editVoters(x)">
               <td class="text-center pt-3" scope="row">{{i+1}}</td>
               <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
               <td class="text-center pt-3" scope="row">{{x.email}}</td>

@@ -106,30 +106,32 @@ export class DistrictAdminPanelComponent implements OnInit {
     // id: new UntypedFormControl(null),
     personTypeId: new UntypedFormControl(null, [Validators.required]),
     personName: new UntypedFormControl(null, [Validators.required]),
-    email: new UntypedFormControl(''),
-    guardianName: new UntypedFormControl(''),
-    religion: new UntypedFormControl(''),
-    occupation: new UntypedFormControl(''),
-    policeStation: new UntypedFormControl(''),
-    cast: new UntypedFormControl(''),
-    partNo: new UntypedFormControl(''),
-    postOffice: new UntypedFormControl(''),
-    houseNo: new UntypedFormControl(''),
-    // state: new FormControl(null, [Validators.required]),
-    district: new UntypedFormControl(null, [Validators.required]),
-    pinCode: new UntypedFormControl(''),
-    preferableCandidate: new UntypedFormControl(null, [Validators.required]),
-    suggestion: new UntypedFormControl(null, [Validators.required]),
-    prevVotingHistory: new UntypedFormControl(null, [Validators.required]),
-    satisfiedByPresentGov: new UntypedFormControl(null, [Validators.required]),
     age: new UntypedFormControl(''),
     gender: new UntypedFormControl(null, [Validators.required]),
-    mobile1: new UntypedFormControl(''),
-    mobile2: new UntypedFormControl(''),
-    aadharId: new UntypedFormControl(''),
-    roadName: new UntypedFormControl(null),
-    voterId: new UntypedFormControl(''),
-    pollingStationId: new UntypedFormControl(''),
+    email: new UntypedFormControl(''),
+    district: new UntypedFormControl(null, [Validators.required]),
+    assembly: new UntypedFormControl(null, [Validators.required]),
+    
+    // guardianName: new UntypedFormControl(''),
+    // religion: new UntypedFormControl(''),
+    // occupation: new UntypedFormControl(''),
+    // policeStation: new UntypedFormControl(''),
+    // cast: new UntypedFormControl(''),
+    // partNo: new UntypedFormControl(''),
+    // postOffice: new UntypedFormControl(''),
+    // houseNo: new UntypedFormControl(''),
+    // state: new FormControl(null, [Validators.required]),   
+    // pinCode: new UntypedFormControl(''),
+    // preferableCandidate: new UntypedFormControl(null, [Validators.required]),
+    // suggestion: new UntypedFormControl(null, [Validators.required]),
+    // prevVotingHistory: new UntypedFormControl(null, [Validators.required]),
+    // satisfiedByPresentGov: new UntypedFormControl(null, [Validators.required]),   
+    // mobile1: new UntypedFormControl(''),
+    // mobile2: new UntypedFormControl(''),
+    // aadharId: new UntypedFormControl(''),
+    // roadName: new UntypedFormControl(null),
+    // voterId: new UntypedFormControl(''),
+    // pollingStationId: new UntypedFormControl(''),
     // remark: new FormControl(null),
   });
   pollingStations: any;
@@ -160,12 +162,14 @@ export class DistrictAdminPanelComponent implements OnInit {
     this.showBill = false;
 
     this.loggedInUser = this.authService.userBehaviorSubject.value;
+    // console.log("loggedInUser district", this.loggedInUser);
     this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {
       status: boolean,
       message: string, data: any
     }) => {
       this.pollingStations = response.data;
     });
+    // this.areaService.getAssemblyByDistrictId(this.personForm.value.district).
   }
 
 
@@ -227,44 +231,7 @@ export class DistrictAdminPanelComponent implements OnInit {
         const userFormData = this.userForm.value;
         const md5 = new Md5();
         const passwordMd5 = md5.appendStr('1234').end();
-        // const masterData = {
-        //   personTypeId: 3,
-        //   personName: personFormData.personName,
-        //   age: personFormData.age,
-        //   gender: personFormData.gender,
-        //   // email: this.loggedInUser?.uniqueId,
-        //
-        //
-        //   // religion: new FormControl(null, [Validators.required]),
-        //   religion: personFormData.religion,
-        //   occupation: personFormData.occupation,
-        //   policeStation: personFormData.policeStation,
-        //   cast: personFormData.cast,
-        //   partNo: personFormData.partNo,
-        //   postOffice: personFormData.postOffice,
-        //   houseNo: personFormData.houseNo,
-        //   guardianName: personFormData.guardianName,
-        //   aadharId: personFormData.aadharId,
-        //
-        //   state: personFormData.state,
-        //   district: personFormData.district,
-        //   pinCode: personFormData.pinCode,
-        //   preferableCandidate: personFormData.preferableCandidate,
-        //   satisfiedByPresentGov: personFormData.satisfiedByPresentGov,
-        //   suggestion: personFormData.suggestion,
-        //   previousVotingHistory: personFormData.prevVotingHistory,
-        //
-        //   email: personFormData.email,
-        //   password: passwordMd5,
-        //   mobile1: personFormData.mobile1,
-        //   mobile2: personFormData.mobile2,
-        //   voterId: personFormData.voterId,
-        //   pollingStationId: personFormData.pollingStationId,
-        //   parentId: this.loggedInUser?.uniqueId,
-        //   remark: this.userForm.value.remark,
-        //   roadName: personFormData.roadName,
-        //
-        // };
+        
 
         const formData = new FormData();
         // @ts-ignore

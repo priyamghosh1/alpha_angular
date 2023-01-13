@@ -108,30 +108,9 @@ export class BoothVolunteerComponent implements OnInit {
     // id: new UntypedFormControl(null),
     personTypeId: new UntypedFormControl(null, [Validators.required]),
     personName: new UntypedFormControl(null, [Validators.required]),
-    email: new UntypedFormControl(''),
-    guardianName: new UntypedFormControl(''),
-    religion: new UntypedFormControl(''),
-    occupation: new UntypedFormControl(''),
-    policeStation: new UntypedFormControl(''),
-    cast: new UntypedFormControl(''),
-    partNo: new UntypedFormControl(''),
-    postOffice: new UntypedFormControl(''),
-    houseNo: new UntypedFormControl(''),
-    // state: new FormControl(''),
-    district: new UntypedFormControl(''),
-    pinCode: new UntypedFormControl(''),
-    preferableCandidate: new UntypedFormControl(''),
-    suggestion: new UntypedFormControl(''),
-    prevVotingHistory: new UntypedFormControl(null, [Validators.required]),
-    satisfiedByPresentGov: new UntypedFormControl(null, [Validators.required]),
+    email: new UntypedFormControl(''),    
     age: new UntypedFormControl(''),
-    gender: new UntypedFormControl(null, [Validators.required]),
-    mobile1: new UntypedFormControl('', [Validators.required]),
-    mobile2: new UntypedFormControl(''),
-    aadharId: new UntypedFormControl('', [Validators.required]),
-    roadName: new UntypedFormControl(null),
-    voterId: new UntypedFormControl(''),
-    pollingStationId: new UntypedFormControl(''),
+    gender: new UntypedFormControl(null, [Validators.required]),    
     // remark: new FormControl(null),
   });
   pollingStations: any;
@@ -221,44 +200,7 @@ export class BoothVolunteerComponent implements OnInit {
         const userFormData = this.userForm.value;
         const md5 = new Md5();
         const passwordMd5 = md5.appendStr('1234').end();
-        // const masterData = {
-        //   personTypeId: 3,
-        //   personName: personFormData.personName,
-        //   age: personFormData.age,
-        //   gender: personFormData.gender,
-        //   // email: this.loggedInUser?.uniqueId,
-        //
-        //
-        //   // religion: new FormControl(null, [Validators.required]),
-        //   religion: personFormData.religion,
-        //   occupation: personFormData.occupation,
-        //   policeStation: personFormData.policeStation,
-        //   cast: personFormData.cast,
-        //   partNo: personFormData.partNo,
-        //   postOffice: personFormData.postOffice,
-        //   houseNo: personFormData.houseNo,
-        //   guardianName: personFormData.guardianName,
-        //   aadharId: personFormData.aadharId,
-        //
-        //   state: personFormData.state,
-        //   district: personFormData.district,
-        //   pinCode: personFormData.pinCode,
-        //   preferableCandidate: personFormData.preferableCandidate,
-        //   satisfiedByPresentGov: personFormData.satisfiedByPresentGov,
-        //   suggestion: personFormData.suggestion,
-        //   previousVotingHistory: personFormData.prevVotingHistory,
-        //
-        //   email: personFormData.email,
-        //   password: passwordMd5,
-        //   mobile1: personFormData.mobile1,
-        //   mobile2: personFormData.mobile2,
-        //   voterId: personFormData.voterId,
-        //   pollingStationId: personFormData.pollingStationId,
-        //   parentId: this.loggedInUser?.uniqueId,
-        //   remark: this.userForm.value.remark,
-        //   roadName: personFormData.roadName,
-        //
-        // };
+        
 
         const formData = new FormData();
         // @ts-ignore

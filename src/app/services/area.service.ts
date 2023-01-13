@@ -19,6 +19,9 @@ export class AreaService {
   areaSubject = new Subject<Area[]>();
   stateSubject = new Subject<any>();
 
+  assembly: any;
+  assemblySubject= new Subject<any>();
+
   constructor(private  http: HttpClient, private errorService: ErrorService) {
     this.http.get(this.BASE_API_URL   + '/getAllArea' ).subscribe((response: ServerResponse) => {
       this.areas = response.data;
@@ -30,6 +33,15 @@ export class AreaService {
       this.states = response.data;
       // console.log(this.states);
       this.stateSubject.next([...this.states]);
+    });
+
+    
+  }
+  getAssemblyByDistrictId(districtId:number){
+    this.http.get(this.BASE_API_URL   + '/assembly/district/' + districtId ).subscribe((response: ServerResponse) => {
+      this.assembly = response.data;
+      // console.log(this.assembly);
+      this.assemblySubject.next([...this.assembly]);
     });
   }
 
