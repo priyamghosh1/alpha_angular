@@ -234,8 +234,7 @@
             <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
             <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
               (click)="onSubmit()">Submit</button>
-            <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info"
-              (click)="updateMember()">Update</button>
+            
 
           </div>
         </form>
@@ -408,7 +407,7 @@
             </tr>
           </thead>
           <tbody *ngFor="let x of PolingAgentByAssembly; let i=index">
-            <tr (dblclick)="editVoters(x)">
+            <tr >
               <td class="text-center pt-3" scope="row">{{i+1}}</td>
               <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
               <td class="text-center pt-3" scope="row">{{x.email}}</td>
