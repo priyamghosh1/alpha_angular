@@ -44,7 +44,7 @@ export class PollingNumberComponent implements OnInit {
     console.log(this.pollingForm.value);
     Swal.fire({
       title: 'Confirmation',
-      text: 'Do you sure to create user?',
+      text: 'Do you sure to create polling name?',
       icon: 'info',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
