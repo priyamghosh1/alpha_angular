@@ -300,7 +300,7 @@ export class BoothVolunteerComponent implements OnInit {
         this.userRegistrationService.saveNewVolunteer(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
-            this.voters = response.data;
+            // this.voters = response.data;
             this.personForm.reset();
             this.userForm.reset();
             // @ts-ignore

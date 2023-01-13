@@ -221,7 +221,7 @@ export class VolunteerComponent implements OnInit {
       this.votersList = response.data;
     });
 
-    
+
 
 
 
@@ -339,7 +339,7 @@ export class VolunteerComponent implements OnInit {
         this.userRegistrationService.saveNewUser(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
-            this.voters=response.data;
+            // this.voters=response.data;
             this.personForm.reset();
             this.userForm.reset();
             // @ts-ignore
