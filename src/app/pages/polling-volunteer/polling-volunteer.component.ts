@@ -186,7 +186,7 @@ export class PollingVolunteerComponent implements OnInit {
       this.volunteerByPolingAgent = response.data;
     })
 
-  
+
   }
   printDivStyle = {
     printDiv: { marginRight: '3px', marginLeft: '3px', marginTop: '5px' },
@@ -404,7 +404,7 @@ export class PollingVolunteerComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
-            this.volunteerByPolingAgent.unshift(response.data);
+            // this.volunteerByPolingAgent.unshift(response.data);
             // updating terminal balance from here
 
           } else {

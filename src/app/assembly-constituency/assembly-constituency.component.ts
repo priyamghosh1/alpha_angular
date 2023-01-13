@@ -173,7 +173,7 @@ export class AssemblyConstituencyComponent implements OnInit {
 
     this.userRegistrationService.getPolingAgentByAssembly(this.loggedInUser.uniqueId).subscribe((response: any) => {
       this.PolingAgentByAssembly = response.data;
-      console.log("PolingAgentByAssembly", this.PolingAgentByAssembly)
+      // console.log("PolingAgentByAssembly", this.PolingAgentByAssembly)
     })
 
   }
@@ -199,7 +199,7 @@ export class AssemblyConstituencyComponent implements OnInit {
     div: { border: '1px  solid black' }
   };
 
-  
+
 
   clearForms() {
     this.personForm.reset();
@@ -238,7 +238,7 @@ export class AssemblyConstituencyComponent implements OnInit {
         const userFormData = this.userForm.value;
         const md5 = new Md5();
         const passwordMd5 = md5.appendStr('1234').end();
-        
+
 
         const formData = new FormData();
         // @ts-ignore
