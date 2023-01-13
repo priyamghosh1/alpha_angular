@@ -31,6 +31,11 @@ export class UserRegistrationService {
   
   voterSubject = new Subject<any[]>();
   voters: any[] = [];
+  volunteers: any[]=[];
+  volunteerSubject= new Subject<any[]>();
+
+  existingMembers: any[]=[];
+  existingMemberSubject= new Subject<any[]>();
 
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
@@ -104,8 +109,8 @@ export class UserRegistrationService {
     return this.http.put<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/pollingAgent', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
         console.log(response.data);
-        // this.pollingMembers.unshift(response.data);
-        // this.pollingMemberSubject.next([...this.pollingMembers]);
+        this.existingMembers.unshift(response.data);
+        this.existingMemberSubject.next([...this.existingMembers]);
       }));
   }
 
@@ -122,6 +127,8 @@ export class UserRegistrationService {
       .pipe(catchError(this.errorService.serverError),
         tap((response : {status:string,message:string,data:any[]}) => {
           // console.log(response);
+          this.volunteers.unshift(response.data);
+          this.volunteerSubject.next([...this.volunteers]);
         }));
   }
 
