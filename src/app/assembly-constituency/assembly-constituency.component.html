@@ -189,8 +189,8 @@
                 <mat-form-field appearance="fill">
                   <mat-label>POLLING NO.</mat-label>
                   <mat-select matNativeControl required formControlName="pollingStationId">
-                    <mat-option [value]="x.pollingStationId"
-                      *ngFor="let x of pollingStations">{{x.pollingStationId}}</mat-option>
+                    <mat-option [value]="x.pollingNumber"
+                      *ngFor="let x of pollingStations">{{x.pollingNumber}}</mat-option>
                   </mat-select>
 
                 </mat-form-field>
