@@ -161,7 +161,6 @@ export class VotersByboothVolunteerComponent implements OnInit {
     this.showBill = false;
 
     this.loggedInUser = this.authService.userBehaviorSubject.value;
-    console.log(this.loggedInUser);
     this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {
       status: boolean,
       message: string, data: any

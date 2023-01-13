@@ -28,7 +28,7 @@ export class UserRegistrationService {
 
   boothMemberSubject = new Subject<any[]>();
   boothMembers: any[] = [];
-  
+
   voterSubject = new Subject<any[]>();
   voters: any[] = [];
   volunteers: any[]=[];
@@ -53,7 +53,7 @@ export class UserRegistrationService {
 
   getAllvotersByUserId(userId:number):any{
 
-    return this.http.get<{status:string,message:string,data:any[]}>(this.BASE_API_URL + '/volunteer/'+ userId + '/members')
+    return this.http.get<{status:string,message:string,data:any[]}>(this.BASE_API_URL + '/boothVolunteer/'+ userId + '/members')
       .pipe(catchError(this.errorService.serverError),
         tap((response : {status:string,message:string,data:any[]}) => {
           this.voters = response.data;
@@ -108,9 +108,15 @@ export class UserRegistrationService {
   updateExistingUser(userData: any){
     return this.http.put<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/pollingAgent', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
+<<<<<<< HEAD
         console.log(response.data);
         this.existingMembers.unshift(response.data);
         this.existingMemberSubject.next([...this.existingMembers]);
+=======
+        // console.log(response.data);
+        // this.pollingMembers.unshift(response.data);
+        // this.pollingMemberSubject.next([...this.pollingMembers]);
+>>>>>>> d36c407b4c52b5651ee127af7efce2b4ddd5c958
       }));
   }
 
@@ -140,7 +146,6 @@ export class UserRegistrationService {
     return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/boothVolunteer/'+ pollingAgentId)
       .pipe(catchError(this.errorService.serverError),
         tap((response : {status:string,message:string,data:any[]}) => {
-          console.log(response);
           this.boothMembers.unshift(response.data);
           this.boothMemberSubject.next([...this.boothMembers]);
         }));
@@ -155,7 +160,6 @@ export class UserRegistrationService {
     return this.http.get<{status:string,message:string,data:PollingMember[]}>(this.BASE_API_URL + '/pollingVolunteer/'+ assemblyId)
       .pipe(catchError(this.errorService.serverError),
         tap((response : {status:string,message:string,data:any}) => {
-          console.log(response);
           this.pollingMembers.unshift(response.data);
           this.pollingMemberSubject.next([...this.pollingMembers]);
         }));
