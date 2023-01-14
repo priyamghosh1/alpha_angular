@@ -165,7 +165,7 @@
             </thead>
             <tbody *ngFor="let x of assemblyVolunteer; let i = index">
               <tr >
-              <!-- <tr (dblclick)="editVoters(x)"> -->
+              <tr (dblclick)="editAssemblyVolunteer(x)">
                 <td class="text-center pt-3" scope="row">{{i+1}}</td>
                 <td class="text-center pt-3" *ngIf="showName == true" scope="row">{{x.personName}}</td>
                 <td class="text-center pt-3" scope="row">{{x.email}}</td>

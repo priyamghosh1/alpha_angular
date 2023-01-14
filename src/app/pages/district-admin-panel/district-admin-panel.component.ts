@@ -180,7 +180,7 @@ export class DistrictAdminPanelComponent implements OnInit {
 
     this.areaService.getAssemblyByDistrictId(4).subscribe((response: any)=>{
       this.assembly = response.data;
-      console.log("asembly", this.assembly);
+      // console.log("asembly", this.assembly);
     });
     
     
@@ -395,41 +395,42 @@ export class DistrictAdminPanelComponent implements OnInit {
     });
   }
    
-  editVoters(voter: any) {
-    // console.log(voter);
+  editAssemblyVolunteer(assemblyVolunteer: any) {
+    console.log("test",assemblyVolunteer);
     this.personForm.patchValue({
-      id: voter.id,
-      personName: voter.personName,
-      age: voter.age,
-      gender: voter.gender,
-      email: voter.email,
-      religion: voter.religion,
-      occupation: voter.occupation,
-      policeStation: voter.policeStation,
-      cast: voter.cast,
-      partNo: voter.partNo,
-      postOffice: voter.postOffice,
-      houseNo: voter.houseNo,
-      guardianName: voter.guardianName,
-      aadharId: voter.aadharId,
-      state: voter.state,
-      district: voter.districtId,
-      pinCode: voter.pinCode,
-      preferableCandidate: voter.preferableCandidate,
-      satisfiedByPresentGov: voter.satisfiedByPresentGov,
-      suggestion: voter.suggestion,
-      prevVotingHistory: voter.previousVotingHistory,
-      password: voter.password,
-      mobile1: voter.mobile1,
-      mobile2: voter.mobile2,
-      voterId: voter.voterId,
-      pollingStationId: voter.pollingStationId,
-      parentId: voter.parentId,
-      remark: voter.remark,
-      roadName: voter.roadName,
+      id: assemblyVolunteer.id,
+      personName: assemblyVolunteer.personName,
+      age: assemblyVolunteer.age,
+      gender: assemblyVolunteer.gender,
+      email: assemblyVolunteer.email,
+      assembly: assemblyVolunteer.assemblyConstituencyId,
+      // religion: voter.religion,
+      // occupation: voter.occupation,
+      // policeStation: voter.policeStation,
+      // cast: voter.cast,
+      // partNo: voter.partNo,
+      // postOffice: voter.postOffice,
+      // houseNo: voter.houseNo,
+      // guardianName: voter.guardianName,
+      // aadharId: voter.aadharId,
+      // state: voter.state,
+      // district: voter.districtId,
+      // pinCode: voter.pinCode,
+      // preferableCandidate: voter.preferableCandidate,
+      // satisfiedByPresentGov: voter.satisfiedByPresentGov,
+      // suggestion: voter.suggestion,
+      // prevVotingHistory: voter.previousVotingHistory,
+      // password: voter.password,
+      // mobile1: voter.mobile1,
+      // mobile2: voter.mobile2,
+      // voterId: voter.voterId,
+      // pollingStationId: voter.pollingStationId,
+      // parentId: voter.parentId,
+      // remark: voter.remark,
+      // roadName: voter.roadName,
     });
-    console.log(voter);
-    this.imageSrc = this.imageSrcVoter + '' + voter.id + '.jpg'
+
+    console.log(this.personForm);
 
     // this.onchange(this.imageSrc);
 
