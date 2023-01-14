@@ -37,6 +37,10 @@ export class UserRegistrationService {
   existingMembers: any[]=[];
   existingMemberSubject= new Subject<any[]>();
 
+  assemblyVolunteer: any[]=[];
+  assemblyVolunteerSubject= new Subject<any[]>();
+
+
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
 
@@ -85,6 +89,13 @@ export class UserRegistrationService {
       }));
   }
 
+  saveNewAssemblyByDistrictAdmin(userData: any){
+    return this.http.post<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/assemblyVolunteer', userData)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        
+      }));
+  }
+
   saveNewPollingByAssembly(userData: any){
     return this.http.post<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/pollingVolunteer', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
@@ -114,6 +125,16 @@ export class UserRegistrationService {
       }));
   }
 
+  // updateAssemblyVolunteerByDistrictAdmin(userData: any){
+  //   return this.http.put<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/pollingAgent', userData)
+  //     .pipe(catchError(this.errorService.serverError), tap(response => {
+  //       // console.log(response.data);
+  //       // this.pollingMembers.unshift(response.data);
+  //       // this.pollingMemberSubject.next([...this.pollingMembers]);
+  //     }));
+  // }
+
+
   getVolunteerByPointAgentListener(){
     return this.volunteerAgentByPolingAgentSubject.asObservable();
   }
@@ -130,6 +151,15 @@ export class UserRegistrationService {
           this.volunteers.unshift(response.data);
           this.volunteerSubject.next([...this.volunteers]);
         }));
+  }
+
+  getAssemblyVolunteerByDistrictAdmin(districtAdminId: number){
+    return this.http.get<{status:string,message:string,data:PollingVolunteer[]}>(this.BASE_API_URL + '/assemblyVolunteer/' + districtAdminId)
+    .pipe(catchError(this.errorService.serverError),
+      tap((response : {status:string,message:string,data:any[]}) => {
+        this.assemblyVolunteer = response.data;
+        this.assemblyVolunteerSubject.next([...this.assemblyVolunteer]);
+      }));
   }
 
   getBoothByPolingAgent(pollingAgentId: number){

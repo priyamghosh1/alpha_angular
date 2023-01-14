@@ -102,6 +102,7 @@ export class DistrictAdminPanelComponent implements OnInit {
   showPollingNumber = false;
   districtId: any;
   assembly: any[]=[];
+  assemblyVolunteer: any[]=[];
 
 
   personForm = new UntypedFormGroup({
@@ -172,18 +173,27 @@ export class DistrictAdminPanelComponent implements OnInit {
       this.pollingStations = response.data;
     });
 
+    this.userRegistrationService.getAssemblyVolunteerByDistrictAdmin(this.loggedInUser.uniqueId).subscribe((response : any) =>{
+      this.assemblyVolunteer = response.data;
+      console.log(this.assemblyVolunteer);
+    });
+
+    this.areaService.getAssemblyByDistrictId(4).subscribe((response: any)=>{
+      this.assembly = response.data;
+      console.log("asembly", this.assembly);
+    });
     
     
     
     // this.areaService.getAssemblyByDistrictId(this.personForm.value.district).
   }
-  getDitrictId(id: number){
-    this.districtId = id;
-    this.areaService.getAssemblyByDistrictId(this.districtId).subscribe((response: any)=>{
-      this.assembly = response.data;
-      console.log("asembly", this.assembly);
-    });
-  }
+  // getDitrictId(id: number){
+  //   this.districtId = id;
+  //   this.areaService.getAssemblyByDistrictId(this.districtId).subscribe((response: any)=>{
+  //     this.assembly = response.data;
+  //     console.log("asembly", this.assembly);
+  //   });
+  // }
 
 
   printDivStyle = {
@@ -252,47 +262,45 @@ export class DistrictAdminPanelComponent implements OnInit {
         formData.append("personName", personFormData.personName);
         formData.append("age", personFormData.age);
         formData.append("gender", personFormData.gender);
-        formData.append("religion", personFormData.religion);
-        formData.append("occupation", personFormData.occupation);
-        formData.append("policeStation", personFormData.policeStation);
-        formData.append("cast", personFormData.cast);
-        formData.append("partNo", personFormData.partNo);
-        formData.append("postOffice", personFormData.postOffice);
-        formData.append("houseNo", personFormData.houseNo);
-        formData.append("guardianName", personFormData.guardianName);
-        formData.append("district", personFormData.district);
-        formData.append("pinCode", personFormData.pinCode);
-        formData.append("preferableCandidate", personFormData.preferableCandidate);
-        formData.append("satisfiedByPresentGov", personFormData.satisfiedByPresentGov);
-        formData.append("suggestion", personFormData.suggestion);
-        formData.append("previousVotingHistory", personFormData.prevVotingHistory);
+        // formData.append("religion", personFormData.religion);
+        // formData.append("occupation", personFormData.occupation);
+        // formData.append("policeStation", personFormData.policeStation);
+        // formData.append("cast", personFormData.cast);
+        // formData.append("partNo", personFormData.partNo);
+        // formData.append("postOffice", personFormData.postOffice);
+        // formData.append("houseNo", personFormData.houseNo);
+        // formData.append("guardianName", personFormData.guardianName);
+        // formData.append("district", personFormData.district);
+        // formData.append("pinCode", personFormData.pinCode);
+        // formData.append("preferableCandidate", personFormData.preferableCandidate);
+        // formData.append("satisfiedByPresentGov", personFormData.satisfiedByPresentGov);
+        // formData.append("suggestion", personFormData.suggestion);
+        // formData.append("previousVotingHistory", personFormData.prevVotingHistory);
         formData.append("email", personFormData.email);
-        formData.append("aadharId", personFormData.aadharId);
+        // formData.append("aadharId", personFormData.aadharId);
         // @ts-ignore
         formData.append("password", passwordMd5);
-        formData.append("mobile1", personFormData.mobile1);
-        formData.append("mobile2", personFormData.mobile2);
-        formData.append("voterId", personFormData.voterId);
-        formData.append("pollingStationId", personFormData.pollingStationId);
+        // formData.append("mobile1", personFormData.mobile1);
+        // formData.append("mobile2", personFormData.mobile2);
+        // formData.append("voterId", personFormData.voterId);
+        // formData.append("pollingStationId", personFormData.pollingStationId);
         // @ts-ignore
         formData.append("parentId", this.loggedInUser?.uniqueId);
-        formData.append("remark", this.userForm.value.remark);
-        formData.append("roadName", personFormData.roadName);
-        formData.append("district", personFormData.district);
-        formData.append("assembly", personFormData.assembly);
+        // formData.append("remark", this.userForm.value.remark);
+        // formData.append("roadName", personFormData.roadName);
+        // formData.append("district", personFormData.district);
+        formData.append("assemblyConstituencyId", personFormData.assembly);
         // formData.append("state", personFormData.state);
 
         // formData.append("file", this.file);
 
-        this.userRegistrationService.saveNewVolunteer(formData).subscribe(response => {
+        this.userRegistrationService.saveNewAssemblyByDistrictAdmin(formData).subscribe(response => {
           if (response.status) {
             const responseData = response.data;
-            this.voters = response.data;
+            // this.voters = response.data;
             this.personForm.reset();
             this.userForm.reset();
-            // @ts-ignore
-            this.file = File;
-            this.imageSrc = null;
+                     
             // @ts-ignore
             Swal.fire({
               position: 'top-end',
@@ -301,6 +309,7 @@ export class DistrictAdminPanelComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
+            this.assemblyVolunteer.unshift(response.data);
             // updating terminal balance from here
 
           } else {
