@@ -226,33 +226,33 @@ export class AssemblyConstituencyComponent implements OnInit {
         formData.append("personName", personFormData.personName);
         formData.append("age", personFormData.age);
         formData.append("gender", personFormData.gender);
-        formData.append("religion", personFormData.religion);
-        formData.append("occupation", personFormData.occupation);
-        formData.append("policeStation", personFormData.policeStation);
-        formData.append("cast", personFormData.cast);
-        formData.append("partNo", personFormData.partNo);
-        formData.append("postOffice", personFormData.postOffice);
-        formData.append("houseNo", personFormData.houseNo);
-        formData.append("guardianName", personFormData.guardianName);
-        formData.append("district", personFormData.district);
-        formData.append("pinCode", personFormData.pinCode);
-        formData.append("preferableCandidate", personFormData.preferableCandidate);
-        formData.append("satisfiedByPresentGov", personFormData.satisfiedByPresentGov);
-        formData.append("suggestion", personFormData.suggestion);
-        formData.append("previousVotingHistory", personFormData.prevVotingHistory);
+        // formData.append("religion", personFormData.religion);
+        // formData.append("occupation", personFormData.occupation);
+        // formData.append("policeStation", personFormData.policeStation);
+        // formData.append("cast", personFormData.cast);
+        // formData.append("partNo", personFormData.partNo);
+        // formData.append("postOffice", personFormData.postOffice);
+        // formData.append("houseNo", personFormData.houseNo);
+        // formData.append("guardianName", personFormData.guardianName);
+        // formData.append("district", personFormData.district);
+        // formData.append("pinCode", personFormData.pinCode);
+        // formData.append("preferableCandidate", personFormData.preferableCandidate);
+        // formData.append("satisfiedByPresentGov", personFormData.satisfiedByPresentGov);
+        // formData.append("suggestion", personFormData.suggestion);
+        // formData.append("previousVotingHistory", personFormData.prevVotingHistory);
         formData.append("email", personFormData.email);
-        formData.append("aadharId", personFormData.aadharId);
+        // formData.append("aadharId", personFormData.aadharId);
         // @ts-ignore
         formData.append("password", passwordMd5);
-        formData.append("mobile1", personFormData.mobile1);
-        formData.append("mobile2", personFormData.mobile2);
-        formData.append("voterId", personFormData.voterId);
+        // formData.append("mobile1", personFormData.mobile1);
+        // formData.append("mobile2", personFormData.mobile2);
+        // formData.append("voterId", personFormData.voterId);
         formData.append("pollingStationId", personFormData.pollingStationId);
         // @ts-ignore
         formData.append("parentId", this.loggedInUser?.uniqueId);
-        formData.append("remark", this.userForm.value.remark);
-        formData.append("roadName", personFormData.roadName);
-        formData.append("district", personFormData.district);
+        // formData.append("remark", this.userForm.value.remark);
+        // formData.append("roadName", personFormData.roadName);
+        // formData.append("district", personFormData.district);
         // formData.append("state", personFormData.state);
 
         // formData.append("file", this.file);
@@ -361,7 +361,7 @@ export class AssemblyConstituencyComponent implements OnInit {
   }
 
   editVoters(voter: any) {
-    console.log(voter.pollingNumber);
+    // console.log(voter.pollingNumber);
     this.personForm.patchValue({
       id: voter.id,
       personName: voter.personName,
@@ -372,7 +372,7 @@ export class AssemblyConstituencyComponent implements OnInit {
       remark: voter.remark,
      
     });
-    console.log(voter);
+    // console.log(voter);
     this.imageSrc = this.imageSrcVoter + '' + voter.id + '.jpg'
 
     // this.onchange(this.imageSrc);

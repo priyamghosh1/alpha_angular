@@ -4,7 +4,7 @@ import {ErrorService} from './error.service';
 import {ServerResponse} from '../models/ServerResponse.model';
 import {environment} from '../../environments/environment';
 import { Area } from '../models/area.model';
-import { Subject } from 'rxjs';
+import { catchError, Subject, tap } from 'rxjs';
 
 
 @Injectable({
@@ -37,12 +37,25 @@ export class AreaService {
 
     
   }
-  getAssemblyByDistrictId(districtId:number){
-    this.http.get(this.BASE_API_URL   + '/assembly/district/' + districtId ).subscribe((response: ServerResponse) => {
+
+  getAssemblyByDistrictId(districtId:number):any{
+    return this.http.get<{status:string,message:string,data:any[]}>(this.BASE_API_URL   + '/assembly/district/' + districtId )
+    .pipe(catchError(this.errorService.serverError),
+    tap((response : {status:string,message:string,data:any[]}) => {
       this.assembly = response.data;
-      // console.log(this.assembly);
       this.assemblySubject.next([...this.assembly]);
-    });
+    }));
+  }
+
+  // getAssemblyByDistrictId(districtId:number):any{
+  //   return this.http.get<{status:string,message:string,data:any[]}>(this.BASE_API_URL   + '/assembly/district/' + districtId ).subscribe((response: ServerResponse) => {
+  //     this.assembly = response.data;
+  //     this.assemblySubject.next([...this.assembly]);
+  //   });
+  // }
+
+  getAssemblyByDistrictIdListener(){
+    return this.assemblySubject.asObservable();
   }
 
   getArea(){

@@ -100,6 +100,8 @@ export class DistrictAdminPanelComponent implements OnInit {
   showRoadNo = true;
   showPinCode = false;
   showPollingNumber = false;
+  districtId: any;
+  assembly: any[]=[];
 
 
   personForm = new UntypedFormGroup({
@@ -169,7 +171,18 @@ export class DistrictAdminPanelComponent implements OnInit {
     }) => {
       this.pollingStations = response.data;
     });
+
+    
+    
+    
     // this.areaService.getAssemblyByDistrictId(this.personForm.value.district).
+  }
+  getDitrictId(id: number){
+    this.districtId = id;
+    this.areaService.getAssemblyByDistrictId(this.districtId).subscribe((response: any)=>{
+      this.assembly = response.data;
+      console.log("asembly", this.assembly);
+    });
   }
 
 
@@ -266,6 +279,7 @@ export class DistrictAdminPanelComponent implements OnInit {
         formData.append("remark", this.userForm.value.remark);
         formData.append("roadName", personFormData.roadName);
         formData.append("district", personFormData.district);
+        formData.append("assembly", personFormData.assembly);
         // formData.append("state", personFormData.state);
 
         // formData.append("file", this.file);

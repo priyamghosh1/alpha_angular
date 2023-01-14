@@ -33,18 +33,19 @@
               </div>
               
               <div>
+                
                 <mat-form-field appearance="fill">
                   <mat-label>DISTRICT</mat-label>
                   <mat-select matNativeControl required formControlName="district">
-                    <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
+                    <mat-option [value]="x.districtId" (click)="getDitrictId(x.districtId)" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
                   </mat-select>
                 </mat-form-field>
-                <!-- <mat-form-field appearance="fill">
-                  <mat-label>DISTRICT</mat-label>
-                  <mat-select matNativeControl required formControlName="district">
-                    <mat-option [value]="x.districtId" *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
+                <mat-form-field appearance="fill">
+                  <mat-label>ASSEMBLY</mat-label>
+                  <mat-select matNativeControl required formControlName="assembly">
+                    <mat-option [value]="x.assemblyId" *ngFor=" let x of assembly">{{x.assemblyName}}</mat-option>
                   </mat-select>
-                </mat-form-field> -->
+                </mat-form-field>
                 <mat-form-field appearance="fill">
                   <mat-label>EMAIL</mat-label>
                   <input matInput placeholder="Email" formControlName="email" required>
@@ -52,6 +53,7 @@
               </div>
               
             </div>
+            <!-- {{assembly | json}} -->
 
             <div class="fluid" style="background-color: white; max-height: 100px;  margin: 2%; text-align: right ">
               <mat-menu #test1="matMenu">
