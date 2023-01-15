@@ -106,14 +106,14 @@ export class DistrictAdminPanelComponent implements OnInit {
 
 
   personForm = new UntypedFormGroup({
-    // id: new UntypedFormControl(null),
+    id: new UntypedFormControl(null),
     personTypeId: new UntypedFormControl(null, [Validators.required]),
     personName: new UntypedFormControl(null, [Validators.required]),
     age: new UntypedFormControl(''),
     gender: new UntypedFormControl(null, [Validators.required]),
     email: new UntypedFormControl(''),
     district: new UntypedFormControl(null, [Validators.required]),
-    assembly: new UntypedFormControl(null, [Validators.required]),
+    assemblyId: new UntypedFormControl(null, [Validators.required]),
     
     // guardianName: new UntypedFormControl(''),
     // religion: new UntypedFormControl(''),
@@ -137,6 +137,7 @@ export class DistrictAdminPanelComponent implements OnInit {
     // pollingStationId: new UntypedFormControl(''),
     // remark: new FormControl(null),
   });
+  
   pollingStations: any;
   pollingMembers: PollingMember[] = [];
   loggedInUser: User | undefined;
@@ -153,7 +154,10 @@ export class DistrictAdminPanelComponent implements OnInit {
       this.states = response;
     });
     this.states = this.areaService.getstate();
-
+    // this.personForm.value.assemblyId = 2;
+    // this.personForm.patchValue({
+    //   assemblyId : 2
+    // });
 
 
     this.defaultPicture = this.BASE_PUBLIC_URL + '/profile_pic/no_dp.png';
@@ -165,7 +169,7 @@ export class DistrictAdminPanelComponent implements OnInit {
     this.showBill = false;
 
     this.loggedInUser = this.authService.userBehaviorSubject.value;
-    // console.log("loggedInUser district", this.loggedInUser);
+    console.log("loggedInUser district", this.loggedInUser.districtId);
     this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {
       status: boolean,
       message: string, data: any
@@ -175,13 +179,18 @@ export class DistrictAdminPanelComponent implements OnInit {
 
     this.userRegistrationService.getAssemblyVolunteerByDistrictAdmin(this.loggedInUser.uniqueId).subscribe((response : any) =>{
       this.assemblyVolunteer = response.data;
-      console.log(this.assemblyVolunteer);
+      // console.log(this.assemblyVolunteer);
     });
 
-    this.areaService.getAssemblyByDistrictId(4).subscribe((response: any)=>{
+    this.areaService.getAssemblyByDistrictId(this.loggedInUser.districtId).subscribe((response: any)=>{
       this.assembly = response.data;
       // console.log("asembly", this.assembly);
     });
+
+    // this.personForm.value.assemblyId = 2;
+    // this.personForm.patchValue({
+    //   assemblyId : 2
+    // });
     
     
     
@@ -289,7 +298,7 @@ export class DistrictAdminPanelComponent implements OnInit {
         // formData.append("remark", this.userForm.value.remark);
         // formData.append("roadName", personFormData.roadName);
         // formData.append("district", personFormData.district);
-        formData.append("assemblyConstituencyId", personFormData.assembly);
+        formData.append("assemblyConstituencyId", personFormData.assemblyId);
         // formData.append("state", personFormData.state);
 
         // formData.append("file", this.file);
@@ -343,10 +352,15 @@ export class DistrictAdminPanelComponent implements OnInit {
       if (result.isConfirmed) {
         // tslint:disable-next-line:max-line-length
         // console.log(this.loggedInUser?.uniqueId);return;
+
         const personFormData = this.personForm.value;
-        const userFormData = this.userForm.value;
+        console.log(personFormData);
+
+        // const userFormData = this.userForm.value;/
         const md5 = new Md5();
         const passwordMd5 = md5.appendStr('1234').end();
+
+
         const masterData = {
           personId: personFormData.id,
           personTypeId: 6,
@@ -357,37 +371,38 @@ export class DistrictAdminPanelComponent implements OnInit {
 
 
           // religion: new FormControl(null, [Validators.required]),
-          religion: personFormData.religion,
-          occupation: personFormData.occupation,
-          policeStation: personFormData.policeStation,
-          cast: personFormData.cast,
-          partNo: personFormData.partNo,
-          postOffice: personFormData.postOffice,
-          houseNo: personFormData.houseNo,
-          guardianName: personFormData.guardianName,
-          aadharId: personFormData.aadharId,
+          // religion: personFormData.religion,
+          // occupation: personFormData.occupation,
+          // policeStation: personFormData.policeStation,
+          // cast: personFormData.cast,
+          // partNo: personFormData.partNo,
+          // postOffice: personFormData.postOffice,/
+          // houseNo: personFormData.houseNo,
+          // guardianName: personFormData.guardianName,
+          // aadharId: personFormData.aadharId,
 
-          state: personFormData.state,
+          // state: personFormData.state,
           district: personFormData.district,
-          pinCode: personFormData.pinCode,
-          preferableCandidate: personFormData.preferableCandidate,
-          satisfiedByPresentGov: personFormData.satisfiedByPresentGov,
-          suggestion: personFormData.suggestion,
-          previousVotingHistory: personFormData.prevVotingHistory,
+          // pinCode: personFormData.pinCode,
+          // preferableCandidate: personFormData.preferableCandidate/,
+          // satisfiedByPresentGov: personFormData.satisfiedByPresentGov,
+          // suggestion: personFormData.suggestion,
+          // previousVotingHistory: personFormData.prevVotingHistory,
 
           email: personFormData.email,
           password: passwordMd5,
-          mobile1: personFormData.mobile1,
-          mobile2: personFormData.mobile2,
-          voterId: personFormData.voterId,
-          pollingStationId: personFormData.pollingStationId,
+          // mobile1: personFormData.mobile1,
+          // mobile2: personFormData.mobile2,
+          // voterId: personFormData.voterId,
+          assemblyId: personFormData.assemblyId,
           parentId: this.loggedInUser?.uniqueId,
-          remark: this.userForm.value.remark,
-          roadName: personFormData.roadName,
+          // remark: this.userForm.value.remark,
+          // roadName: personFormData.roadName,/
 
         };
+        // console.log(masterData);
         // formData.append("state", personFormData.state);
-        this.userRegistrationService.updateExistingUser(masterData).subscribe(response => {
+        this.userRegistrationService.updateAssemblyVolunteerByDistrictAdmin(masterData).subscribe(response => {
 
         });
 
@@ -396,14 +411,14 @@ export class DistrictAdminPanelComponent implements OnInit {
   }
    
   editAssemblyVolunteer(assemblyVolunteer: any) {
-    console.log("test",assemblyVolunteer);
+    // console.log("test",assemblyVolunteer);
     this.personForm.patchValue({
       id: assemblyVolunteer.id,
       personName: assemblyVolunteer.personName,
       age: assemblyVolunteer.age,
       gender: assemblyVolunteer.gender,
       email: assemblyVolunteer.email,
-      assembly: assemblyVolunteer.assemblyConstituencyId,
+      assemblyId: assemblyVolunteer.assemblyId,
       // religion: voter.religion,
       // occupation: voter.occupation,
       // policeStation: voter.policeStation,
@@ -429,8 +444,9 @@ export class DistrictAdminPanelComponent implements OnInit {
       // remark: voter.remark,
       // roadName: voter.roadName,
     });
+    // this.personForm.value.assemblyId= assemblyVolunteer.assemblyId;
 
-    console.log(this.personForm);
+    // console.log(this.personForm);
 
     // this.onchange(this.imageSrc);
 

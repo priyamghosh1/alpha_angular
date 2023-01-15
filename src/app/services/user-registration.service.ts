@@ -126,7 +126,7 @@ export class UserRegistrationService {
   }
 
   updateAssemblyVolunteerByDistrictAdmin(userData: any){
-    return this.http.put<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/pollingAgent', userData)
+    return this.http.put<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/assemblyVolunteer', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
         // console.log(response.data);
         // this.pollingMembers.unshift(response.data);
