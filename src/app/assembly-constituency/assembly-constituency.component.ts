@@ -106,9 +106,9 @@ export class AssemblyConstituencyComponent implements OnInit {
     // id: new UntypedFormControl(null),
     personTypeId: new UntypedFormControl(null, [Validators.required]),
     personName: new UntypedFormControl(null, [Validators.required]),
-    email: new UntypedFormControl(''),    
+    email: new UntypedFormControl(''),
     age: new UntypedFormControl(''),
-    gender: new UntypedFormControl(null, [Validators.required]),    
+    gender: new UntypedFormControl(null, [Validators.required]),
     pollingStationId: new UntypedFormControl(''),
     // remark: new FormControl(null),
   });
@@ -143,6 +143,7 @@ export class AssemblyConstituencyComponent implements OnInit {
     this.showBill = false;
 
     this.loggedInUser = this.authService.userBehaviorSubject.value;
+    console.log(this.loggedInUser);
     this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {
       status: boolean,
       message: string, data: any
@@ -367,10 +368,10 @@ export class AssemblyConstituencyComponent implements OnInit {
       personName: voter.personName,
       age: voter.age,
       gender: voter.gender,
-      email: voter.email,      
-      pollingStationId: voter.pollingNumber,      
+      email: voter.email,
+      pollingStationId: voter.pollingNumber,
       remark: voter.remark,
-     
+
     });
     // console.log(voter);
     this.imageSrc = this.imageSrcVoter + '' + voter.id + '.jpg'

@@ -8,6 +8,7 @@ export class User{
               public userTypeId: number,
               public userTypeName: string,
               public assemblyConstituencyId: number,
+              public districtId: number,
   ){}
 
 
