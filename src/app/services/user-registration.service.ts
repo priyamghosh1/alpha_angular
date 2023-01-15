@@ -128,9 +128,9 @@ export class UserRegistrationService {
   updateAssemblyVolunteerByDistrictAdmin(userData: any){
     return this.http.put<{status:boolean, message:string ,data:UserRegistration}>(this.BASE_API_URL + '/assemblyVolunteer', userData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
-        // console.log(response.data);
-        // this.pollingMembers.unshift(response.data);
-        // this.pollingMemberSubject.next([...this.pollingMembers]);
+        const x = this.assemblyVolunteer.findIndex(x=> x.personId === response.data.id);
+        this.assemblyVolunteer[x] = response.data;
+        this.assemblyVolunteerSubject.next([...this.assemblyVolunteer]);
       }));
   }
 
@@ -159,7 +159,11 @@ export class UserRegistrationService {
       tap((response : {status:string,message:string,data:any[]}) => {
         this.assemblyVolunteer = response.data;
         this.assemblyVolunteerSubject.next([...this.assemblyVolunteer]);
+        console.log(this.assemblyVolunteer);
       }));
+  }
+  getAssemblyVolunteerByDistrictAdminListener(){
+    return this.assemblyVolunteerSubject.asObservable();
   }
 
   getBoothByPolingAgent(pollingAgentId: number){

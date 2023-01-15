@@ -354,7 +354,7 @@ export class DistrictAdminPanelComponent implements OnInit {
         // console.log(this.loggedInUser?.uniqueId);return;
 
         const personFormData = this.personForm.value;
-        console.log(personFormData);
+        // console.log(personFormData);
 
         // const userFormData = this.userForm.value;/
         const md5 = new Md5();
