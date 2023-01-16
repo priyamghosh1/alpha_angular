@@ -92,6 +92,10 @@ const routes: Routes = [
 
   { path: 'pollingNumber', loadChildren: () => import('./assembly-constituency/polling-number/polling-number.module').then(m => m.PollingNumberModule) },
 
+  { path: 'pollingVolunteer/voters', loadChildren: () => import('./pages/polling-volunteer/voters/voters.module').then(m => m.VotersModule) },
+
+  { path: 'assemblyConstituency/voters', loadChildren: () => import('./assembly-constituency/voters/voters.module').then(m => m.VotersModule) },
+
   // { path: 'volunteer', loadChildren: () => import('./pages/volunteer/volunteer.module').then(m => m.VolunteerModule) },
 
 

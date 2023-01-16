@@ -450,7 +450,7 @@ export class VotersByboothVolunteerComponent implements OnInit {
       remark: voter.remark,
       roadName: voter.roadName,
     });
-    console.log(voter);
+    // console.log(voter);
     this.imageSrc = this.imageSrcVoter + '' + voter.id + '.jpg'
 
     // this.onchange(this.imageSrc);
