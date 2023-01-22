@@ -11,6 +11,9 @@ export class LegendVolunteerService {
 
   private BASE_API_URL = environment.BASE_API_URL;
 
+  voters: any[]=[];
+  votersSubject = new Subject<any[]>();
+
   districtVolunteers: any[]=[];
   districtVolunteersSubject= new Subject<any[]>();
 
@@ -44,6 +47,22 @@ export class LegendVolunteerService {
 
   getDistrictAdminByLegendListener(){
     return this.districtVolunteersSubject.asObservable();
+  }
+
+  getvotersByLegend(legendId: number){
+
+    return this.http.get<{ status: string, message: string, data: any[] }>(this.BASE_API_URL + '/districtAdmin/' + legendId + '/members')
+      .pipe(catchError(this.errorService.serverError),
+        tap((response: { status: string, message: string, data: any[] }) => {
+          // console.log(response.data);
+          this.voters.unshift(response.data);
+          this.votersSubject.next([...this.voters]);
+        }));
+
+  }
+
+  getvotersByLegendListener(){
+    return this.votersSubject.asObservable();
   }
 
 

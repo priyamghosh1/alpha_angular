@@ -99,6 +99,8 @@ const routes: Routes = [
 
   { path: 'sidenavLegendVolunteer', loadChildren: () => import('./sidenavs/sidenav-legend-volunteer/sidenav-legend-volunteer.module').then(m => m.SidenavLegendVolunteerModule) },
 
+  { path: 'legendVolunteer/voters', loadChildren: () => import('./legend-volunteer/voters/voters.module').then(m => m.VotersModule) },
+
   // { path: 'volunteer', loadChildren: () => import('./pages/volunteer/volunteer.module').then(m => m.VolunteerModule) },
 
 
