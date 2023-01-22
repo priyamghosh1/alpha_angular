@@ -35,6 +35,7 @@ import { SidenavVolunteerModule } from './sidenavs/sidenav-volunteer/sidenav-vol
 import { SidenavAssemblyConstituencyModule } from './sidenavs/sidenav-assembly-constituency/sidenav-assembly-constituency.module';
 import { SidenavBoothVolunteerModule } from './sidenavs/sidenav-booth-volunteer/sidenav-booth-volunteer.module';
 import { SidenavDistricttAdminModule } from './sidenavs/sidenav-districtt-admin/sidenav-districtt-admin.module';
+import { SidenavLegendVolunteerModule } from './sidenavs/sidenav-legend-volunteer/sidenav-legend-volunteer.module';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { SidenavDistricttAdminModule } from './sidenavs/sidenav-districtt-admin/
         SidenavPollingVolunteerModule,
         SidenavAssemblyConstituencyModule,
         SidenavBoothVolunteerModule,
-        SidenavDistricttAdminModule
+        SidenavDistricttAdminModule,
+        SidenavLegendVolunteerModule
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

@@ -169,7 +169,7 @@ export class DistrictAdminPanelComponent implements OnInit {
     this.showBill = false;
 
     this.loggedInUser = this.authService.userBehaviorSubject.value;
-    console.log("loggedInUser district", this.loggedInUser.districtId);
+    // console.log("loggedInUser district", this.loggedInUser.districtId);
     this.pollingStationService.getPollingStationByAssemblyId(this.loggedInUser?.assemblyConstituencyId).subscribe((response: {
       status: boolean,
       message: string, data: any

@@ -1,1 +1,114 @@
-<p>legend-volunteer works!</p>
+<div class="container pt-1" style="background-color: rgba(255, 255, 255, 0); color: black !important;">
+    <h3><u>Create District Admin</u> </h3>
+
+    <div>
+        <!-- test2 -->
+        <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+          {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+        </button> -->
+        <mat-stepper
+            style="background-color: rgb(7, 138, 182) !important; color: black !important; border-radius: 10px;"
+            #stepper>
+            <mat-step [stepControl]="personForm">
+                <form [formGroup]="personForm">
+                    <ng-template matStepLabel>Fill out your name</ng-template>
+                    <div class="d-flex">
+                        <div class="col-9">
+
+                            <div>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>NAME</mat-label>
+                                    <input matInput placeholder="Last name, First name" formControlName="personName"
+                                        required>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>AGE</mat-label>
+                                    <input matInput placeholder="Your age" formControlName="age" required>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>GENDER</mat-label>
+                                    <mat-select matNativeControl required formControlName="gender">
+                                        <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label>District</mat-label>
+                                    <mat-select matNativeControl required formControlName="district">
+                                        <mat-option [value]="x.districtId"
+                                            *ngFor=" let x of states[0].districts">{{x.name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>EMAIL</mat-label>
+                                    <input matInput placeholder="Email" formControlName="email" required>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                        <!-- {{assembly | json}} -->
+
+                        <div class="fluid"
+                            style="background-color: white; max-height: 100px;  margin: 2%; text-align: right ">
+                            <!-- <mat-menu #test1="matMenu">
+                                <input [disabled]="isUpdateAble == true" type="file" name="filename"
+                                    (change)="onChange($event)">
+                            </mat-menu> -->
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
+                        <button *ngIf="isUpdateAble == false" (click)="onSubmit()" type="submit" class="btn btn-info">Submit</button>
+                        <!-- <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
+                            (click)="onSubmit()">Submit</button> -->
+                        <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info"
+                            (click)="updateMember()">Update</button>
+
+                    </div>
+                </form>
+            </mat-step>
+
+
+        </mat-stepper>
+
+
+    </div>
+
+
+    <div class="card">
+        <div class="card-body scroll"
+            style="max-width: 100vw; overflow: scroll;  border-radius: 5px;  background-color: rgba(27, 109, 197, 0.524);">
+            <table class="table" id="excel-table" style="">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">#</th>
+                        <th class="text-center" scope="col">Name</th>
+                        <th class="text-center" scope="col">Email</th>
+                        <th class="text-center" scope="col">Age</th>
+                        <th class="text-center" scope="col">Gender</th>
+                        <th class="text-center" scope="col">District Name</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let x of districtAdmins; let i=index">
+                    <tr (dblclick)="editVoters(x)">
+                    <!-- <tr> -->
+                        <td class="text-center pt-3" scope="row">{{i+1}}</td>
+                        <td class="text-center pt-3" scope="row">{{x.personName}}</td>
+                        <td class="text-center pt-3" scope="row">{{x.email}}</td>
+                        <td class="text-center pt-3" scope="row">{{x.age}}</td>
+                        <td class="text-center pt-3" scope="row">{{x.gender}}</td>
+                        <td class="text-center pt-3" scope="row">{{x.districtId}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

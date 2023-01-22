@@ -63,6 +63,7 @@ const routes: Routes = [
   { path: 'boothVolunteer', loadChildren: () => import('./booth-volunteer/booth-volunteer.module').then(m => m.BoothVolunteerModule) },
   { path: 'boothVolunteerCreateVoter', loadChildren: () => import('./booth-volunteer/voters-bybooth-volunteer/voters-bybooth-volunteer.module').then(m => m.VotersByboothVolunteerModule) },
   { path: 'DitrictAdmin', loadChildren: () => import('./pages/district-admin-panel/district-admin-panel.module').then(m => m.DistrictAdminPanelModule) },
+  // { path: 'DitrictAdminByLegend', loadChildren: () => import('./legend-volunteer/legend-volunteer-routing.module').then(m => m.LegendVolunteerRoutingModule) },
 
   { path: 'sidenavPollingVolunteer', loadChildren: () => import('./sidenavs/sidenav-polling-volunteer/sidenav-polling-volunteer.module').then(m => m.SidenavPollingVolunteerModule) },
 
@@ -95,6 +96,8 @@ const routes: Routes = [
   { path: 'pollingVolunteer/voters', loadChildren: () => import('./pages/polling-volunteer/voters/voters.module').then(m => m.VotersModule) },
 
   { path: 'assemblyConstituency/voters', loadChildren: () => import('./assembly-constituency/voters/voters.module').then(m => m.VotersModule) },
+
+  { path: 'sidenavLegendVolunteer', loadChildren: () => import('./sidenavs/sidenav-legend-volunteer/sidenav-legend-volunteer.module').then(m => m.SidenavLegendVolunteerModule) },
 
   // { path: 'volunteer', loadChildren: () => import('./pages/volunteer/volunteer.module').then(m => m.VolunteerModule) },
 

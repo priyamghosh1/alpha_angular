@@ -10,6 +10,7 @@
       <app-sidenav-assembly-constituency *ngIf="authService.isAssemblyConstituency()"></app-sidenav-assembly-constituency>
       <app-sidenav-booth-volunteer *ngIf="authService.isBoothVolunteer()"></app-sidenav-booth-volunteer>
       <app-sidenav-districtt-admin *ngIf="authService.isDistrictAdminPanel()"></app-sidenav-districtt-admin>
+      <app-sidenav-legend-volunteer *ngIf="authService.isLegendPanel()"></app-sidenav-legend-volunteer>
 
     </mat-drawer>
     <mat-drawer-content>
