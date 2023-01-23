@@ -57,7 +57,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/developer']).then(r => {});
         }
         if (this.authService.isLegislativeCandidate()){
-          this.router.navigate(['/mp']).then(r => {});
+          this.router.navigate(['/legislative']).then(r => {});
+          // this.router.navigate(['/mp']).then(r => {});
         }
 
         if (this.authService.isLegendPanel()){

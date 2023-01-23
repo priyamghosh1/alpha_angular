@@ -101,6 +101,8 @@ const routes: Routes = [
 
   { path: 'legendVolunteer/voters', loadChildren: () => import('./legend-volunteer/voters/voters.module').then(m => m.VotersModule) },
 
+  { path: 'legislativeAdmin/voters', loadChildren: () => import('./pages/legislative/voters/voters.module').then(m => m.VotersModule) },
+
   // { path: 'volunteer', loadChildren: () => import('./pages/volunteer/volunteer.module').then(m => m.VolunteerModule) },
 
 
