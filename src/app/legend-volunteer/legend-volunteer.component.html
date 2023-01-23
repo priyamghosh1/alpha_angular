@@ -65,7 +65,8 @@
                     <div>
 
                         <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
-                        <button *ngIf="isUpdateAble == false" (click)="onSubmit()" type="submit" class="btn btn-info">Submit</button>
+                        <button *ngIf="isUpdateAble == false" (click)="onSubmit()" type="submit"
+                            class="btn btn-info">Submit</button>
                         <!-- <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
                             (click)="onSubmit()">Submit</button> -->
                         <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info"
@@ -98,7 +99,7 @@
                 </thead>
                 <tbody *ngFor="let x of districtAdmins; let i=index">
                     <tr (dblclick)="editVoters(x)">
-                    <!-- <tr> -->
+                        <!-- <tr> -->
                         <td class="text-center pt-3" scope="row">{{i+1}}</td>
                         <td class="text-center pt-3" scope="row">{{x.personName}}</td>
                         <td class="text-center pt-3" scope="row">{{x.email}}</td>

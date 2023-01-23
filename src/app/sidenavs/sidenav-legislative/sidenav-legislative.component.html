@@ -1,11 +1,18 @@
 <mat-nav-list>
   <div class="logo py-4">
-    <img src="assets/meghalaya-map-logo.jpg" width="100px" height="50px" alt="Company Logo" class="eduvenv"/>
+    <img src="assets/meghalaya-map-logo.jpg" width="100px" height="50px" alt="Company Logo" class="eduvenv" />
   </div>
   <mat-divider></mat-divider>
   <h2 matSubheader class="mt-2">Legislative</h2>
-  <a mat-list-item routerLink="/mp" routerLinkActive="list-item-active">
+  <a mat-list-item routerLink="/" routerLinkActive="list-item-active">
     <mat-icon>home</mat-icon> Home
+  </a>
+
+  <a mat-list-item routerLink="/legislative" routerLinkActive="list-item-active">
+    <mat-icon>account_circle</mat-icon> Create Legend
+  </a>
+  <a mat-list-item routerLink="/legislativeAdmin/voters" routerLinkActive="list-item-active">
+    <mat-icon>account_circle</mat-icon> Show voters
   </a>
   <a mat-list-item routerLink="/assemblyAdminDashboard" routerLinkActive="list-item-active">
     <mat-icon>dashboard</mat-icon> Dashboard
@@ -22,4 +29,3 @@
 
 
 </mat-nav-list>
-

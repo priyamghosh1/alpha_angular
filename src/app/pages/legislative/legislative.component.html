@@ -1,107 +1,102 @@
-<h3><u>Create Volunteer:</u> </h3>
+<div class="container pt-1" style="background-color: rgba(255, 255, 255, 0); color: black !important;">
+  <h3><u>Create Legend Volunteer</u> </h3>
+
+  <div>
+    <mat-stepper style="background-color: rgb(7, 138, 182) !important; color: black !important; border-radius: 10px;"
+      #stepper>
+      <mat-step [stepControl]="personForm">
+        <form [formGroup]="personForm">
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <div class="d-flex">
+            <div class="col-9">
+
+              <div>
+                <mat-form-field appearance="fill">
+                  <mat-label>NAME</mat-label>
+                  <input matInput placeholder="Last name, First name" formControlName="personName" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>AGE</mat-label>
+                  <input matInput placeholder="Your age" formControlName="age" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>GENDER</mat-label>
+                  <mat-select matNativeControl required formControlName="gender">
+                    <mat-option *ngFor="let x of genderList" [value]="x">{{x}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div>
 
 
+                
+                <mat-form-field appearance="fill">
+                  <mat-label>EMAIL</mat-label>
+                  <input matInput placeholder="Email" formControlName="email" required>
+                </mat-form-field>
+              </div>
 
-<div class="container pt-5">
+            </div>
+            <!-- {{assembly | json}} -->
+
+            <div class="fluid" style="background-color: white; max-height: 100px;  margin: 2%; text-align: right ">
+              <!-- <mat-menu #test1="matMenu">
+                              <input [disabled]="isUpdateAble == true" type="file" name="filename"
+                                  (change)="onChange($event)">
+                          </mat-menu> -->
+            </div>
+
+          </div>
+
+          <div>
+
+            <button class="mr-2 bg-warning btn" (click)="clearForms()">Clear</button>
+            <button *ngIf="isUpdateAble == false" (click)="onSubmit()" type="submit"
+              class="btn btn-info">Submit</button>
+            <!-- <button *ngIf="isUpdateAble == false" type="submit" class="btn btn-info"
+                          (click)="onSubmit()">Submit</button> -->
+            <button *ngIf="isUpdateAble == true" type="submit" class="btn btn-info"
+              (click)="updateMember()">Update</button>
+
+          </div>
+        </form>
+      </mat-step>
 
 
+    </mat-stepper>
 
-  <form [formGroup]="personForm">
-    <div class="d-flex">
-      <div class="form-group">
-        <input class="form-control" formControlName="personName" placeholder="Name">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="age" placeholder="Age">
-      </div>
-      <div class="form-group pl-3">
-        <ng-select [items]="genderList"
-                   fxFlex="100"
-                   bindLabel="name"
-                   class="custom"
-                   bindValue="name"
-                   appendTo="body"
-                   formControlName="gender"
-                   placeholder="Gender"
-                   style="height: 200 !important;">
-        </ng-select>
-      </div>
 
-    </div>
-
-    <div class="d-flex pt-2">
-      <div class="form-group">
-        <input class="form-control" formControlName="mobile1"    placeholder="Mobile1">
-      </div>
-      <div class="form-group pl-3">
-        <input class="form-control" formControlName="mobile2"    placeholder="Mobile2">
-      </div>
-    </div>
-
-    <div class="d-flex pt-2">
-      <div class="form-group">
-        <input class="form-control" formControlName="voterId"    placeholder="Voter No.">
-      </div>
-    </div>
-  </form>
-
-  <div class="d-flex pt-2">
-    <form [formGroup]="userForm">
-      <div class="d-flex pt-2">
-
-        <div class="form-group pl-3">
-          <textarea class="form-control" rows="2" formControlName="remark"  placeholder="Remark"></textarea>
-        </div>
-        <div class="form-group pl-3">
-          <textarea class="form-control" rows="2" formControlName="areaDescription"  placeholder="Area"></textarea>
-        </div>
-      </div>
-    </form>
   </div>
-  <div class="pt-4 pb-3"><button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button></div>
 
 
-  <div class="card" *ngIf="true">
-    <div class="card-header text-dark text-bold">
-      Legislative list
-    </div>
-    <div class="card-body">
-      <table class="table">
+  <div class="card">
+    <div class="card-body scroll"
+      style="max-width: 100vw; overflow: scroll;  border-radius: 5px;  background-color: rgba(27, 109, 197, 0.524);">
+      <table class="table" id="excel-table" style="">
         <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Age</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Email</th>
-          <th scope="col">mobile1</th>
-          <th scope="col">mobile2</th>
-          <th scope="col">voterId</th>
-          <th scope="col">pollingNumber</th>
-        </tr>
+          <tr>
+            <th class="text-center" scope="col">#</th>
+            <th class="text-center" scope="col">Name</th>
+            <th class="text-center" scope="col">Email</th>
+            <th class="text-center" scope="col">Age</th>
+            <th class="text-center" scope="col">Gender</th>
+            <!-- <th class="text-center" scope="col">District Name</th> -->
+          </tr>
         </thead>
-        <tbody *ngFor="let x of pollingVolunteers">
-        <tr>
-          <td scope="row">{{x.personId}}</td>
-          <td scope="row">{{x.personName}}</td>
-          <td scope="row">{{x.memberCode}}</td>
-          <td scope="row">{{x.age}}</td>
-          <td scope="row">{{x.gender}}</td>
-          <td scope="row">{{x.email}}</td>
-          <td scope="row">{{x.mobile1}}</td>
-          <td scope="row">{{x.mobile2}}</td>
-          <td scope="row">{{x.voterId}}</td>
-          <td scope="row">{{x.pollingNumber}}</td>
-        </tr>
+        <tbody *ngFor="let x of legengVolunteers; let i=index">
+          <tr (dblclick)="editVoters(x)">
+            <!-- <tr> -->
+            <td class="text-center pt-3" scope="row">{{i+1}}</td>
+            <td class="text-center pt-3" scope="row">{{x.personName}}</td>
+            <td class="text-center pt-3" scope="row">{{x.email}}</td>
+            <td class="text-center pt-3" scope="row">{{x.age}}</td>
+            <td class="text-center pt-3" scope="row">{{x.gender}}</td>
+            <!-- <td class="text-center pt-3" scope="row">{{x.districtId}}</td> -->
+
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="row" *ngIf="false">
-    <div class="col"><pre>personForm = {{personForm.value | json}}</pre></div>
-    <div class="col"><pre>userForm = {{userForm.value | json}}</pre></div>
-    <div class="col"><pre>pollingStations = {{pollingStations | json}}</pre></div>
-    <div class="col"><pre>pollingVolunteers = {{pollingVolunteers | json}}</pre></div>
-  </div>
-
 </div>
