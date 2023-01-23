@@ -169,7 +169,6 @@ export class AssemblyConstituencyComponent implements OnInit {
 
     /* save to file */
     XLSX.writeFile(wb, 'test.xlsx');
-
   }
 
   printDivStyle = {
