@@ -47,11 +47,11 @@ export class VotersComponent implements OnInit {
   ngOnInit(): void {
 
     this.loggedInUser = this.authService.userBehaviorSubject.value;
-    console.log(this.loggedInUser);
+    // console.log(this.loggedInUser);
 
     this.legendVolunteerService.getvotersByLegend(this.loggedInUser?.uniqueId).subscribe((response: { status: string, message: string, data: any[] }) => {
       this.votersList = response.data;
-      console.log(this.votersList);
+      // console.log(this.votersList);
     });
   }
 
