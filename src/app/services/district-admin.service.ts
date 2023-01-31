@@ -77,17 +77,17 @@ export class DistrictAdminService {
   }
 
 
-  getAllvotersByUserId(userId:number):any{
+  getAllvotersByUserId(userId: number): any {
 
-    return this.http.get<{status:string,message:string,data:any[]}>(this.BASE_API_URL + '/volunteer/'+ userId + '/members')
+    return this.http.get<{ status: string, message: string, data: any[] }>(this.BASE_API_URL + '/volunteer/' + userId + '/members')
       .pipe(catchError(this.errorService.serverError),
-        tap((response : {status:string,message:string,data:any[]}) => {
+        tap((response: { status: string, message: string, data: any[] }) => {
           this.voterMembers = response.data;
           this.voterMembersSubject.next([...this.voterMembers]);
         }));
 
   }
-  getAllVoterListener(){
+  getAllVoterListener() {
     return this.voterMembersSubject.asObservable();
   }
 }

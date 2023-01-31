@@ -13,6 +13,15 @@ export class AssemblyAdminService {
   voters: any[]=[];
   votersSubject = new Subject<any[]>();
 
+  boothMemberSubject = new Subject<any[]>();
+  boothMembers: any[] = [];
+
+  volunteers: any[] = [];
+  volunteerSubject = new Subject<any[]>();
+
+  voterMembers: any[] = [];
+  voterMembersSubject = new Subject<any[]>();
+
   constructor(private http: HttpClient, private errorService: ErrorService) { }
 
   getVotersByPollingAsemblyAdminId(assemblyAdminId: number) {
@@ -29,5 +38,51 @@ export class AssemblyAdminService {
 
   getVotersByPollingVolunteerIdListener(){
     return this.votersSubject.asObservable();
+  }
+
+
+  getBoothByPolingAgent(pollingAgentId: number) {
+    // return  this.http.get(this.BASE_API_URL + '/volunteer/' + pollingAgentId).subscribe((response: ServerResponse) => {
+    //   console.log(response);
+    // });
+
+    return this.http.get<{ status: string, message: string, data: any[] }>(this.BASE_API_URL + '/boothVolunteer/' + pollingAgentId)
+      .pipe(catchError(this.errorService.serverError),
+        tap((response: { status: string, message: string, data: any[] }) => {
+          this.boothMembers.unshift(response.data);
+          this.boothMemberSubject.next([...this.boothMembers]);
+        }));
+  }
+
+
+
+
+  getVolunteerByBoothMember(pollingAgentId: number) {
+    // return  this.http.get(this.BASE_API_URL + '/volunteer/' + pollingAgentId).subscribe((response: ServerResponse) => {
+    //   console.log(response);
+    // });
+
+    return this.http.get<{ status: string, message: string, data: any[] }>(this.BASE_API_URL + '/volunteer/' + pollingAgentId)
+      .pipe(catchError(this.errorService.serverError),
+        tap((response: { status: string, message: string, data: any[] }) => {
+          // console.log(response);
+          this.volunteers.unshift(response.data);
+          this.volunteerSubject.next([...this.volunteers]);
+        }));
+  }
+
+
+  getAllvotersByUserId(userId:number):any{
+
+    return this.http.get<{status:string,message:string,data:any[]}>(this.BASE_API_URL + '/volunteer/'+ userId + '/members')
+      .pipe(catchError(this.errorService.serverError),
+        tap((response : {status:string,message:string,data:any[]}) => {
+          this.voterMembers = response.data;
+          this.voterMembersSubject.next([...this.voterMembers]);
+        }));
+
+  }
+  getAllVoterListener(){
+    return this.voterMembersSubject.asObservable();
   }
 }

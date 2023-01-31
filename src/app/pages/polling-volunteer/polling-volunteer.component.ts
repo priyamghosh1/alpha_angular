@@ -17,6 +17,7 @@ import { ThisReceiver } from '@angular/compiler';
 
 
 import * as XLSX from 'xlsx';
+import { PollingVolunteerServiceService } from 'src/app/services/polling-volunteer-service.service';
 
 @Component({
   selector: 'app-polling-volunteer',
@@ -119,6 +120,16 @@ export class PollingVolunteerComponent implements OnInit {
 
   boothVolunteer: any[] =[];
 
+  volunteer: any[] = [];
+  votersList: any[] = [];
+
+
+  showAssemblyVolunteer = false;
+  showPollingVolunteer = false;
+  showBoothVolunteer = true;
+  showVolunteer = false;
+  showVoters = false;
+
 
 
   constructor(
@@ -129,7 +140,8 @@ export class PollingVolunteerComponent implements OnInit {
     private areaService: AreaService,
     private http: HttpClient,
     private _formBuilder: UntypedFormBuilder,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private pollingMemberService: PollingVolunteerServiceService
   ) {
     // @ts-ignore
     this.file = File;
@@ -466,6 +478,103 @@ export class PollingVolunteerComponent implements OnInit {
 
 
     this.isUpdateAble = true;
+  }
+
+
+  getVolunteerByBoothVolunteer(boothMemberData: any) {
+    // console.log(boothMemberData);
+
+    this.showVolunteer = true;
+    this.showBoothVolunteer = false;
+
+    this.pollingMemberService.getVolunteerByBoothMember(boothMemberData.userId).subscribe((response: any) => {
+      this.volunteer = response.data;
+    })
+  }
+
+  getVotersByVolunteer(volunteerData: any) {
+    // console.log(volunteerData);
+
+    this.showVoters = true;
+    this.showVolunteer = false;
+
+    this.pollingMemberService.getAllvotersByUserId(volunteerData.userId).subscribe((response: { status: string, message: string, data: any[] }) => {
+      this.votersList = response.data;
+    });
+  }
+
+
+  
+
+
+  // showLedgend = true;
+  // showDistrictAdmin = false;
+  // showAssemblyVolunteer = false;
+  // showPollingVolunteer = false;
+  // showBoothVolunteer = false;
+  // showVolunteer = false;
+  // showVoters = false;
+
+  onClickBackButton() {
+    // if (this.showDistrictAdmin == true) {
+    //   this.showLedgend = true;
+    //   this.showDistrictAdmin= false;
+    //   this.showAssemblyVolunteer = false;
+    //   this.showPollingVolunteer = false;
+    //   this.showBoothVolunteer = false;
+    //   this.showVolunteer = false;
+    //   this.showVoters = false;
+    // }
+
+    if (this.showAssemblyVolunteer == true){      
+      // this.showDistrictAdmin= true;
+      // this.showLedgend = false;
+      this.showAssemblyVolunteer = false;
+      this.showPollingVolunteer = false;
+      this.showBoothVolunteer = false;
+      this.showVolunteer = false;
+      this.showVoters = false;
+    }
+
+    if (this.showPollingVolunteer == true){      
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
+      this.showAssemblyVolunteer = true;
+      this.showPollingVolunteer = false;
+      this.showBoothVolunteer = false;
+      this.showVolunteer = false;
+      this.showVoters = false;
+    }
+
+    if (this.showBoothVolunteer == true){      
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
+      this.showAssemblyVolunteer = false;
+      this.showPollingVolunteer = true;
+      this.showBoothVolunteer = false;
+      this.showVolunteer = false;
+      this.showVoters = false;
+    }
+
+    if (this.showVolunteer == true){      
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
+      this.showAssemblyVolunteer = false;
+      this.showPollingVolunteer = false;
+      this.showBoothVolunteer = true;
+      this.showVolunteer = false;
+      this.showVoters = false;
+    }
+
+    if (this.showVoters == true){      
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
+      this.showAssemblyVolunteer = false;
+      this.showPollingVolunteer = false;
+      this.showBoothVolunteer = false;
+      this.showVolunteer = true;
+      this.showVoters = false;
+    }
   }
 
 }

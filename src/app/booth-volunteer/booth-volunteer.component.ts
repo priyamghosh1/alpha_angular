@@ -11,6 +11,7 @@ import { PollingStationService } from '../services/polling-station.service';
 import { UserRegistrationService } from '../services/user-registration.service';
 import * as XLSX from 'xlsx';
 import { environment } from 'src/environments/environment';
+import { BoothVolunteerService } from '../services/booth-volunteer.service';
 
 @Component({
   selector: 'app-booth-volunteer',
@@ -119,11 +120,21 @@ export class BoothVolunteerComponent implements OnInit {
   // public assemblyConstituencyId: number;
   private BASE_PUBLIC_URL = environment.BASE_PUBLIC_URL;
 
+  votersList: any[] = [];
+
+
+  showAssemblyVolunteer = false;
+  showPollingVolunteer = false;
+  showBoothVolunteer = false;
+  showVolunteer = true;
+  showVoters = false;
+
   constructor(
     private areaService: AreaService,
     private pollingStationService: PollingStationService,
     private authService: AuthService,
     private userRegistrationService: UserRegistrationService,
+    private boothVolunteerService: BoothVolunteerService
   ) {
     this.areaService.getStateListener().subscribe((response) => {
       this.states = response;
@@ -440,6 +451,91 @@ export class BoothVolunteerComponent implements OnInit {
     this.showPhoto = x === 'showPhoto' ? y : this.showPhoto;
 
 
+  }
+
+  getVotersByVolunteer(volunteerData: any) {
+    // console.log(volunteerData);
+
+    this.showVoters = true;
+    this.showVolunteer = false;
+
+    this.boothVolunteerService.getAllvotersByUserId(volunteerData.userId).subscribe((response: { status: string, message: string, data: any[] }) => {
+      this.votersList = response.data;
+    });
+  }
+
+
+  
+
+
+  // showLedgend = true;
+  // showDistrictAdmin = false;
+  // showAssemblyVolunteer = false;
+  // showPollingVolunteer = false;
+  // showBoothVolunteer = false;
+  // showVolunteer = false;
+  // showVoters = false;
+
+  onClickBackButton() {
+    // if (this.showDistrictAdmin == true) {
+    //   this.showLedgend = true;
+    //   this.showDistrictAdmin= false;
+    //   this.showAssemblyVolunteer = false;
+    //   this.showPollingVolunteer = false;
+    //   this.showBoothVolunteer = false;
+    //   this.showVolunteer = false;
+    //   this.showVoters = false;
+    // }
+
+    if (this.showAssemblyVolunteer == true){      
+      // this.showDistrictAdmin= true;
+      // this.showLedgend = false;
+      this.showAssemblyVolunteer = false;
+      this.showPollingVolunteer = false;
+      this.showBoothVolunteer = false;
+      this.showVolunteer = false;
+      this.showVoters = false;
+    }
+
+    if (this.showPollingVolunteer == true){      
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
+      this.showAssemblyVolunteer = true;
+      this.showPollingVolunteer = false;
+      this.showBoothVolunteer = false;
+      this.showVolunteer = false;
+      this.showVoters = false;
+    }
+
+    if (this.showBoothVolunteer == true){      
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
+      this.showAssemblyVolunteer = false;
+      this.showPollingVolunteer = true;
+      this.showBoothVolunteer = false;
+      this.showVolunteer = false;
+      this.showVoters = false;
+    }
+
+    if (this.showVolunteer == true){      
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
+      this.showAssemblyVolunteer = false;
+      this.showPollingVolunteer = false;
+      this.showBoothVolunteer = true;
+      this.showVolunteer = false;
+      this.showVoters = false;
+    }
+
+    if (this.showVoters == true){      
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
+      this.showAssemblyVolunteer = false;
+      this.showPollingVolunteer = false;
+      this.showBoothVolunteer = false;
+      this.showVolunteer = true;
+      this.showVoters = false;
+    }
   }
 
 }
