@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
-import { AssemblyAdminService } from 'src/app/services/assembly-admin.service';
+import { AreaService } from 'src/app/services/area.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { LegendVolunteerService } from 'src/app/services/legend-volunteer.service';
+import { DistrictAdminService } from 'src/app/services/district-admin.service';
+import { PollingStationService } from 'src/app/services/polling-station.service';
+import { UserRegistrationService } from 'src/app/services/user-registration.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -11,16 +13,33 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./voters.component.scss']
 })
 export class VotersComponent implements OnInit {
-  loggedInUser: User | undefined;
-  votersList: any[]=[];
-  imageSrcVoter: string | ArrayBuffer | null = "";
-  imageSrcTable: string | ArrayBuffer | null = "";
-  defaultPicture: string = "";
 
+  pollingStations: any;
+  // pollingMembers: PollingMember[] = [];
+  loggedInUser: User | undefined;
+  // public assemblyConstituencyId: number;
   private BASE_PUBLIC_URL = environment.BASE_PUBLIC_URL;
 
+
+  PolingAgentByAssembly: any[] = [];
+  boothVolunteerByPolingAgent: any[] = [];
+  volunteer: any[] = [];
+  votersList: any[] = [];
+
+
+  showAssemblyVolunteer = true;
+  showPollingVolunteer = false;
+  showBoothVolunteer = false;
+  showVolunteer = false;
+  showVoters = false;
+
+  voters: any;
+  assemblyVolunteer: any[]=[];
+
+
+
   showPhoto = true;
-  showName = true;
+  showName = true; 
   showMemberCode = false;
   showGuardianName = true;
   showAge = true;
@@ -42,58 +61,40 @@ export class VotersComponent implements OnInit {
 
 
 
-  districtAdmins: any[]=[];
-  isUpdateAble = false;
 
 
-  assemblyVolunteer: any[] = [];
-  PolingAgentByAssembly: any[] = [];
-  boothVolunteerByPolingAgent: any[] = [];
-  volunteer: any[] = [];
-
-
-  showLedgend = true;
-  showDistrictAdmin = true;
-  showAssemblyVolunteer = false;
-  showPollingVolunteer = false;
-  showBoothVolunteer = false;
-  showVolunteer = false;
-  showVoters = false;
-
-
-
-  
-
-
-  imageSrc: string | ArrayBuffer | null = "";
+  imageSrc: string | ArrayBuffer | null ="";
+  imageSrcVoter: string | ArrayBuffer | null ="";
+  imageSrcTable: string | ArrayBuffer | null ="";
+  defaultPicture: string = "";
 
   // @ts-ignore
-
   file: File;
+  assembly: any[]=[];
 
-  showBill = false;
 
-  constructor(private legendVolunteerService: LegendVolunteerService,
-    private authService: AuthService, 
-    private assemblyAdminService: AssemblyAdminService,  ) { }
+
+  constructor(private areaService: AreaService,
+    private pollingStationService: PollingStationService,
+      private authService: AuthService,
+      private userRegistrationService: UserRegistrationService,
+       private districtAdminService: DistrictAdminService) { }
 
   ngOnInit(): void {
 
-    // @ts-ignore
-    this.file = File;
-
     this.loggedInUser = this.authService.userBehaviorSubject.value;
-    // console.log(this.loggedInUser);
 
-    this.legendVolunteerService.getvotersByLegend(this.loggedInUser?.uniqueId).subscribe((response: { status: string, message: string, data: any[] }) => {
-      this.votersList = response.data;
-      // console.log(this.votersList);
+    this.userRegistrationService.getAssemblyVolunteerByDistrictAdmin(this.loggedInUser.uniqueId).subscribe((response : any) =>{
+      this.assemblyVolunteer = response.data;
+      // console.log(this.assemblyVolunteer);
     });
 
-    this.legendVolunteerService.getDistrictAdminByLegend(this.loggedInUser.uniqueId).subscribe((response) => {
-      this.districtAdmins= response.data;
-      // console.log(this.districtAdmins);
+    this.areaService.getAssemblyByDistrictId(this.loggedInUser.districtId).subscribe((response: any)=>{
+      this.assembly = response.data;
+      // console.log("asembly", this.assembly);
     });
+
+    
   }
 
   changeShowStatus(x: any, y: any) {
@@ -121,27 +122,12 @@ export class VotersComponent implements OnInit {
 
   }
 
-
-  getAssemblyByDistrictAdmin(districtAdminData: any) {
-    // console.log(districtAdminData);
-    this.showDistrictAdmin = false;
-    this.showAssemblyVolunteer = true;
-
-    this.legendVolunteerService.getAssemblyVolunteerByDistrictAdmin(districtAdminData.id).subscribe((response: any) => {
-      this.assemblyVolunteer = response.data;
-      // console.log(this.assemblyVolunteer);
-    });
-  }
-
-  getPollingMemberByAssembly(AssemblyData: any) {
-    // console.log(AssemblyData);
-
+  getPollingMemberByAssembly(assemblyData: any){
     this.showAssemblyVolunteer = false;
     this.showPollingVolunteer = true;
 
-    this.legendVolunteerService.getPolingAgentByAssembly(AssemblyData.id).subscribe((response: any) => {
+    this.districtAdminService.getPolingAgentByAssembly(assemblyData.id).subscribe((response: any) => {
       this.PolingAgentByAssembly = response.data;
-      // console.log("PolingAgentByAssembly", this.PolingAgentByAssembly)
     })
   }
 
@@ -150,7 +136,7 @@ export class VotersComponent implements OnInit {
     this.showBoothVolunteer = true;
     this.showPollingVolunteer = false;
 
-    this.legendVolunteerService.getBoothByPolingAgent(pollingMemberData.id).subscribe((response: any) => {
+    this.districtAdminService.getBoothByPolingAgent(pollingMemberData.id).subscribe((response: any) => {
       this.boothVolunteerByPolingAgent = response.data;
       // console.log("Booth", this.volunteerByPolingAgent)
     })
@@ -162,7 +148,7 @@ export class VotersComponent implements OnInit {
     this.showVolunteer = true;
     this.showBoothVolunteer = false;
 
-    this.legendVolunteerService.getVolunteerByBoothMember(boothMemberData.userId).subscribe((response: any) => {
+    this.districtAdminService.getVolunteerByBoothMember(boothMemberData.userId).subscribe((response: any) => {
       this.volunteer = response.data;
     })
   }
@@ -173,7 +159,7 @@ export class VotersComponent implements OnInit {
     this.showVoters = true;
     this.showVolunteer = false;
 
-    this.legendVolunteerService.getAllvotersByUserId(volunteerData.userId).subscribe((response: { status: string, message: string, data: any[] }) => {
+    this.districtAdminService.getAllvotersByUserId(volunteerData.userId).subscribe((response: { status: string, message: string, data: any[] }) => {
       this.votersList = response.data;
     });
   }
@@ -202,8 +188,8 @@ export class VotersComponent implements OnInit {
     // }
 
     if (this.showAssemblyVolunteer == true){      
-      this.showDistrictAdmin= true;
-      this.showLedgend = false;
+      // this.showDistrictAdmin= true;
+      // this.showLedgend = false;
       this.showAssemblyVolunteer = false;
       this.showPollingVolunteer = false;
       this.showBoothVolunteer = false;
@@ -212,8 +198,8 @@ export class VotersComponent implements OnInit {
     }
 
     if (this.showPollingVolunteer == true){      
-      this.showDistrictAdmin= false;
-      this.showLedgend = false;
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
       this.showAssemblyVolunteer = true;
       this.showPollingVolunteer = false;
       this.showBoothVolunteer = false;
@@ -222,8 +208,8 @@ export class VotersComponent implements OnInit {
     }
 
     if (this.showBoothVolunteer == true){      
-      this.showDistrictAdmin= false;
-      this.showLedgend = false;
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
       this.showAssemblyVolunteer = false;
       this.showPollingVolunteer = true;
       this.showBoothVolunteer = false;
@@ -232,8 +218,8 @@ export class VotersComponent implements OnInit {
     }
 
     if (this.showVolunteer == true){      
-      this.showDistrictAdmin= false;
-      this.showLedgend = false;
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
       this.showAssemblyVolunteer = false;
       this.showPollingVolunteer = false;
       this.showBoothVolunteer = true;
@@ -242,8 +228,8 @@ export class VotersComponent implements OnInit {
     }
 
     if (this.showVoters == true){      
-      this.showDistrictAdmin= false;
-      this.showLedgend = false;
+      // this.showDistrictAdmin= false;
+      // this.showLedgend = false;
       this.showAssemblyVolunteer = false;
       this.showPollingVolunteer = false;
       this.showBoothVolunteer = false;

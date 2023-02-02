@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { VotersRoutingModule } from './voters-routing.module';
 import { VotersComponent } from './voters.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     CommonModule,
     VotersRoutingModule,
 
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTabsModule
   ]
 })
 export class VotersModule { }
